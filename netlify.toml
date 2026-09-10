@@ -1,0 +1,15 @@
+# Netlify build configuration.
+#
+# Without this file, Netlify may serve the build as a plain static site instead of running
+# the Next.js server — every dynamic route (inventory search, vehicle pages, API routes, forms)
+# then 404s with Netlify's own "Page not found" page. The @netlify/plugin-nextjs plugin below
+# is what makes App Router pages, Server Actions, and /api routes actually run.
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
