@@ -18,6 +18,8 @@ import {
   ArrowRight,
   Handshake,
   Quote,
+  ClipboardCheck,
+  KeyRound,
 } from "lucide-react";
 import { getFeaturedVehicles, getPublishedVehicles } from "@/lib/inventory/repository";
 import { toSummary } from "@/lib/inventory/summary";
@@ -61,10 +63,9 @@ const reasons = [
 ];
 
 const steps = [
-  { title: "Search or describe your vehicle", text: "Browse our inventory, or tell us exactly what you're looking for and we'll start searching." },
-  { title: "Explore financing and your trade", text: "Pre-qualify online and send your trade-in details, so you know your numbers before you visit." },
-  { title: "Confirm the details", text: "We confirm availability, answer questions, and arrange a test drive that fits your schedule." },
-  { title: "Pick up or request delivery", text: "Sign and drive home from Live Oak, or ask about delivery to your home or office." },
+  { icon: CarFront, title: "Describe your vehicle", text: "Browse our inventory, or tell us exactly what you're looking for and we'll start searching." },
+  { icon: ClipboardCheck, title: "Talk to one of our reps & relax", text: "We handle the financing, your trade-in, and the paperwork — you don't have to do a thing." },
+  { icon: KeyRound, title: "Take delivery of your vehicle", text: "Pick it up in Live Oak, or ask about delivery to your home or office." },
 ];
 
 export default async function HomePage() {
@@ -136,15 +137,18 @@ export default async function HomePage() {
 
       {/* ───────────── Buying process (kept near the top — this is how car buying here works) ───────────── */}
       <Section labelledBy="process-heading">
-        <SectionHeader id="process-heading" eyebrow="How it works" title="Four simple steps" align="center" />
-        <ol className="grid gap-8 md:grid-cols-4 md:gap-6">
+        <SectionHeader id="process-heading" eyebrow="How it works" title="3 Easy Steps" align="center" />
+        <ol className="grid gap-8 sm:grid-cols-3 sm:gap-6">
           {steps.map((s, i) => (
-            <li key={s.title} className="relative" data-reveal>
-              <div className="flex items-center gap-3">
-                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-900 font-display text-lg font-bold text-white">{i + 1}</span>
-                {i < steps.length - 1 && <span aria-hidden className="hidden h-px flex-1 bg-line-strong md:block" />}
+            <li key={s.title} className="relative text-center sm:text-left" data-reveal>
+              <div className="flex items-center justify-center gap-3 sm:justify-start">
+                <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-navy-900 text-white">
+                  <s.icon className="size-7" aria-hidden />
+                </span>
+                {i < steps.length - 1 && <span aria-hidden className="hidden h-px flex-1 bg-line-strong sm:block" />}
               </div>
-              <h3 className="mt-4 font-display text-xl font-bold">{s.title}</h3>
+              <p className="mt-4 eyebrow">Step {i + 1}</p>
+              <h3 className="mt-1 font-display text-xl font-bold">{s.title}</h3>
               <p className="mt-2 text-slate leading-relaxed">{s.text}</p>
             </li>
           ))}
