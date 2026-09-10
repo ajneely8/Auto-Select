@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Users, Clock, TrendingUp, ArrowRight, CheckCircle2, Phone, Mail } from "lucide-react";
-import { listLeads, summarize, typeBreakdown, needsAttention, dailyCounts, responseRate, weeklyTrend } from "@/lib/crm/leads";
+import { Users, Clock, TrendingUp, ArrowRight, CheckCircle2, Phone, Mail, CalendarDays, History } from "lucide-react";
+import { listLeads, summarize, typeBreakdown, needsAttention, dailyCounts, responseRate, weeklyTrend, thisMonthCount, monthlyHistory } from "@/lib/crm/leads";
 import { LEAD_LABELS, STATUS_LABELS, contactSummary, relativeTime } from "@/lib/crm/format";
 import { TYPE_ICONS } from "@/lib/crm/icons";
 import { StatusBadge } from "./StatusSelect";
@@ -16,8 +16,11 @@ export default async function CrmOverviewPage() {
   const trend = dailyCounts(leads, 14);
   const rate = responseRate(leads);
   const { last7, deltaPct: trendDelta } = weeklyTrend(leads);
+  const thisMonth = thisMonthCount(leads);
+  const history = monthlyHistory(leads);
   const recent = leads.slice(0, 6);
   const maxSource = Math.max(1, ...sources.map((s) => s.count));
+  const maxMonth = Math.max(1, ...history.map((m) => m.count));
 
   return (
     <div className="grid gap-6">
@@ -27,8 +30,9 @@ export default async function CrmOverviewPage() {
       </div>
 
       {/* Headline stats */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         <StatCard icon={Users} label="Total leads" value={counts.total} />
+        <StatCard icon={CalendarDays} label="This month" value={thisMonth} hint={history[0]?.label} />
         <StatCard
           icon={TrendingUp}
           label="Last 7 days"
@@ -156,6 +160,35 @@ export default async function CrmOverviewPage() {
           )}
         </section>
       </div>
+
+      {/* Monthly history */}
+      <section aria-labelledby="history-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5">
+        <div className="flex items-center gap-1.5">
+          <History className="size-4 text-navy-700" aria-hidden />
+          <h2 id="history-heading" className="font-display text-lg font-bold text-ink">
+            Leads by month
+          </h2>
+        </div>
+        <p className="mt-0.5 text-xs text-muted">Every month is kept on record — pick one to see just those leads.</p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {history.map((m) => (
+            <li key={m.key}>
+              <Link
+                href={`/crm/leads?month=${m.key}`}
+                className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-line px-3 py-2.5 text-sm hover:border-navy-300 hover:bg-surface"
+              >
+                <span className="min-w-0">
+                  <span className="block truncate font-semibold text-ink">{m.label}</span>
+                  <span className="mt-1 block h-1 w-full overflow-hidden rounded-full bg-surface">
+                    <span className="block h-full rounded-full bg-navy-700" style={{ width: `${(m.count / maxMonth) * 100}%` }} />
+                  </span>
+                </span>
+                <span className="shrink-0 tabular font-semibold text-ink">{m.count}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <p className="text-xs text-muted">Status breakdown: {(Object.keys(STATUS_LABELS) as (keyof typeof STATUS_LABELS)[]).map((s) => `${STATUS_LABELS[s]} ${counts.byStatus[s]}`).join(" · ")}</p>
     </div>

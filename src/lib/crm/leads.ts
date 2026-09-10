@@ -154,6 +154,46 @@ export function weeklyTrend(leads: Lead[]): WeeklyTrend {
   return { last7, prev7, deltaPct };
 }
 
+/** "YYYY-MM" for a lead's createdAt — the grouping key for monthly history. */
+export function monthKey(iso: string): string {
+  return iso.slice(0, 7);
+}
+
+/** "YYYY-MM" -> "September 2026". */
+export function monthLabel(key: string): string {
+  const [year, month] = key.split("-").map(Number);
+  return new Date(year, month - 1, 1).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+}
+
+/** Leads created in the current calendar month, for the "This month" stat card. */
+export function thisMonthCount(leads: Lead[]): number {
+  const current = monthKey(new Date().toISOString());
+  return leads.filter((l) => monthKey(l.createdAt) === current).length;
+}
+
+export interface MonthCount {
+  /** "YYYY-MM" */
+  key: string;
+  label: string;
+  count: number;
+}
+
+/**
+ * Every calendar month that has at least one lead (plus the current month, even if empty), most
+ * recent first — the archive so nothing gets lost once a month ends, just filtered out of view.
+ */
+export function monthlyHistory(leads: Lead[]): MonthCount[] {
+  const counts = new Map<string, number>();
+  counts.set(monthKey(new Date().toISOString()), 0);
+  for (const l of leads) {
+    const key = monthKey(l.createdAt);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([key, count]) => ({ key, label: monthLabel(key), count }));
+}
+
 /** Of the leads with a status set (i.e. touched at least once), the share that moved past "new". */
 export function responseRate(leads: Lead[]): number | null {
   if (leads.length === 0) return null;

@@ -14,10 +14,27 @@ const selectCls =
 
 type Sort = "newest" | "oldest" | "name";
 
-export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: Record<LeadType, string> }) {
+interface MonthOption {
+  key: string;
+  label: string;
+  count: number;
+}
+
+export function LeadsTable({
+  leads,
+  typeLabels,
+  months = [],
+  initialMonth = "",
+}: {
+  leads: Lead[];
+  typeLabels: Record<LeadType, string>;
+  months?: MonthOption[];
+  initialMonth?: string;
+}) {
   const [q, setQ] = useState("");
   const [type, setType] = useState<LeadType | "">("");
   const [status, setStatus] = useState<LeadStatus | "">("");
+  const [month, setMonth] = useState(initialMonth);
   const [sort, setSort] = useState<Sort>("newest");
 
   const filtered = useMemo(() => {
@@ -25,6 +42,7 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
     const list = leads.filter((l) => {
       if (type && l.type !== type) return false;
       if (status && l.status !== status) return false;
+      if (month && l.createdAt.slice(0, 7) !== month) return false;
       if (!term) return true;
       const vehicleLabel = (l.details as Record<string, unknown> | undefined)?.vehicleLabel;
       const haystack = [l.firstName, l.lastName, l.email, l.phone, l.message, l.id, typeof vehicleLabel === "string" ? vehicleLabel : ""].join(" ").toLowerCase();
@@ -35,7 +53,7 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
     else if (sort === "name") sorted.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`));
     else sorted.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     return sorted;
-  }, [leads, q, type, status, sort]);
+  }, [leads, q, type, status, month, sort]);
 
   return (
     <div>
@@ -67,6 +85,16 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
             </option>
           ))}
         </select>
+        {months.length > 0 && (
+          <select value={month} onChange={(e) => setMonth(e.target.value)} className={selectCls} aria-label="Filter by month">
+            <option value="">All time</option>
+            {months.map((m) => (
+              <option key={m.key} value={m.key}>
+                {m.label} ({m.count})
+              </option>
+            ))}
+          </select>
+        )}
         <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={selectCls} aria-label="Sort leads">
           <option value="newest">Newest first</option>
           <option value="oldest">Oldest first</option>
@@ -74,8 +102,18 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
         </select>
       </div>
 
-      <p className="mt-3 text-sm text-muted">
-        {filtered.length} of {leads.length} leads
+      <p className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted">
+        <span>
+          {filtered.length} of {leads.length} leads
+        </span>
+        {month && (
+          <span className="inline-flex items-center gap-1 rounded-full bg-navy-100 px-2.5 py-0.5 text-xs font-semibold text-navy-900">
+            {months.find((m) => m.key === month)?.label ?? month}
+            <button type="button" onClick={() => setMonth("")} className="ml-0.5 hover:text-navy-700" aria-label="Clear month filter">
+              ×
+            </button>
+          </span>
+        )}
       </p>
 
       {filtered.length === 0 ? (
