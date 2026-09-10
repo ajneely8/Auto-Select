@@ -32,6 +32,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { VehicleCard } from "@/components/inventory/VehicleCard";
 import { QuickSearch, type QuickSearchOptions } from "@/components/home/QuickSearch";
 import { HeroShowcase, type HeroVehicle } from "@/components/home/HeroShowcase";
+import { ThreeEasyStepsBanner } from "@/components/home/ThreeEasyStepsBanner";
 import { TradeInForm } from "@/components/forms/TradeInForm";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { MapEmbed } from "@/components/contact/MapEmbed";
@@ -136,24 +137,7 @@ export default async function HomePage() {
       </div>
 
       {/* ───────────── Buying process (kept near the top — this is how car buying here works) ───────────── */}
-      <Section labelledBy="process-heading">
-        <SectionHeader id="process-heading" eyebrow="How it works" title="3 Easy Steps" align="center" />
-        <ol className="grid gap-8 sm:grid-cols-3 sm:gap-6">
-          {steps.map((s, i) => (
-            <li key={s.title} className="relative text-center sm:text-left" data-reveal>
-              <div className="flex items-center justify-center gap-3 sm:justify-start">
-                <span className="inline-flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] bg-navy-900 text-white">
-                  <s.icon className="size-7" aria-hidden />
-                </span>
-                {i < steps.length - 1 && <span aria-hidden className="hidden h-px flex-1 bg-line-strong sm:block" />}
-              </div>
-              <p className="mt-4 eyebrow">Step {i + 1}</p>
-              <h3 className="mt-1 font-display text-xl font-bold">{s.title}</h3>
-              <p className="mt-2 text-slate leading-relaxed">{s.text}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      <ThreeEasyStepsBanner steps={steps} />
 
       {/* ───────────── What would you like to do? ───────────── */}
       <section aria-labelledby="actions-heading" className="container-page pt-12">
