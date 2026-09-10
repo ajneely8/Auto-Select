@@ -22,7 +22,9 @@ default account and no way to fail open.
    stored anywhere — only a salted hash (Node's `scrypt`).
 2. Generate a session secret: `openssl rand -hex 32` → `CRM_SESSION_SECRET`.
 3. Put all three in `.env.local` (development) or your host's environment variables (production).
-   Restart the server after changing them.
+   Restart the server after changing them. **On Netlify, also set `LEAD_STORE=netlify-blobs`** — see
+   the durability note below; without it, leads are stored in a file that Netlify does not keep
+   between deploys.
 4. Sign in at `/crm/login`.
 
 Only one admin account is supported. To change the password, run `crm:create-user` again with a
@@ -56,14 +58,22 @@ Nothing is summarized or dropped — if a customer typed it into a form, it's on
 
 ## Durability note (same caveat as the rest of the file-based lead store)
 
-Status changes rewrite the whole `leads.ndjson` file. That's simple and fine for a single
-small-business instance, but it is not safe for concurrent writers and the file itself is not
-durable on serverless hosting (a fresh deploy or a cold instance won't have yesterday's edits). If
-you outgrow this — high lead volume, multiple staff editing at once, or you move to Vercel/Netlify
-functions — replace `src/lib/crm/leads.ts` and `src/lib/leads/store.ts` with a real database
-(Postgres, Supabase, Airtable) behind the same function signatures. See
-[DEPLOYMENT.md](DEPLOYMENT.md#serverless-storage-note-important) for the broader version of this
-same caveat.
+With `LEAD_STORE=file` (the default), status changes rewrite the whole `leads.ndjson` file. That's
+simple and fine for a single small-business instance on a VPS or local dev, but it is not safe for
+concurrent writers and the file itself is not durable on serverless hosting (a fresh deploy or a
+cold instance won't have yesterday's edits).
+
+**On Netlify, set `LEAD_STORE=netlify-blobs` instead.** The CRM and every form then read and write
+through Netlify's built-in Blobs store (`src/lib/crm/store/blobs.ts` and the matching branch in
+`src/lib/leads/store.ts`), which persists across deploys and instances — no extra account, database,
+or setup beyond the environment variable. Each lead lives in its own blob keyed by id, so a status
+change or note only touches that one record instead of rewriting everything.
+
+If you outgrow file-based storage in a different way — very high lead volume, or you move off
+Netlify to a different serverless host — replace `src/lib/crm/store/*` and `src/lib/leads/store.ts`
+with a real database (Postgres, Supabase, Airtable) behind the same `CrmLeadStore`/`LeadStore`
+interfaces. See [DEPLOYMENT.md](DEPLOYMENT.md#serverless-storage-note-important) for the broader
+version of this same caveat.
 
 ## If you ever suspect the CRM was accessed by someone who shouldn't have it
 

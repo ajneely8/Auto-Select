@@ -15,7 +15,10 @@ const schema = z.object({
   INVENTORY_REVALIDATE_SECONDS: z.coerce.number().int().positive().default(900),
 
   // Lead storage + notifications
-  LEAD_STORE: z.enum(["file", "none"]).default("file"),
+  // "file" writes to LEAD_DATA_DIR (VPS/local — not durable on serverless). "none" doesn't persist
+  // locally at all (rely on CRM_WEBHOOK_URL). "netlify-blobs" persists via Netlify's built-in Blobs
+  // store — the durable option when the site is deployed on Netlify.
+  LEAD_STORE: z.enum(["file", "none", "netlify-blobs"]).default("file"),
   LEAD_DATA_DIR: z.string().default(".data"),
   LEAD_NOTIFY_EMAIL: z.string().email().optional(),
   EMAIL_WEBHOOK_URL: z.string().url().optional(),

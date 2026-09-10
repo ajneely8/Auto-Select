@@ -1,6 +1,6 @@
 # Deployment
 
-Two supported ways to run the site: Vercel (recommended, matches `vercel.json`) or any Node 20.9+ server. Read [Vehicle photos must move first](#vehicle-photos-must-move-first) before scheduling the DNS cutover.
+Three supported ways to run the site: Vercel (recommended, matches `vercel.json`), Netlify, or any Node 20.9+ server. Read [Vehicle photos must move first](#vehicle-photos-must-move-first) before scheduling the DNS cutover.
 
 ## Environment variables
 
@@ -14,7 +14,7 @@ Everything is optional for the site to boot, but the four marked **required in p
 | `WEBHOOK_SIGNING_SECRET` | **Yes** (if you use webhooks) | Signs outbound webhooks and verifies the inbound scheduling webhook. Without it, outbound requests are unsigned and the inbound webhook rejects everything in production. |
 | `INVENTORY_SOURCE` | No | `local` (default, uses `data/inventory.json`) or `feed`. |
 | `INVENTORY_FEED_URL`, `INVENTORY_FEED_TOKEN`, `INVENTORY_REVALIDATE_SECONDS` | No | Feed URL (JSON array or `{ vehicles: [...] }`), optional bearer token, cache lifetime in seconds (default 900). |
-| `LEAD_STORE` | No | `file` (default) or `none`. **Use `none` on Vercel.** |
+| `LEAD_STORE` | No | `file` (default), `none`, or `netlify-blobs`. **Use `none` on Vercel, `netlify-blobs` on Netlify.** |
 | `LEAD_DATA_DIR` | No | Directory for the file adapters, default `.data`. |
 | `LEAD_NOTIFY_EMAIL` | No | Where internal lead notices go. Defaults to `business.email`. |
 | `EMAIL_WEBHOOK_URL`, `EMAIL_FROM` | No | Email delivery webhook and the From header. |
@@ -61,7 +61,37 @@ Vercel's filesystem is read-only apart from a temporary directory, and every req
 
 Durable-storage work is a developer task; it is listed in [CONTENT-CHECKLIST.md](CONTENT-CHECKLIST.md#integrations-to-connect).
 
-## Option B — Node server or VPS
+## Option B — Netlify
+
+`netlify.toml` already declares the build (`@netlify/plugin-nextjs`, `publish = ".next"`) — no changes needed there.
+
+1. Push the repository to GitHub and import it as a new site in Netlify. It auto-detects the Next.js build from `netlify.toml`.
+2. Add the environment variables from the table above under **Site configuration → Environment variables**, plus the three CRM variables from [CRM.md](CRM.md#setting-it-up) if you're using `/crm`.
+   - Set **`LEAD_STORE=netlify-blobs`** — see the storage note below. Do not use `none` or the plain `file` default on Netlify.
+3. Deploy and test on the `*.netlify.app` URL, including logging in at `/crm/login` and confirming a test form submission shows up under `/crm/leads`.
+4. Add the domain under **Domain management** when you're ready for the [DNS cutover](#dns-cutover-from-wordpress).
+
+### Netlify storage note
+
+Like Vercel, Netlify runs the site's server code as functions with a filesystem that resets between deploys and instances. The difference is Netlify has a built-in fix that doesn't require a separate database:
+
+- **Leads and trade-in photos:** with `LEAD_STORE=netlify-blobs`, every form submission and every CRM read/write (status changes, notes, deletes) goes through [Netlify Blobs](https://docs.netlify.com/blobs/overview/) instead of the local filesystem — it persists across deploys and instances, and needs no setup beyond the environment variable (Netlify's Next.js runtime supplies the credentials automatically). This is what makes the CRM's lead history actually durable on Netlify.
+- **Retry queue, inventory alerts/reminders (`retry-queue.json`, `dead-letter.ndjson`, `subscriptions.json`):** still file-based and still not durable on Netlify — the same caveat as the Vercel section above applies. Treat alert signups and `/api/cron/reminders` as non-functional until these are moved to a durable store too.
+- **Rate limiting and duplicate detection** are in memory, so they're per instance — same caveat as Vercel.
+
+### Cron on Netlify
+
+Netlify doesn't read `vercel.json`. Either use [Netlify Scheduled Functions](https://docs.netlify.com/functions/scheduled-functions/) that call the routes below, or an external scheduler (cron-job.org, GitHub Actions) hitting:
+
+| Path | Suggested schedule | Purpose |
+| --- | --- | --- |
+| `/api/inventory/sync` | Every 30 min | Refresh inventory from the feed, revalidate pages, report quality warnings. |
+| `/api/cron/retry` | Every 10 min | Retry failed email/SMS/CRM webhooks. |
+| `/api/cron/reminders` | Daily, 15:00 UTC | Opt-in alerts and reminders. |
+
+Send `Authorization: Bearer $CRON_SECRET` on each request — these routes return 401 without it in production.
+
+## Option C — Node server or VPS
 
 Works without any of the serverless caveats: the file adapters (leads, uploads, retry queue, subscriptions) all work on a normal server.
 
