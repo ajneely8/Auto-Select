@@ -11,7 +11,8 @@
     "check": "npm run typecheck && npm run lint",
     "inventory:import": "node scripts/import-inventory.mjs",
     "inventory:check": "node scripts/check-inventory.mjs",
-    "generate:demo-360": "node scripts/generate-demo-360.mjs"
+    "generate:demo-360": "node scripts/generate-demo-360.mjs",
+    "crm:create-user": "node scripts/crm-create-user.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.124.0",

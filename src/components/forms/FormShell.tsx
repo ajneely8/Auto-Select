@@ -3,7 +3,7 @@
 import { createContext, useActionState, useCallback, useContext, useEffect, useId, useRef, useState, startTransition, type ReactNode, type FormEvent } from "react";
 import Link from "next/link";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import { submitLead } from "@/app/actions/leads";
+import { submitLead } from "@/app/(site)/actions/leads";
 import { initialFormState } from "@/lib/leads/form-state";
 import type { LeadType } from "@/lib/types";
 import { track } from "@/lib/analytics";

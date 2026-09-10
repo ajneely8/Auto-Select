@@ -3,7 +3,7 @@ import { business, fullAddress } from "@/config/business";
 import { siteUrl } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { telHref } from "@/lib/format";
-import { LegalDocument, type LegalSection } from "@/app/_legal/LegalDocument";
+import { LegalDocument, type LegalSection } from "@/app/(site)/_legal/LegalDocument";
 
 export const metadata = pageMetadata({
   title: "Terms of Use",

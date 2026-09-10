@@ -39,6 +39,12 @@ const schema = z.object({
     .enum(["true", "false"])
     .default("true")
     .transform((v) => v === "true"),
+
+  // Internal CRM (/crm) — a private, login-gated dashboard over the lead store. Unset = login always
+  // fails (fail closed). Generate a hash with `npm run crm:create-user`.
+  CRM_ADMIN_EMAIL: z.string().email().optional(),
+  CRM_ADMIN_PASSWORD_HASH: z.string().optional(),
+  CRM_SESSION_SECRET: z.string().optional(),
 });
 
 export const env = schema.parse(process.env);
