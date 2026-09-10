@@ -1,0 +1,1532 @@
+{
+  "meta": {
+    "source": "Snapshot of the listings published at https://autoselectgroups.com/inventory/ (pages 1–2), with body style/drivetrain/doors/seats from the NHTSA vPIC VIN decoder.",
+    "capturedAt": "2026-09-10",
+    "verified": false,
+    "notes": [
+      "SAMPLE CONTENT: these vehicles were copied from the current public website on the capture date. Confirm every vehicle is still available and every price is current before launch.",
+      "Photos are hot-linked from autoselectgroups.com/wp-content/uploads. Run the image sync (see docs/HANDOFF.md) or connect an inventory feed before retiring the old site.",
+      "Replace this file with a live feed via INVENTORY_FEED_URL or `npm run inventory:import`."
+    ]
+  },
+  "vehicles": [
+    {
+      "id": "ny29861",
+      "slug": "2012-bmw-5-series-ny29861",
+      "status": "available",
+      "condition": "used",
+      "year": 2012,
+      "make": "BMW",
+      "model": "5 Series",
+      "trim": null,
+      "bodyStyle": "Sedan",
+      "price": 10988,
+      "salePrice": null,
+      "mileage": 124716,
+      "vin": "WBAXG5C58CDY29861",
+      "stockNumber": "NY29861",
+      "exteriorColor": "White",
+      "interiorColor": "Beige",
+      "transmission": "8-Speed Automatic",
+      "drivetrain": null,
+      "fuelType": "Gasoline",
+      "engine": "2.0L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2012 BMW 5 Series has 124,716 miles, a 2.0L 4-Cylinder engine, and a 8-speed automatic transmission. It is finished in white with a beige interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-1.jpg",
+          "alt": "2012 BMW 5 Series in white, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-2-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 2 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-3-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 3 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-4-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 4 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-5-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 5 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-6-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 6 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-7-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 7 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-8-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 8 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-9-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 9 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-10-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 10 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-11-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 11 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-12-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 12 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-13-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 13 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-14-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 14 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-15-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 15 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-16-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 16 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-17-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 17 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-18-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 18 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-19-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 19 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-20-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 20 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-21-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 21 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-22-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 22 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-23-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 23 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-24-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 24 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-25-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 25 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-26-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 26 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-27-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 27 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-28-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 28 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-29-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 29 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-30-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 30 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-31-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 31 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-32-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 32 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-33-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 33 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-34-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 34 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-35-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 35 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-36-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 36 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-37-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 37 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-38-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 38 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-39-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 39 of 40"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-40-1.jpg",
+          "alt": "2012 BMW 5 Series, photo 40 of 40"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-03-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Drivetrain not published and not returned by VIN decode — confirm RWD vs xDrive.",
+        "Listing shows 2.0L 4-cylinder (528i). Confirm trim."
+      ]
+    },
+    {
+      "id": "n192154",
+      "slug": "2016-dodge-charger-n192154",
+      "status": "available",
+      "condition": "used",
+      "year": 2016,
+      "make": "Dodge",
+      "model": "Charger",
+      "trim": "SE",
+      "bodyStyle": "Sedan",
+      "price": 14788,
+      "salePrice": null,
+      "mileage": 91299,
+      "vin": "2C3CDXBGXGH192154",
+      "stockNumber": "N192154",
+      "exteriorColor": "Blue",
+      "interiorColor": "Gray",
+      "transmission": "5-Speed Automatic",
+      "drivetrain": "RWD",
+      "fuelType": "Flex Fuel",
+      "engine": "3.6L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2016 Dodge Charger SE has 91,299 miles, a 3.6L 6-Cylinder engine, and a 5-speed automatic transmission. It is finished in blue with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154.jpg",
+          "alt": "2016 Dodge Charger SE in blue, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-2.jpg",
+          "alt": "2016 Dodge Charger SE, photo 2 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-3.jpg",
+          "alt": "2016 Dodge Charger SE, photo 3 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-4.jpg",
+          "alt": "2016 Dodge Charger SE, photo 4 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-5.jpg",
+          "alt": "2016 Dodge Charger SE, photo 5 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-6.jpg",
+          "alt": "2016 Dodge Charger SE, photo 6 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-7.jpg",
+          "alt": "2016 Dodge Charger SE, photo 7 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-8.jpg",
+          "alt": "2016 Dodge Charger SE, photo 8 of 9"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-9.jpg",
+          "alt": "2016 Dodge Charger SE, photo 9 of 9"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-09-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Trim 'SE' and RWD from VIN decode.",
+        "Listing says 5-speed automatic and flex fuel; VIN decode says gasoline. Many 2016 Charger V6 models use an 8-speed — confirm transmission and fuel type."
+      ]
+    },
+    {
+      "id": "n129769",
+      "slug": "2019-ford-fiesta-n129769",
+      "status": "available",
+      "condition": "used",
+      "year": 2019,
+      "make": "Ford",
+      "model": "Fiesta",
+      "trim": "SE",
+      "bodyStyle": "Sedan",
+      "price": 12488,
+      "salePrice": null,
+      "mileage": 21455,
+      "vin": "3FADP4BJ5KM129769",
+      "stockNumber": "N129769",
+      "exteriorColor": "Silver",
+      "interiorColor": "Black",
+      "transmission": "Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "1.6L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": 5,
+      "description": "This 2019 Ford Fiesta SE has 21,455 miles, a 1.6L 4-Cylinder engine, and a automatic transmission. It is finished in silver with a black interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769.jpg",
+          "alt": "2019 Ford Fiesta SE in silver, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-2.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 2 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-3.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 3 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-4.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 4 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-5.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 5 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-6.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 6 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-7.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 7 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-8.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 8 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-9.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 9 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-10.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 10 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-11.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 11 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-12.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 12 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-13.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 13 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-14.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 14 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-15.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 15 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-16.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 16 of 17"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-17.jpg",
+          "alt": "2019 Ford Fiesta SE, photo 17 of 17"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-09-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Trim 'SE' from VIN decode. Fiesta is front-wheel drive in every configuration.",
+        "VIN decode lists flexible fuel; listing says gasoline — confirm."
+      ]
+    },
+    {
+      "id": "n082645",
+      "slug": "2015-honda-accord-n082645",
+      "status": "available",
+      "condition": "used",
+      "year": 2015,
+      "make": "Honda",
+      "model": "Accord",
+      "trim": "LX",
+      "bodyStyle": "Sedan",
+      "price": 12788,
+      "salePrice": null,
+      "mileage": 139095,
+      "vin": "1HGCR2F38FA082645",
+      "stockNumber": "N082645",
+      "exteriorColor": "Burgundy",
+      "interiorColor": "Black",
+      "transmission": "Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "2.4L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2015 Honda Accord LX has 139,095 miles, a 2.4L 4-Cylinder engine, and a automatic transmission. It is finished in burgundy with a black interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645.jpg",
+          "alt": "2015 Honda Accord LX in burgundy, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-2.jpg",
+          "alt": "2015 Honda Accord LX, photo 2 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-3.jpg",
+          "alt": "2015 Honda Accord LX, photo 3 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-4.jpg",
+          "alt": "2015 Honda Accord LX, photo 4 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-5.jpg",
+          "alt": "2015 Honda Accord LX, photo 5 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-6.jpg",
+          "alt": "2015 Honda Accord LX, photo 6 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-7.jpg",
+          "alt": "2015 Honda Accord LX, photo 7 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-8.jpg",
+          "alt": "2015 Honda Accord LX, photo 8 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-9.jpg",
+          "alt": "2015 Honda Accord LX, photo 9 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-10.jpg",
+          "alt": "2015 Honda Accord LX, photo 10 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-11.jpg",
+          "alt": "2015 Honda Accord LX, photo 11 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-12.jpg",
+          "alt": "2015 Honda Accord LX, photo 12 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-13.jpg",
+          "alt": "2015 Honda Accord LX, photo 13 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-14.jpg",
+          "alt": "2015 Honda Accord LX, photo 14 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-15.jpg",
+          "alt": "2015 Honda Accord LX, photo 15 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-16.jpg",
+          "alt": "2015 Honda Accord LX, photo 16 of 16"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-09-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Trim 'LX' from VIN decode. Accord is front-wheel drive."
+      ]
+    },
+    {
+      "id": "n659247",
+      "slug": "2018-hyundai-sonata-n659247",
+      "status": "available",
+      "condition": "used",
+      "year": 2018,
+      "make": "Hyundai",
+      "model": "Sonata",
+      "trim": null,
+      "bodyStyle": "Sedan",
+      "price": 13788,
+      "salePrice": null,
+      "mileage": 100736,
+      "vin": "5NPE34AF1JH659247",
+      "stockNumber": "N659247",
+      "exteriorColor": "Silver",
+      "interiorColor": "Gray",
+      "transmission": "6-Speed Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "2.4L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": 5,
+      "description": "This 2018 Hyundai Sonata has 100,736 miles, a 2.4L 4-Cylinder engine, and a 6-speed automatic transmission. It is finished in silver with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/5NPE34AF1JH659247-1.jpg",
+          "alt": "2018 Hyundai Sonata in silver, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/5NPE34AF1JH659247-2-1.jpg",
+          "alt": "2018 Hyundai Sonata, photo 2 of 2"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-03-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Only 2 photos — add a full photo set.",
+        "VIN decode returns several possible trims (SEL/Limited/Sport). Confirm trim."
+      ]
+    },
+    {
+      "id": "n133749",
+      "slug": "2016-hyundai-santa-fe-n133749",
+      "status": "available",
+      "condition": "used",
+      "year": 2016,
+      "make": "Hyundai",
+      "model": "Santa Fe",
+      "trim": null,
+      "bodyStyle": "SUV",
+      "price": 13988,
+      "salePrice": null,
+      "mileage": 69988,
+      "vin": "KM8SRDHF1GU133749",
+      "stockNumber": "N133749",
+      "exteriorColor": "Silver",
+      "interiorColor": "Gray",
+      "transmission": "6-Speed Automatic",
+      "drivetrain": "AWD",
+      "fuelType": "Gasoline",
+      "engine": "3.3L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2016 Hyundai Santa Fe has 69,988 miles, a 3.3L 6-Cylinder engine, and a 6-speed automatic transmission. It is finished in silver with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-1.jpg",
+          "alt": "2016 Hyundai Santa Fe in silver, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-2-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 2 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-3-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 3 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-4-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 4 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-5-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 5 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-6-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 6 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-7-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 7 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-8-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 8 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-9-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 9 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-10-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 10 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-11-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 11 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-12-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 12 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-13-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 13 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-14-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 14 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-15-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 15 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-16-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 16 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-17-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 17 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-18-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 18 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-19-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 19 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-20-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 20 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-21-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 21 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-22-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 22 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-23-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 23 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-24-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 24 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-25-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 25 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-26-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 26 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-27-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 27 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-28-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 28 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-29-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 29 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-30-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 30 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-31-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 31 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-32-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 32 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-33-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 33 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-34-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 34 of 35"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-35-1.jpg",
+          "alt": "2016 Hyundai Santa Fe, photo 35 of 35"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-03-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "VIN decode reports 4WD/AWD. Confirm trim (decode returned an unrecognized value)."
+      ]
+    },
+    {
+      "id": "n287963",
+      "slug": "2016-nissan-altima-n287963",
+      "status": "available",
+      "condition": "used",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "Altima",
+      "trim": null,
+      "bodyStyle": "Sedan",
+      "price": 11988,
+      "salePrice": null,
+      "mileage": 112517,
+      "vin": "1N4AL3AP2GC287963",
+      "stockNumber": "N287963",
+      "exteriorColor": "White",
+      "interiorColor": "Beige",
+      "transmission": "Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "2.5L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2016 Nissan Altima has 112,517 miles, a 2.5L 4-Cylinder engine, and a automatic transmission. It is finished in white with a beige interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963.jpg",
+          "alt": "2016 Nissan Altima in white, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-2.jpg",
+          "alt": "2016 Nissan Altima, photo 2 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-3.jpg",
+          "alt": "2016 Nissan Altima, photo 3 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-4.jpg",
+          "alt": "2016 Nissan Altima, photo 4 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-5.jpg",
+          "alt": "2016 Nissan Altima, photo 5 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-6.jpg",
+          "alt": "2016 Nissan Altima, photo 6 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-7.jpg",
+          "alt": "2016 Nissan Altima, photo 7 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-8.jpg",
+          "alt": "2016 Nissan Altima, photo 8 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-9.jpg",
+          "alt": "2016 Nissan Altima, photo 9 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-10.jpg",
+          "alt": "2016 Nissan Altima, photo 10 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-11.jpg",
+          "alt": "2016 Nissan Altima, photo 11 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-12.jpg",
+          "alt": "2016 Nissan Altima, photo 12 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-13.jpg",
+          "alt": "2016 Nissan Altima, photo 13 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-14.jpg",
+          "alt": "2016 Nissan Altima, photo 14 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-15.jpg",
+          "alt": "2016 Nissan Altima, photo 15 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-16.jpg",
+          "alt": "2016 Nissan Altima, photo 16 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-17.jpg",
+          "alt": "2016 Nissan Altima, photo 17 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-18.jpg",
+          "alt": "2016 Nissan Altima, photo 18 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-19.jpg",
+          "alt": "2016 Nissan Altima, photo 19 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-20.jpg",
+          "alt": "2016 Nissan Altima, photo 20 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-21.jpg",
+          "alt": "2016 Nissan Altima, photo 21 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-22.jpg",
+          "alt": "2016 Nissan Altima, photo 22 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-23.jpg",
+          "alt": "2016 Nissan Altima, photo 23 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-24.jpg",
+          "alt": "2016 Nissan Altima, photo 24 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-25.jpg",
+          "alt": "2016 Nissan Altima, photo 25 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-26.jpg",
+          "alt": "2016 Nissan Altima, photo 26 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-27.jpg",
+          "alt": "2016 Nissan Altima, photo 27 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-28.jpg",
+          "alt": "2016 Nissan Altima, photo 28 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-29.jpg",
+          "alt": "2016 Nissan Altima, photo 29 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-30.jpg",
+          "alt": "2016 Nissan Altima, photo 30 of 31"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-31.jpg",
+          "alt": "2016 Nissan Altima, photo 31 of 31"
+        }
+      ],
+      "exterior360Frames": [
+        "/360/demo/frame-01.svg",
+        "/360/demo/frame-02.svg",
+        "/360/demo/frame-03.svg",
+        "/360/demo/frame-04.svg",
+        "/360/demo/frame-05.svg",
+        "/360/demo/frame-06.svg",
+        "/360/demo/frame-07.svg",
+        "/360/demo/frame-08.svg",
+        "/360/demo/frame-09.svg",
+        "/360/demo/frame-10.svg",
+        "/360/demo/frame-11.svg",
+        "/360/demo/frame-12.svg",
+        "/360/demo/frame-13.svg",
+        "/360/demo/frame-14.svg",
+        "/360/demo/frame-15.svg",
+        "/360/demo/frame-16.svg",
+        "/360/demo/frame-17.svg",
+        "/360/demo/frame-18.svg",
+        "/360/demo/frame-19.svg",
+        "/360/demo/frame-20.svg",
+        "/360/demo/frame-21.svg",
+        "/360/demo/frame-22.svg",
+        "/360/demo/frame-23.svg",
+        "/360/demo/frame-24.svg",
+        "/360/demo/frame-25.svg",
+        "/360/demo/frame-26.svg",
+        "/360/demo/frame-27.svg",
+        "/360/demo/frame-28.svg",
+        "/360/demo/frame-29.svg",
+        "/360/demo/frame-30.svg",
+        "/360/demo/frame-31.svg",
+        "/360/demo/frame-32.svg",
+        "/360/demo/frame-33.svg",
+        "/360/demo/frame-34.svg",
+        "/360/demo/frame-35.svg",
+        "/360/demo/frame-36.svg"
+      ],
+      "exterior360IsDemo": true,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-04-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Confirm trim.",
+        "Currently displays the DEMONSTRATION 360 sequence in development only. Replace with a real capture or remove exterior360Frames."
+      ]
+    },
+    {
+      "id": "n656304t",
+      "slug": "2016-nissan-sentra-n656304t",
+      "status": "available",
+      "condition": "used",
+      "year": 2016,
+      "make": "Nissan",
+      "model": "Sentra",
+      "trim": null,
+      "bodyStyle": "Sedan",
+      "price": 6988,
+      "salePrice": null,
+      "mileage": 173100,
+      "vin": "3N1AB7AP6GL656304",
+      "stockNumber": "N656304T",
+      "exteriorColor": "Red",
+      "interiorColor": "Black",
+      "transmission": "Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "1.8L 4-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2016 Nissan Sentra has 173,100 miles, a 1.8L 4-Cylinder engine, and a automatic transmission. It is finished in red with a black interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304.jpg",
+          "alt": "2016 Nissan Sentra in red, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-2.jpg",
+          "alt": "2016 Nissan Sentra, photo 2 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-3.jpg",
+          "alt": "2016 Nissan Sentra, photo 3 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-4.jpg",
+          "alt": "2016 Nissan Sentra, photo 4 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-5.jpg",
+          "alt": "2016 Nissan Sentra, photo 5 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-6.jpg",
+          "alt": "2016 Nissan Sentra, photo 6 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-7.jpg",
+          "alt": "2016 Nissan Sentra, photo 7 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-8.jpg",
+          "alt": "2016 Nissan Sentra, photo 8 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-9.jpg",
+          "alt": "2016 Nissan Sentra, photo 9 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-10.jpg",
+          "alt": "2016 Nissan Sentra, photo 10 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-11.jpg",
+          "alt": "2016 Nissan Sentra, photo 11 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-12.jpg",
+          "alt": "2016 Nissan Sentra, photo 12 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-13.jpg",
+          "alt": "2016 Nissan Sentra, photo 13 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-14.jpg",
+          "alt": "2016 Nissan Sentra, photo 14 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-15.jpg",
+          "alt": "2016 Nissan Sentra, photo 15 of 16"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-16.jpg",
+          "alt": "2016 Nissan Sentra, photo 16 of 16"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-07-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Stock number ends in 'T' — confirm this is correct.",
+        "Confirm trim."
+      ]
+    },
+    {
+      "id": "n187199",
+      "slug": "2012-toyota-sienna-n187199",
+      "status": "available",
+      "condition": "used",
+      "year": 2012,
+      "make": "Toyota",
+      "model": "Sienna",
+      "trim": null,
+      "bodyStyle": "Minivan",
+      "price": 10988,
+      "salePrice": null,
+      "mileage": 181079,
+      "vin": "5TDKK3DC2CS187199",
+      "stockNumber": "N187199",
+      "exteriorColor": "Black",
+      "interiorColor": "Gray",
+      "transmission": "6-Speed Automatic",
+      "drivetrain": "FWD",
+      "fuelType": "Gasoline",
+      "engine": "3.5L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 5,
+      "seats": null,
+      "description": "This 2012 Toyota Sienna has 181,079 miles, a 3.5L 6-Cylinder engine, and a 6-speed automatic transmission. It is finished in black with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [
+        "Third-row seating"
+      ],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199.jpg",
+          "alt": "2012 Toyota Sienna in black, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-2.jpg",
+          "alt": "2012 Toyota Sienna, photo 2 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-3.jpg",
+          "alt": "2012 Toyota Sienna, photo 3 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-4.jpg",
+          "alt": "2012 Toyota Sienna, photo 4 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-5.jpg",
+          "alt": "2012 Toyota Sienna, photo 5 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-6.jpg",
+          "alt": "2012 Toyota Sienna, photo 6 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-7.jpg",
+          "alt": "2012 Toyota Sienna, photo 7 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-8.jpg",
+          "alt": "2012 Toyota Sienna, photo 8 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-9.jpg",
+          "alt": "2012 Toyota Sienna, photo 9 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-10.jpg",
+          "alt": "2012 Toyota Sienna, photo 10 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-11.jpg",
+          "alt": "2012 Toyota Sienna, photo 11 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-12.jpg",
+          "alt": "2012 Toyota Sienna, photo 12 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-13.jpg",
+          "alt": "2012 Toyota Sienna, photo 13 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-14.jpg",
+          "alt": "2012 Toyota Sienna, photo 14 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-15.jpg",
+          "alt": "2012 Toyota Sienna, photo 15 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-16.jpg",
+          "alt": "2012 Toyota Sienna, photo 16 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-17.jpg",
+          "alt": "2012 Toyota Sienna, photo 17 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-18.jpg",
+          "alt": "2012 Toyota Sienna, photo 18 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-19.jpg",
+          "alt": "2012 Toyota Sienna, photo 19 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-20.jpg",
+          "alt": "2012 Toyota Sienna, photo 20 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-21.jpg",
+          "alt": "2012 Toyota Sienna, photo 21 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-22.jpg",
+          "alt": "2012 Toyota Sienna, photo 22 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-23.jpg",
+          "alt": "2012 Toyota Sienna, photo 23 of 24"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-24.jpg",
+          "alt": "2012 Toyota Sienna, photo 24 of 24"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-04-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Sienna 4x2 decodes as front-wheel drive. Confirm trim and whether doors are power-operated before publishing the feature.",
+        "Add power sliding doors to features only after confirming."
+      ]
+    },
+    {
+      "id": "n246488",
+      "slug": "2025-toyota-tundra-n246488",
+      "status": "available",
+      "condition": "used",
+      "year": 2025,
+      "make": "Toyota",
+      "model": "Tundra",
+      "trim": "CrewMax",
+      "bodyStyle": "Pickup Truck",
+      "price": 61988,
+      "salePrice": null,
+      "mileage": 8225,
+      "vin": "5TFNA5DB4SX246488",
+      "stockNumber": "N246488",
+      "exteriorColor": "White",
+      "interiorColor": "Black",
+      "transmission": "Automatic",
+      "drivetrain": "4WD",
+      "fuelType": "Gasoline",
+      "engine": "3.4L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": null,
+      "seats": 5,
+      "description": "This 2025 Toyota Tundra CrewMax has 8,225 miles, a 3.4L 6-Cylinder engine, and a automatic transmission. It is finished in white with a black interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [
+        "CrewMax cab",
+        "Four-wheel drive"
+      ],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488.jpg",
+          "alt": "2025 Toyota Tundra CrewMax in white, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-2.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 2 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-3.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 3 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-4.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 4 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-5.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 5 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-6.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 6 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-7.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 7 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-8.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 8 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-9.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 9 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-10.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 10 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-11.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 11 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-12.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 12 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-13.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 13 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-14.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 14 of 15"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-15.jpg",
+          "alt": "2025 Toyota Tundra CrewMax, photo 15 of 15"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-09-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "VIN decode suggests the Platinum grade — confirm before adding it to the trim.",
+        "3.4L V6 from listing (i-FORCE twin-turbo). Confirm and consider listing the hybrid status if applicable."
+      ]
+    },
+    {
+      "id": "n002218",
+      "slug": "2014-volkswagen-touareg-n002218",
+      "status": "available",
+      "condition": "used",
+      "year": 2014,
+      "make": "Volkswagen",
+      "model": "Touareg",
+      "trim": null,
+      "bodyStyle": "SUV",
+      "price": 11988,
+      "salePrice": null,
+      "mileage": 122384,
+      "vin": "WVGDF9BPXED002218",
+      "stockNumber": "N002218",
+      "exteriorColor": "Silver",
+      "interiorColor": "Black",
+      "transmission": "8-Speed Automatic",
+      "drivetrain": "AWD",
+      "fuelType": "Gasoline",
+      "engine": "3.6L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": null,
+      "description": "This 2014 Volkswagen Touareg has 122,384 miles, a 3.6L 6-Cylinder engine, and a 8-speed automatic transmission. It is finished in silver with a black interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218.jpg",
+          "alt": "2014 Volkswagen Touareg in silver, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-2.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 2 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-3.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 3 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-4.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 4 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-5.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 5 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-6.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 6 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-7.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 7 of 8"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-8.jpg",
+          "alt": "2014 Volkswagen Touareg, photo 8 of 8"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": false,
+      "dateAdded": "2026-09-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "Touareg uses all-wheel drive (4MOTION). Confirm trim (decode: V6 FSI)."
+      ]
+    },
+    {
+      "id": "t543348",
+      "slug": "2010-volvo-xc90-t543348",
+      "status": "available",
+      "condition": "used",
+      "year": 2010,
+      "make": "Volvo",
+      "model": "XC90",
+      "trim": null,
+      "bodyStyle": "SUV",
+      "price": 5988,
+      "salePrice": null,
+      "mileage": 221048,
+      "vin": "YV4982CZ4A1543348",
+      "stockNumber": "T543348",
+      "exteriorColor": "Gray",
+      "interiorColor": "Gray",
+      "transmission": "6-Speed Automatic",
+      "drivetrain": "AWD",
+      "fuelType": "Gasoline",
+      "engine": "3.2L 6-Cylinder",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 4,
+      "seats": 7,
+      "description": "This 2010 Volvo XC90 has 221,048 miles, a 3.2L 6-Cylinder engine, and a 6-speed automatic transmission. It is finished in gray with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [
+        "Third-row seating",
+        "All-wheel drive"
+      ],
+      "photos": [
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-1.jpg",
+          "alt": "2010 Volvo XC90 in gray, primary photo"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-2-1.jpg",
+          "alt": "2010 Volvo XC90, photo 2 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-3-1.jpg",
+          "alt": "2010 Volvo XC90, photo 3 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-4-1.jpg",
+          "alt": "2010 Volvo XC90, photo 4 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-5-1.jpg",
+          "alt": "2010 Volvo XC90, photo 5 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-6-1.jpg",
+          "alt": "2010 Volvo XC90, photo 6 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-7-1.jpg",
+          "alt": "2010 Volvo XC90, photo 7 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-8-1.jpg",
+          "alt": "2010 Volvo XC90, photo 8 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-9-1.jpg",
+          "alt": "2010 Volvo XC90, photo 9 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-10-1.jpg",
+          "alt": "2010 Volvo XC90, photo 10 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-11-1.jpg",
+          "alt": "2010 Volvo XC90, photo 11 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-12-1.jpg",
+          "alt": "2010 Volvo XC90, photo 12 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-13-1.jpg",
+          "alt": "2010 Volvo XC90, photo 13 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-14-1.jpg",
+          "alt": "2010 Volvo XC90, photo 14 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-15-1.jpg",
+          "alt": "2010 Volvo XC90, photo 15 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-16-1.jpg",
+          "alt": "2010 Volvo XC90, photo 16 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-17-1.jpg",
+          "alt": "2010 Volvo XC90, photo 17 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-18-1.jpg",
+          "alt": "2010 Volvo XC90, photo 18 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-19-1.jpg",
+          "alt": "2010 Volvo XC90, photo 19 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-20-1.jpg",
+          "alt": "2010 Volvo XC90, photo 20 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-21-1.jpg",
+          "alt": "2010 Volvo XC90, photo 21 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-22-1.jpg",
+          "alt": "2010 Volvo XC90, photo 22 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-23-1.jpg",
+          "alt": "2010 Volvo XC90, photo 23 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-24-1.jpg",
+          "alt": "2010 Volvo XC90, photo 24 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-25-1.jpg",
+          "alt": "2010 Volvo XC90, photo 25 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-26-1.jpg",
+          "alt": "2010 Volvo XC90, photo 26 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-27-1.jpg",
+          "alt": "2010 Volvo XC90, photo 27 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-28-1.jpg",
+          "alt": "2010 Volvo XC90, photo 28 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-29-1.jpg",
+          "alt": "2010 Volvo XC90, photo 29 of 30"
+        },
+        {
+          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-30-1.jpg",
+          "alt": "2010 Volvo XC90, photo 30 of 30"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-03-01",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "MPG not published — add EPA ratings.",
+        "VIN decode reports AWD and 7 seats."
+      ]
+    }
+  ]
+}
