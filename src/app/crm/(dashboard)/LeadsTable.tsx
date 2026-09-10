@@ -5,19 +5,24 @@ import { useMemo, useState } from "react";
 import { Search, Phone, Mail, ArrowRight } from "lucide-react";
 import type { Lead, LeadStatus, LeadType } from "@/lib/types";
 import { STATUS_LABELS, STATUS_ORDER, TYPE_ORDER, contactSummary, relativeTime } from "@/lib/crm/format";
+import { TYPE_ICONS } from "@/lib/crm/icons";
 import { StatusBadge, StatusSelect } from "./StatusSelect";
+import { DeleteLeadButton } from "./DeleteLeadButton";
 
 const selectCls =
   "h-10 rounded-[var(--radius-sm)] border border-line-strong bg-white px-3 text-sm focus:border-accent-text focus:outline-none focus:ring-2 focus:ring-accent/25";
+
+type Sort = "newest" | "oldest" | "name";
 
 export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: Record<LeadType, string> }) {
   const [q, setQ] = useState("");
   const [type, setType] = useState<LeadType | "">("");
   const [status, setStatus] = useState<LeadStatus | "">("");
+  const [sort, setSort] = useState<Sort>("newest");
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
-    return leads.filter((l) => {
+    const list = leads.filter((l) => {
       if (type && l.type !== type) return false;
       if (status && l.status !== status) return false;
       if (!term) return true;
@@ -25,7 +30,12 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
       const haystack = [l.firstName, l.lastName, l.email, l.phone, l.message, l.id, typeof vehicleLabel === "string" ? vehicleLabel : ""].join(" ").toLowerCase();
       return haystack.includes(term);
     });
-  }, [leads, q, type, status]);
+    const sorted = [...list];
+    if (sort === "oldest") sorted.sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+    else if (sort === "name") sorted.sort((a, b) => `${a.firstName} ${a.lastName}`.localeCompare(`${b.firstName} ${b.lastName}`));
+    else sorted.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    return sorted;
+  }, [leads, q, type, status, sort]);
 
   return (
     <div>
@@ -57,6 +67,11 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
             </option>
           ))}
         </select>
+        <select value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={selectCls} aria-label="Sort leads">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="name">Name (A–Z)</option>
+        </select>
       </div>
 
       <p className="mt-3 text-sm text-muted">
@@ -72,30 +87,39 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
           {filtered.map((lead) => {
             const c = contactSummary(lead);
             const vehicleLabel = (lead.details as Record<string, unknown> | undefined)?.vehicleLabel;
+            const Icon = TYPE_ICONS[lead.type];
             return (
               <li key={lead.id} className="rounded-[var(--radius-md)] border border-line bg-white p-4 sm:p-5">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex items-center rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900">{typeLabels[lead.type]}</span>
-                      <StatusBadge status={lead.status} />
-                      <span className="text-xs text-muted" title={new Date(lead.createdAt).toLocaleString()}>
-                        {relativeTime(lead.createdAt)}
-                      </span>
-                    </div>
-                    <p className="mt-2 truncate font-display text-lg font-bold text-ink">{c.name}</p>
-                    <div className="mt-0.5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate">
-                      {c.phone && (
-                        <a href={`tel:${lead.phone}`} className="inline-flex items-center gap-1.5 hover:text-ink hover:underline">
-                          <Phone className="size-3.5" aria-hidden /> {c.phone}
-                        </a>
-                      )}
-                      {c.email && (
-                        <a href={`mailto:${c.email}`} className="inline-flex items-center gap-1.5 hover:text-ink hover:underline">
-                          <Mail className="size-3.5" aria-hidden /> {c.email}
-                        </a>
-                      )}
-                      {typeof vehicleLabel === "string" && vehicleLabel && <span className="text-navy-700">{vehicleLabel}</span>}
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="flex min-w-0 gap-3">
+                    <span className="hidden size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900 sm:flex">
+                      <Icon className="size-4" aria-hidden />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center gap-1 rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900 sm:hidden">
+                          <Icon className="size-3" aria-hidden /> {typeLabels[lead.type]}
+                        </span>
+                        <span className="hidden text-xs font-semibold text-navy-900 sm:inline">{typeLabels[lead.type]}</span>
+                        <StatusBadge status={lead.status} />
+                        <span className="text-xs text-muted" title={new Date(lead.createdAt).toLocaleString()}>
+                          {relativeTime(lead.createdAt)}
+                        </span>
+                      </div>
+                      <p className="mt-1.5 truncate font-display text-lg font-bold text-ink">{c.name}</p>
+                      <div className="mt-0.5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate">
+                        {c.phone && (
+                          <a href={`tel:${lead.phone}`} className="inline-flex items-center gap-1.5 hover:text-ink hover:underline">
+                            <Phone className="size-3.5" aria-hidden /> {c.phone}
+                          </a>
+                        )}
+                        {c.email && (
+                          <a href={`mailto:${c.email}`} className="inline-flex items-center gap-1.5 hover:text-ink hover:underline">
+                            <Mail className="size-3.5" aria-hidden /> {c.email}
+                          </a>
+                        )}
+                        {typeof vehicleLabel === "string" && vehicleLabel && <span className="text-navy-700">{vehicleLabel}</span>}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 sm:shrink-0">
@@ -106,6 +130,7 @@ export function LeadsTable({ leads, typeLabels }: { leads: Lead[]; typeLabels: R
                     >
                       View <ArrowRight className="size-4" aria-hidden />
                     </Link>
+                    <DeleteLeadButton leadId={lead.id} name={c.name} compact />
                   </div>
                 </div>
               </li>

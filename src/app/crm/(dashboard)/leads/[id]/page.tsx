@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Phone, Mail, MessageSquare, ArrowLeft, Image as ImageIcon, ExternalLink } from "lucide-react";
+import { Phone, Mail, MessageSquare, ArrowLeft, Image as ImageIcon, ExternalLink, MessageCircle } from "lucide-react";
 import { getLead } from "@/lib/crm/leads";
 import { detailRows, contactSummary, formatDateTime, LEAD_LABELS } from "@/lib/crm/format";
+import { TYPE_ICONS } from "@/lib/crm/icons";
 import { getVehicleById } from "@/lib/inventory/repository";
 import { vehicleFullName } from "@/lib/format";
 import { StatusSelect } from "../../StatusSelect";
+import { DeleteLeadButton } from "../../DeleteLeadButton";
+import { NoteForm } from "./NoteForm";
 
 export const metadata = { title: "Lead", robots: { index: false, follow: false } };
 
@@ -20,22 +23,58 @@ export default async function LeadDetailPage({ params }: PageProps<"/crm/leads/[
   const photoFiles = (lead.details as Record<string, unknown> | undefined)?.photoFiles;
   const photos = Array.isArray(photoFiles) ? (photoFiles as string[]) : [];
   const utm = Object.entries(lead.utmData ?? {}).filter(([, v]) => v);
+  const Icon = TYPE_ICONS[lead.type];
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link href="/crm" className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-700 hover:underline">
+      <Link href="/crm/leads" className="inline-flex items-center gap-1.5 text-sm font-semibold text-navy-700 hover:underline">
         <ArrowLeft className="size-4" aria-hidden /> Back to leads
       </Link>
 
-      <div className="mt-4 flex flex-col gap-4 rounded-[var(--radius-md)] border border-line bg-white p-5 sm:flex-row sm:items-start sm:justify-between sm:p-6">
-        <div>
-          <span className="inline-flex items-center rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900">{LEAD_LABELS[lead.type]}</span>
-          <h1 className="mt-2 font-display text-2xl font-bold text-ink">{c.name}</h1>
-          <p className="mt-1 text-sm text-muted">
-            Submitted {formatDateTime(lead.createdAt)} · Reference {lead.id}
-          </p>
+      <div className="mt-4 rounded-[var(--radius-md)] border border-line bg-white p-5 sm:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="flex gap-3">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900">
+              <Icon className="size-5" aria-hidden />
+            </span>
+            <div>
+              <span className="inline-flex items-center rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900">{LEAD_LABELS[lead.type]}</span>
+              <h1 className="mt-1.5 font-display text-2xl font-bold text-ink">{c.name}</h1>
+              <p className="mt-1 text-sm text-muted">
+                Submitted {formatDateTime(lead.createdAt)} · Reference {lead.id}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <StatusSelect leadId={lead.id} status={lead.status} />
+            <DeleteLeadButton leadId={lead.id} name={c.name} redirectTo="/crm/leads" />
+          </div>
         </div>
-        <StatusSelect leadId={lead.id} status={lead.status} />
+        {(c.phone || c.email) && (
+          <div className="mt-4 flex flex-wrap gap-2 border-t border-line pt-4">
+            {c.phone && (
+              <a href={`tel:${lead.phone}`} className="inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-line-strong px-3 text-sm font-semibold text-ink hover:border-ink">
+                <Phone className="size-4" aria-hidden /> Call
+              </a>
+            )}
+            {c.phone && lead.smsConsent && (
+              <a
+                href={`sms:${lead.phone}`}
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-line-strong px-3 text-sm font-semibold text-ink hover:border-ink"
+              >
+                <MessageCircle className="size-4" aria-hidden /> Text
+              </a>
+            )}
+            {c.email && (
+              <a
+                href={`mailto:${c.email}`}
+                className="inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-line-strong px-3 text-sm font-semibold text-ink hover:border-ink"
+              >
+                <Mail className="size-4" aria-hidden /> Email
+              </a>
+            )}
+          </div>
+        )}
       </div>
 
       <section aria-labelledby="contact-heading" className="mt-4 rounded-[var(--radius-md)] border border-line bg-white p-5 sm:p-6">
@@ -157,6 +196,10 @@ export default async function LeadDetailPage({ params }: PageProps<"/crm/leads/[
           )}
         </dl>
       </section>
+
+      <div className="mt-4">
+        <NoteForm leadId={lead.id} notes={lead.notes ?? []} />
+      </div>
     </div>
   );
 }

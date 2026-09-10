@@ -112,6 +112,13 @@ export interface Lead {
   status: LeadStatus;
   /** Type-specific payload (TradeIn, VehicleRequest, Appointment, …). */
   details?: TradeIn | VehicleRequest | Appointment | ServiceRequest | DeliveryRequest | Record<string, unknown>;
+  /** Internal staff notes, added from the CRM. Never shown to customers. */
+  notes?: LeadNote[];
+}
+
+export interface LeadNote {
+  text: string;
+  at: string;
 }
 
 export type VehicleConditionRating = "excellent" | "good" | "fair" | "rough";
