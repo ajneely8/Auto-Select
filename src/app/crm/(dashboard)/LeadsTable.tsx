@@ -140,7 +140,10 @@ export function LeadsTable({
                         </span>
                         <span className="hidden text-xs font-semibold text-navy-900 sm:inline">{typeLabels[lead.type]}</span>
                         <StatusBadge status={lead.status} />
-                        <span className="text-xs text-muted" title={new Date(lead.createdAt).toLocaleString()}>
+                        {/* Both the text and the title are computed from Date.now()/the browser's locale, which can
+                            legitimately differ by a moment (or a timezone) between the server render and hydration
+                            on the client — suppress the mismatch warning rather than fight an unwinnable diff. */}
+                        <span className="text-xs text-muted" title={new Date(lead.createdAt).toLocaleString()} suppressHydrationWarning>
                           {relativeTime(lead.createdAt)}
                         </span>
                       </div>
