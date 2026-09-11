@@ -48,6 +48,15 @@ const schema = z.object({
   CRM_ADMIN_EMAIL: z.string().email().optional(),
   CRM_ADMIN_PASSWORD_HASH: z.string().optional(),
   CRM_SESSION_SECRET: z.string().optional(),
+
+  // DealerCenter (or any DMS/CRM that accepts ADF-over-SFTP leads). Unset = disabled, leads only go
+  // to the site's own CRM/email/SMS. Get these from DealerCenter's Lead Management settings
+  // ("SFTP to Lead") or their support team — they're unique per dealership.
+  DEALERCENTER_SFTP_HOST: z.string().optional(),
+  DEALERCENTER_SFTP_PORT: z.coerce.number().int().positive().default(22),
+  DEALERCENTER_SFTP_USERNAME: z.string().optional(),
+  DEALERCENTER_SFTP_PASSWORD: z.string().optional(),
+  DEALERCENTER_SFTP_PATH: z.string().default("/"),
 });
 
 export const env = schema.parse(process.env);

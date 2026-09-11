@@ -10,6 +10,7 @@ import { formDataToRecord, formatPhone, cleanLine } from "./sanitize";
 import { looksLikeBot, verifyTurnstile, rateLimit, fingerprint, checkDuplicate, rememberSubmission } from "./spam";
 import { leadStore } from "./store";
 import { sendEmail, sendSms, pushToCrm } from "@/lib/integrations";
+import { pushLeadToDealerCenter } from "@/lib/integrations/adf";
 import { validateSlot, formatDateLong, formatSlot } from "@/lib/scheduling/hours";
 import { scheduling } from "@/lib/scheduling/provider";
 import { getVehicleById } from "@/lib/inventory/repository";
@@ -266,6 +267,7 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
       ? sendSms({ to: lead.phone, body: `${business.name}: we received your ${label.toLowerCase()} (ref ${lead.id}). We'll be in touch during business hours.` }, lead.smsConsent)
       : Promise.resolve(),
     pushToCrm({ event: "lead.created", lead }),
+    pushLeadToDealerCenter(lead, vehicle),
   ]);
 
   rememberSubmission(fp, lead.id);
