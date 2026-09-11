@@ -205,12 +205,15 @@ export function FormShell({
         {Object.entries(attribution).map(([k, v]) => (
           <input key={k} type="hidden" name={k} value={v} />
         ))}
-        {/* Honeypot: hidden from people and assistive tech; bots fill it. */}
-        <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
-          <label>
-            Company website
-            <input type="text" name="company_website" tabIndex={-1} autoComplete="off" defaultValue="" />
-          </label>
+        {/* Honeypot: hidden from people and assistive tech; bots fill it. Uses `hidden` (display:none)
+            rather than off-screen positioning — a field that's merely moved off-screen still has a
+            real rendered box, and browser autofill (which only checks computed visibility, not
+            position) will happily fill it from a saved profile the moment its name or label look
+            like a real field ("Company website" reads as a company-name field to Chrome/Edge). A
+            display:none field is still included in the submitted FormData, so it still catches
+            bots — it just stops catching real visitors too. */}
+        <div aria-hidden="true" hidden>
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" defaultValue="" />
         </div>
 
         <div
