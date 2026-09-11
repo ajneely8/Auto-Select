@@ -38,6 +38,37 @@ export interface LeadContext {
 }
 
 /**
+ * A submission that trips the honeypot/timing/link-spam checks is still saved — as `status:
+ * "spam"`, with no email/SMS/CRM notifications — rather than discarded outright. The visitor still
+ * sees a generic "thanks" message either way, so nothing is tipped off, but a false positive (a
+ * real customer who happened to fill the form very fast, or whose browser extension poked the
+ * hidden field) is never unrecoverable: it just sits under the Spam filter in the CRM instead of
+ * the main list, where staff can find and restore it if it turns out to be legitimate.
+ */
+async function saveSpamLead(type: LeadType, raw: Record<string, string>, ctx: LeadContext, reason: string): Promise<void> {
+  const lead: Lead = {
+    id: newLeadId(),
+    type,
+    vehicleId: cleanLine(raw.vehicleId || raw.alertVehicleId, 40) || null,
+    firstName: cleanLine(raw.firstName, 80),
+    lastName: cleanLine(raw.lastName, 80),
+    email: cleanLine(raw.email, 200),
+    phone: cleanLine(raw.phone, 40),
+    preferredContactMethod: "email",
+    message: cleanLine(raw.message, 2000),
+    marketingConsent: false,
+    smsConsent: false,
+    sourcePage: cleanLine(raw._sourcePage, 300).replace(/[?#].*$/, ""),
+    referrer: cleanLine(raw._referrer, 300).replace(/[?#].*$/, ""),
+    utmData: {},
+    createdAt: new Date().toISOString(),
+    status: "spam",
+    details: { spamReason: reason, ip: ctx.ip },
+  };
+  await leadStore.save(lead);
+}
+
+/**
  * The lead pipeline. Every form in the site goes through here:
  *  1 validate + sanitize → 2 spam checks → 3 rate limit → 4 duplicate check → 5 build + categorize
  *  → 6 store → 7 integrations (internal email, customer email, optional SMS, CRM) with retry on failure.
@@ -45,10 +76,12 @@ export interface LeadContext {
 export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext): Promise<FormState> {
   const raw = formDataToRecord(fd);
 
-  // 2. Spam protection. Bots get a quiet "success" so they don't learn what tripped them.
+  // 2. Spam protection. Bots get a quiet "success" so they don't learn what tripped them — but the
+  // submission is still saved as "spam" (see saveSpamLead) rather than thrown away.
   const bot = looksLikeBot(raw);
   if (bot) {
-    console.warn(`[leads] blocked ${type} submission (${bot})`);
+    console.warn(`[leads] flagged ${type} submission as spam (${bot}) — saved for review, no notifications sent`);
+    await saveSpamLead(type, raw, ctx, bot).catch((err) => console.error("[leads] spam-lead storage failed:", err));
     return { status: "success", message: "Thanks — we received your request." };
   }
   if (!(await verifyTurnstile(raw["cf-turnstile-response"], ctx.ip))) {
