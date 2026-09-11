@@ -23,11 +23,10 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [60, 75, 85],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
-    remotePatterns: [
-      // Current photo host (WordPress uploads on the existing site). Add your inventory/CDN host here.
-      { protocol: "https", hostname: "autoselectgroups.com", pathname: "/wp-content/uploads/**" },
-      { protocol: "https", hostname: "www.autoselectgroups.com", pathname: "/wp-content/uploads/**" },
-    ],
+    // Vehicle and team photos are self-hosted under public/ (migrated off the old WordPress site's
+    // wp-content/uploads host when DNS cut over — see data/inventory.json's meta.notes). Add an
+    // entry here again if a future inventory feed or CDN serves photos from an external host.
+    remotePatterns: [],
     minimumCacheTTL: 60 * 60 * 24 * 7,
   },
   async headers() {

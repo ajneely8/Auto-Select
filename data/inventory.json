@@ -5,7 +5,7 @@
     "verified": false,
     "notes": [
       "SAMPLE CONTENT: these vehicles were copied from the current public website on the capture date. Confirm every vehicle is still available and every price is current before launch.",
-      "Photos are hot-linked from autoselectgroups.com/wp-content/uploads. Run the image sync (see docs/HANDOFF.md) or connect an inventory feed before retiring the old site.",
+      "Photos were migrated from autoselectgroups.com/wp-content/uploads and are now self-hosted under public/vehicles/<stockNumber>/ (done 2026-09-11, when DNS moved off the old WordPress host).",
       "Replace this file with a live feed via INVENTORY_FEED_URL or `npm run inventory:import`."
     ]
   },
@@ -39,163 +39,163 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-1.jpg",
+          "url": "/vehicles/NY29861/1.jpg",
           "alt": "2012 BMW 5 Series in white, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-2-1.jpg",
+          "url": "/vehicles/NY29861/2.jpg",
           "alt": "2012 BMW 5 Series, photo 2 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-3-1.jpg",
+          "url": "/vehicles/NY29861/3.jpg",
           "alt": "2012 BMW 5 Series, photo 3 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-4-1.jpg",
+          "url": "/vehicles/NY29861/4.jpg",
           "alt": "2012 BMW 5 Series, photo 4 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-5-1.jpg",
+          "url": "/vehicles/NY29861/5.jpg",
           "alt": "2012 BMW 5 Series, photo 5 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-6-1.jpg",
+          "url": "/vehicles/NY29861/6.jpg",
           "alt": "2012 BMW 5 Series, photo 6 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-7-1.jpg",
+          "url": "/vehicles/NY29861/7.jpg",
           "alt": "2012 BMW 5 Series, photo 7 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-8-1.jpg",
+          "url": "/vehicles/NY29861/8.jpg",
           "alt": "2012 BMW 5 Series, photo 8 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-9-1.jpg",
+          "url": "/vehicles/NY29861/9.jpg",
           "alt": "2012 BMW 5 Series, photo 9 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-10-1.jpg",
+          "url": "/vehicles/NY29861/10.jpg",
           "alt": "2012 BMW 5 Series, photo 10 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-11-1.jpg",
+          "url": "/vehicles/NY29861/11.jpg",
           "alt": "2012 BMW 5 Series, photo 11 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-12-1.jpg",
+          "url": "/vehicles/NY29861/12.jpg",
           "alt": "2012 BMW 5 Series, photo 12 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-13-1.jpg",
+          "url": "/vehicles/NY29861/13.jpg",
           "alt": "2012 BMW 5 Series, photo 13 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-14-1.jpg",
+          "url": "/vehicles/NY29861/14.jpg",
           "alt": "2012 BMW 5 Series, photo 14 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-15-1.jpg",
+          "url": "/vehicles/NY29861/15.jpg",
           "alt": "2012 BMW 5 Series, photo 15 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-16-1.jpg",
+          "url": "/vehicles/NY29861/16.jpg",
           "alt": "2012 BMW 5 Series, photo 16 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-17-1.jpg",
+          "url": "/vehicles/NY29861/17.jpg",
           "alt": "2012 BMW 5 Series, photo 17 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-18-1.jpg",
+          "url": "/vehicles/NY29861/18.jpg",
           "alt": "2012 BMW 5 Series, photo 18 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-19-1.jpg",
+          "url": "/vehicles/NY29861/19.jpg",
           "alt": "2012 BMW 5 Series, photo 19 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-20-1.jpg",
+          "url": "/vehicles/NY29861/20.jpg",
           "alt": "2012 BMW 5 Series, photo 20 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-21-1.jpg",
+          "url": "/vehicles/NY29861/21.jpg",
           "alt": "2012 BMW 5 Series, photo 21 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-22-1.jpg",
+          "url": "/vehicles/NY29861/22.jpg",
           "alt": "2012 BMW 5 Series, photo 22 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-23-1.jpg",
+          "url": "/vehicles/NY29861/23.jpg",
           "alt": "2012 BMW 5 Series, photo 23 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-24-1.jpg",
+          "url": "/vehicles/NY29861/24.jpg",
           "alt": "2012 BMW 5 Series, photo 24 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-25-1.jpg",
+          "url": "/vehicles/NY29861/25.jpg",
           "alt": "2012 BMW 5 Series, photo 25 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-26-1.jpg",
+          "url": "/vehicles/NY29861/26.jpg",
           "alt": "2012 BMW 5 Series, photo 26 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-27-1.jpg",
+          "url": "/vehicles/NY29861/27.jpg",
           "alt": "2012 BMW 5 Series, photo 27 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-28-1.jpg",
+          "url": "/vehicles/NY29861/28.jpg",
           "alt": "2012 BMW 5 Series, photo 28 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-29-1.jpg",
+          "url": "/vehicles/NY29861/29.jpg",
           "alt": "2012 BMW 5 Series, photo 29 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-30-1.jpg",
+          "url": "/vehicles/NY29861/30.jpg",
           "alt": "2012 BMW 5 Series, photo 30 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-31-1.jpg",
+          "url": "/vehicles/NY29861/31.jpg",
           "alt": "2012 BMW 5 Series, photo 31 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-32-1.jpg",
+          "url": "/vehicles/NY29861/32.jpg",
           "alt": "2012 BMW 5 Series, photo 32 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-33-1.jpg",
+          "url": "/vehicles/NY29861/33.jpg",
           "alt": "2012 BMW 5 Series, photo 33 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-34-1.jpg",
+          "url": "/vehicles/NY29861/34.jpg",
           "alt": "2012 BMW 5 Series, photo 34 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-35-1.jpg",
+          "url": "/vehicles/NY29861/35.jpg",
           "alt": "2012 BMW 5 Series, photo 35 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-36-1.jpg",
+          "url": "/vehicles/NY29861/36.jpg",
           "alt": "2012 BMW 5 Series, photo 36 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-37-1.jpg",
+          "url": "/vehicles/NY29861/37.jpg",
           "alt": "2012 BMW 5 Series, photo 37 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-38-1.jpg",
+          "url": "/vehicles/NY29861/38.jpg",
           "alt": "2012 BMW 5 Series, photo 38 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-39-1.jpg",
+          "url": "/vehicles/NY29861/39.jpg",
           "alt": "2012 BMW 5 Series, photo 39 of 40"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/WBAXG5C58CDY29861-40-1.jpg",
+          "url": "/vehicles/NY29861/40.jpg",
           "alt": "2012 BMW 5 Series, photo 40 of 40"
         }
       ],
@@ -241,39 +241,39 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154.jpg",
+          "url": "/vehicles/N192154/1.jpg",
           "alt": "2016 Dodge Charger SE in blue, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-2.jpg",
+          "url": "/vehicles/N192154/2.jpg",
           "alt": "2016 Dodge Charger SE, photo 2 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-3.jpg",
+          "url": "/vehicles/N192154/3.jpg",
           "alt": "2016 Dodge Charger SE, photo 3 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-4.jpg",
+          "url": "/vehicles/N192154/4.jpg",
           "alt": "2016 Dodge Charger SE, photo 4 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-5.jpg",
+          "url": "/vehicles/N192154/5.jpg",
           "alt": "2016 Dodge Charger SE, photo 5 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-6.jpg",
+          "url": "/vehicles/N192154/6.jpg",
           "alt": "2016 Dodge Charger SE, photo 6 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-7.jpg",
+          "url": "/vehicles/N192154/7.jpg",
           "alt": "2016 Dodge Charger SE, photo 7 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-8.jpg",
+          "url": "/vehicles/N192154/8.jpg",
           "alt": "2016 Dodge Charger SE, photo 8 of 9"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/2C3CDXBGXGH192154-9.jpg",
+          "url": "/vehicles/N192154/9.jpg",
           "alt": "2016 Dodge Charger SE, photo 9 of 9"
         }
       ],
@@ -319,71 +319,71 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769.jpg",
+          "url": "/vehicles/N129769/1.jpg",
           "alt": "2019 Ford Fiesta SE in silver, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-2.jpg",
+          "url": "/vehicles/N129769/2.jpg",
           "alt": "2019 Ford Fiesta SE, photo 2 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-3.jpg",
+          "url": "/vehicles/N129769/3.jpg",
           "alt": "2019 Ford Fiesta SE, photo 3 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-4.jpg",
+          "url": "/vehicles/N129769/4.jpg",
           "alt": "2019 Ford Fiesta SE, photo 4 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-5.jpg",
+          "url": "/vehicles/N129769/5.jpg",
           "alt": "2019 Ford Fiesta SE, photo 5 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-6.jpg",
+          "url": "/vehicles/N129769/6.jpg",
           "alt": "2019 Ford Fiesta SE, photo 6 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-7.jpg",
+          "url": "/vehicles/N129769/7.jpg",
           "alt": "2019 Ford Fiesta SE, photo 7 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-8.jpg",
+          "url": "/vehicles/N129769/8.jpg",
           "alt": "2019 Ford Fiesta SE, photo 8 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-9.jpg",
+          "url": "/vehicles/N129769/9.jpg",
           "alt": "2019 Ford Fiesta SE, photo 9 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-10.jpg",
+          "url": "/vehicles/N129769/10.jpg",
           "alt": "2019 Ford Fiesta SE, photo 10 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-11.jpg",
+          "url": "/vehicles/N129769/11.jpg",
           "alt": "2019 Ford Fiesta SE, photo 11 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-12.jpg",
+          "url": "/vehicles/N129769/12.jpg",
           "alt": "2019 Ford Fiesta SE, photo 12 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-13.jpg",
+          "url": "/vehicles/N129769/13.jpg",
           "alt": "2019 Ford Fiesta SE, photo 13 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-14.jpg",
+          "url": "/vehicles/N129769/14.jpg",
           "alt": "2019 Ford Fiesta SE, photo 14 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-15.jpg",
+          "url": "/vehicles/N129769/15.jpg",
           "alt": "2019 Ford Fiesta SE, photo 15 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-16.jpg",
+          "url": "/vehicles/N129769/16.jpg",
           "alt": "2019 Ford Fiesta SE, photo 16 of 17"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/3FADP4BJ5KM129769-17.jpg",
+          "url": "/vehicles/N129769/17.jpg",
           "alt": "2019 Ford Fiesta SE, photo 17 of 17"
         }
       ],
@@ -429,67 +429,67 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645.jpg",
+          "url": "/vehicles/N082645/1.jpg",
           "alt": "2015 Honda Accord LX in burgundy, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-2.jpg",
+          "url": "/vehicles/N082645/2.jpg",
           "alt": "2015 Honda Accord LX, photo 2 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-3.jpg",
+          "url": "/vehicles/N082645/3.jpg",
           "alt": "2015 Honda Accord LX, photo 3 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-4.jpg",
+          "url": "/vehicles/N082645/4.jpg",
           "alt": "2015 Honda Accord LX, photo 4 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-5.jpg",
+          "url": "/vehicles/N082645/5.jpg",
           "alt": "2015 Honda Accord LX, photo 5 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-6.jpg",
+          "url": "/vehicles/N082645/6.jpg",
           "alt": "2015 Honda Accord LX, photo 6 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-7.jpg",
+          "url": "/vehicles/N082645/7.jpg",
           "alt": "2015 Honda Accord LX, photo 7 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-8.jpg",
+          "url": "/vehicles/N082645/8.jpg",
           "alt": "2015 Honda Accord LX, photo 8 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-9.jpg",
+          "url": "/vehicles/N082645/9.jpg",
           "alt": "2015 Honda Accord LX, photo 9 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-10.jpg",
+          "url": "/vehicles/N082645/10.jpg",
           "alt": "2015 Honda Accord LX, photo 10 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-11.jpg",
+          "url": "/vehicles/N082645/11.jpg",
           "alt": "2015 Honda Accord LX, photo 11 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-12.jpg",
+          "url": "/vehicles/N082645/12.jpg",
           "alt": "2015 Honda Accord LX, photo 12 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-13.jpg",
+          "url": "/vehicles/N082645/13.jpg",
           "alt": "2015 Honda Accord LX, photo 13 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-14.jpg",
+          "url": "/vehicles/N082645/14.jpg",
           "alt": "2015 Honda Accord LX, photo 14 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-15.jpg",
+          "url": "/vehicles/N082645/15.jpg",
           "alt": "2015 Honda Accord LX, photo 15 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/1HGCR2F38FA082645-16.jpg",
+          "url": "/vehicles/N082645/16.jpg",
           "alt": "2015 Honda Accord LX, photo 16 of 16"
         }
       ],
@@ -534,11 +534,11 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/5NPE34AF1JH659247-1.jpg",
+          "url": "/vehicles/N659247/1.jpg",
           "alt": "2018 Hyundai Sonata in silver, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/5NPE34AF1JH659247-2-1.jpg",
+          "url": "/vehicles/N659247/2.jpg",
           "alt": "2018 Hyundai Sonata, photo 2 of 2"
         }
       ],
@@ -584,143 +584,143 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-1.jpg",
+          "url": "/vehicles/N133749/1.jpg",
           "alt": "2016 Hyundai Santa Fe in silver, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-2-1.jpg",
+          "url": "/vehicles/N133749/2.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 2 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-3-1.jpg",
+          "url": "/vehicles/N133749/3.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 3 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-4-1.jpg",
+          "url": "/vehicles/N133749/4.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 4 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-5-1.jpg",
+          "url": "/vehicles/N133749/5.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 5 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-6-1.jpg",
+          "url": "/vehicles/N133749/6.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 6 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-7-1.jpg",
+          "url": "/vehicles/N133749/7.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 7 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-8-1.jpg",
+          "url": "/vehicles/N133749/8.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 8 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-9-1.jpg",
+          "url": "/vehicles/N133749/9.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 9 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-10-1.jpg",
+          "url": "/vehicles/N133749/10.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 10 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-11-1.jpg",
+          "url": "/vehicles/N133749/11.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 11 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-12-1.jpg",
+          "url": "/vehicles/N133749/12.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 12 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-13-1.jpg",
+          "url": "/vehicles/N133749/13.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 13 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-14-1.jpg",
+          "url": "/vehicles/N133749/14.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 14 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-15-1.jpg",
+          "url": "/vehicles/N133749/15.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 15 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-16-1.jpg",
+          "url": "/vehicles/N133749/16.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 16 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-17-1.jpg",
+          "url": "/vehicles/N133749/17.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 17 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-18-1.jpg",
+          "url": "/vehicles/N133749/18.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 18 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-19-1.jpg",
+          "url": "/vehicles/N133749/19.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 19 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-20-1.jpg",
+          "url": "/vehicles/N133749/20.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 20 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-21-1.jpg",
+          "url": "/vehicles/N133749/21.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 21 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-22-1.jpg",
+          "url": "/vehicles/N133749/22.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 22 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-23-1.jpg",
+          "url": "/vehicles/N133749/23.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 23 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-24-1.jpg",
+          "url": "/vehicles/N133749/24.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 24 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-25-1.jpg",
+          "url": "/vehicles/N133749/25.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 25 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-26-1.jpg",
+          "url": "/vehicles/N133749/26.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 26 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-27-1.jpg",
+          "url": "/vehicles/N133749/27.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 27 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-28-1.jpg",
+          "url": "/vehicles/N133749/28.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 28 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-29-1.jpg",
+          "url": "/vehicles/N133749/29.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 29 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-30-1.jpg",
+          "url": "/vehicles/N133749/30.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 30 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-31-1.jpg",
+          "url": "/vehicles/N133749/31.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 31 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-32-1.jpg",
+          "url": "/vehicles/N133749/32.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 32 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-33-1.jpg",
+          "url": "/vehicles/N133749/33.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 33 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-34-1.jpg",
+          "url": "/vehicles/N133749/34.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 34 of 35"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/KM8SRDHF1GU133749-35-1.jpg",
+          "url": "/vehicles/N133749/35.jpg",
           "alt": "2016 Hyundai Santa Fe, photo 35 of 35"
         }
       ],
@@ -765,127 +765,127 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963.jpg",
+          "url": "/vehicles/N287963/1.jpg",
           "alt": "2016 Nissan Altima in white, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-2.jpg",
+          "url": "/vehicles/N287963/2.jpg",
           "alt": "2016 Nissan Altima, photo 2 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-3.jpg",
+          "url": "/vehicles/N287963/3.jpg",
           "alt": "2016 Nissan Altima, photo 3 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-4.jpg",
+          "url": "/vehicles/N287963/4.jpg",
           "alt": "2016 Nissan Altima, photo 4 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-5.jpg",
+          "url": "/vehicles/N287963/5.jpg",
           "alt": "2016 Nissan Altima, photo 5 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-6.jpg",
+          "url": "/vehicles/N287963/6.jpg",
           "alt": "2016 Nissan Altima, photo 6 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-7.jpg",
+          "url": "/vehicles/N287963/7.jpg",
           "alt": "2016 Nissan Altima, photo 7 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-8.jpg",
+          "url": "/vehicles/N287963/8.jpg",
           "alt": "2016 Nissan Altima, photo 8 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-9.jpg",
+          "url": "/vehicles/N287963/9.jpg",
           "alt": "2016 Nissan Altima, photo 9 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-10.jpg",
+          "url": "/vehicles/N287963/10.jpg",
           "alt": "2016 Nissan Altima, photo 10 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-11.jpg",
+          "url": "/vehicles/N287963/11.jpg",
           "alt": "2016 Nissan Altima, photo 11 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-12.jpg",
+          "url": "/vehicles/N287963/12.jpg",
           "alt": "2016 Nissan Altima, photo 12 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-13.jpg",
+          "url": "/vehicles/N287963/13.jpg",
           "alt": "2016 Nissan Altima, photo 13 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-14.jpg",
+          "url": "/vehicles/N287963/14.jpg",
           "alt": "2016 Nissan Altima, photo 14 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-15.jpg",
+          "url": "/vehicles/N287963/15.jpg",
           "alt": "2016 Nissan Altima, photo 15 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-16.jpg",
+          "url": "/vehicles/N287963/16.jpg",
           "alt": "2016 Nissan Altima, photo 16 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-17.jpg",
+          "url": "/vehicles/N287963/17.jpg",
           "alt": "2016 Nissan Altima, photo 17 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-18.jpg",
+          "url": "/vehicles/N287963/18.jpg",
           "alt": "2016 Nissan Altima, photo 18 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-19.jpg",
+          "url": "/vehicles/N287963/19.jpg",
           "alt": "2016 Nissan Altima, photo 19 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-20.jpg",
+          "url": "/vehicles/N287963/20.jpg",
           "alt": "2016 Nissan Altima, photo 20 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-21.jpg",
+          "url": "/vehicles/N287963/21.jpg",
           "alt": "2016 Nissan Altima, photo 21 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-22.jpg",
+          "url": "/vehicles/N287963/22.jpg",
           "alt": "2016 Nissan Altima, photo 22 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-23.jpg",
+          "url": "/vehicles/N287963/23.jpg",
           "alt": "2016 Nissan Altima, photo 23 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-24.jpg",
+          "url": "/vehicles/N287963/24.jpg",
           "alt": "2016 Nissan Altima, photo 24 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-25.jpg",
+          "url": "/vehicles/N287963/25.jpg",
           "alt": "2016 Nissan Altima, photo 25 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-26.jpg",
+          "url": "/vehicles/N287963/26.jpg",
           "alt": "2016 Nissan Altima, photo 26 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-27.jpg",
+          "url": "/vehicles/N287963/27.jpg",
           "alt": "2016 Nissan Altima, photo 27 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-28.jpg",
+          "url": "/vehicles/N287963/28.jpg",
           "alt": "2016 Nissan Altima, photo 28 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-29.jpg",
+          "url": "/vehicles/N287963/29.jpg",
           "alt": "2016 Nissan Altima, photo 29 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-30.jpg",
+          "url": "/vehicles/N287963/30.jpg",
           "alt": "2016 Nissan Altima, photo 30 of 31"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/1N4AL3AP2GC287963-31.jpg",
+          "url": "/vehicles/N287963/31.jpg",
           "alt": "2016 Nissan Altima, photo 31 of 31"
         }
       ],
@@ -969,67 +969,67 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304.jpg",
+          "url": "/vehicles/N656304T/1.jpg",
           "alt": "2016 Nissan Sentra in red, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-2.jpg",
+          "url": "/vehicles/N656304T/2.jpg",
           "alt": "2016 Nissan Sentra, photo 2 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-3.jpg",
+          "url": "/vehicles/N656304T/3.jpg",
           "alt": "2016 Nissan Sentra, photo 3 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-4.jpg",
+          "url": "/vehicles/N656304T/4.jpg",
           "alt": "2016 Nissan Sentra, photo 4 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-5.jpg",
+          "url": "/vehicles/N656304T/5.jpg",
           "alt": "2016 Nissan Sentra, photo 5 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-6.jpg",
+          "url": "/vehicles/N656304T/6.jpg",
           "alt": "2016 Nissan Sentra, photo 6 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-7.jpg",
+          "url": "/vehicles/N656304T/7.jpg",
           "alt": "2016 Nissan Sentra, photo 7 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-8.jpg",
+          "url": "/vehicles/N656304T/8.jpg",
           "alt": "2016 Nissan Sentra, photo 8 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-9.jpg",
+          "url": "/vehicles/N656304T/9.jpg",
           "alt": "2016 Nissan Sentra, photo 9 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-10.jpg",
+          "url": "/vehicles/N656304T/10.jpg",
           "alt": "2016 Nissan Sentra, photo 10 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-11.jpg",
+          "url": "/vehicles/N656304T/11.jpg",
           "alt": "2016 Nissan Sentra, photo 11 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-12.jpg",
+          "url": "/vehicles/N656304T/12.jpg",
           "alt": "2016 Nissan Sentra, photo 12 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-13.jpg",
+          "url": "/vehicles/N656304T/13.jpg",
           "alt": "2016 Nissan Sentra, photo 13 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-14.jpg",
+          "url": "/vehicles/N656304T/14.jpg",
           "alt": "2016 Nissan Sentra, photo 14 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-15.jpg",
+          "url": "/vehicles/N656304T/15.jpg",
           "alt": "2016 Nissan Sentra, photo 15 of 16"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/07/3N1AB7AP6GL656304-16.jpg",
+          "url": "/vehicles/N656304T/16.jpg",
           "alt": "2016 Nissan Sentra, photo 16 of 16"
         }
       ],
@@ -1077,99 +1077,99 @@
       ],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199.jpg",
+          "url": "/vehicles/N187199/1.jpg",
           "alt": "2012 Toyota Sienna in black, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-2.jpg",
+          "url": "/vehicles/N187199/2.jpg",
           "alt": "2012 Toyota Sienna, photo 2 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-3.jpg",
+          "url": "/vehicles/N187199/3.jpg",
           "alt": "2012 Toyota Sienna, photo 3 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-4.jpg",
+          "url": "/vehicles/N187199/4.jpg",
           "alt": "2012 Toyota Sienna, photo 4 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-5.jpg",
+          "url": "/vehicles/N187199/5.jpg",
           "alt": "2012 Toyota Sienna, photo 5 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-6.jpg",
+          "url": "/vehicles/N187199/6.jpg",
           "alt": "2012 Toyota Sienna, photo 6 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-7.jpg",
+          "url": "/vehicles/N187199/7.jpg",
           "alt": "2012 Toyota Sienna, photo 7 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-8.jpg",
+          "url": "/vehicles/N187199/8.jpg",
           "alt": "2012 Toyota Sienna, photo 8 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-9.jpg",
+          "url": "/vehicles/N187199/9.jpg",
           "alt": "2012 Toyota Sienna, photo 9 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-10.jpg",
+          "url": "/vehicles/N187199/10.jpg",
           "alt": "2012 Toyota Sienna, photo 10 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-11.jpg",
+          "url": "/vehicles/N187199/11.jpg",
           "alt": "2012 Toyota Sienna, photo 11 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-12.jpg",
+          "url": "/vehicles/N187199/12.jpg",
           "alt": "2012 Toyota Sienna, photo 12 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-13.jpg",
+          "url": "/vehicles/N187199/13.jpg",
           "alt": "2012 Toyota Sienna, photo 13 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-14.jpg",
+          "url": "/vehicles/N187199/14.jpg",
           "alt": "2012 Toyota Sienna, photo 14 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-15.jpg",
+          "url": "/vehicles/N187199/15.jpg",
           "alt": "2012 Toyota Sienna, photo 15 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-16.jpg",
+          "url": "/vehicles/N187199/16.jpg",
           "alt": "2012 Toyota Sienna, photo 16 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-17.jpg",
+          "url": "/vehicles/N187199/17.jpg",
           "alt": "2012 Toyota Sienna, photo 17 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-18.jpg",
+          "url": "/vehicles/N187199/18.jpg",
           "alt": "2012 Toyota Sienna, photo 18 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-19.jpg",
+          "url": "/vehicles/N187199/19.jpg",
           "alt": "2012 Toyota Sienna, photo 19 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-20.jpg",
+          "url": "/vehicles/N187199/20.jpg",
           "alt": "2012 Toyota Sienna, photo 20 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-21.jpg",
+          "url": "/vehicles/N187199/21.jpg",
           "alt": "2012 Toyota Sienna, photo 21 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-22.jpg",
+          "url": "/vehicles/N187199/22.jpg",
           "alt": "2012 Toyota Sienna, photo 22 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-23.jpg",
+          "url": "/vehicles/N187199/23.jpg",
           "alt": "2012 Toyota Sienna, photo 23 of 24"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/04/5TDKK3DC2CS187199-24.jpg",
+          "url": "/vehicles/N187199/24.jpg",
           "alt": "2012 Toyota Sienna, photo 24 of 24"
         }
       ],
@@ -1218,63 +1218,63 @@
       ],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488.jpg",
+          "url": "/vehicles/N246488/1.jpg",
           "alt": "2025 Toyota Tundra CrewMax in white, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-2.jpg",
+          "url": "/vehicles/N246488/2.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 2 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-3.jpg",
+          "url": "/vehicles/N246488/3.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 3 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-4.jpg",
+          "url": "/vehicles/N246488/4.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 4 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-5.jpg",
+          "url": "/vehicles/N246488/5.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 5 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-6.jpg",
+          "url": "/vehicles/N246488/6.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 6 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-7.jpg",
+          "url": "/vehicles/N246488/7.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 7 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-8.jpg",
+          "url": "/vehicles/N246488/8.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 8 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-9.jpg",
+          "url": "/vehicles/N246488/9.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 9 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-10.jpg",
+          "url": "/vehicles/N246488/10.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 10 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-11.jpg",
+          "url": "/vehicles/N246488/11.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 11 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-12.jpg",
+          "url": "/vehicles/N246488/12.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 12 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-13.jpg",
+          "url": "/vehicles/N246488/13.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 13 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-14.jpg",
+          "url": "/vehicles/N246488/14.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 14 of 15"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/5TFNA5DB4SX246488-15.jpg",
+          "url": "/vehicles/N246488/15.jpg",
           "alt": "2025 Toyota Tundra CrewMax, photo 15 of 15"
         }
       ],
@@ -1320,35 +1320,35 @@
       "features": [],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218.jpg",
+          "url": "/vehicles/N002218/1.jpg",
           "alt": "2014 Volkswagen Touareg in silver, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-2.jpg",
+          "url": "/vehicles/N002218/2.jpg",
           "alt": "2014 Volkswagen Touareg, photo 2 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-3.jpg",
+          "url": "/vehicles/N002218/3.jpg",
           "alt": "2014 Volkswagen Touareg, photo 3 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-4.jpg",
+          "url": "/vehicles/N002218/4.jpg",
           "alt": "2014 Volkswagen Touareg, photo 4 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-5.jpg",
+          "url": "/vehicles/N002218/5.jpg",
           "alt": "2014 Volkswagen Touareg, photo 5 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-6.jpg",
+          "url": "/vehicles/N002218/6.jpg",
           "alt": "2014 Volkswagen Touareg, photo 6 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-7.jpg",
+          "url": "/vehicles/N002218/7.jpg",
           "alt": "2014 Volkswagen Touareg, photo 7 of 8"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/09/WVGDF9BPXED002218-8.jpg",
+          "url": "/vehicles/N002218/8.jpg",
           "alt": "2014 Volkswagen Touareg, photo 8 of 8"
         }
       ],
@@ -1396,123 +1396,123 @@
       ],
       "photos": [
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-1.jpg",
+          "url": "/vehicles/T543348/1.jpg",
           "alt": "2010 Volvo XC90 in gray, primary photo"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-2-1.jpg",
+          "url": "/vehicles/T543348/2.jpg",
           "alt": "2010 Volvo XC90, photo 2 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-3-1.jpg",
+          "url": "/vehicles/T543348/3.jpg",
           "alt": "2010 Volvo XC90, photo 3 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-4-1.jpg",
+          "url": "/vehicles/T543348/4.jpg",
           "alt": "2010 Volvo XC90, photo 4 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-5-1.jpg",
+          "url": "/vehicles/T543348/5.jpg",
           "alt": "2010 Volvo XC90, photo 5 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-6-1.jpg",
+          "url": "/vehicles/T543348/6.jpg",
           "alt": "2010 Volvo XC90, photo 6 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-7-1.jpg",
+          "url": "/vehicles/T543348/7.jpg",
           "alt": "2010 Volvo XC90, photo 7 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-8-1.jpg",
+          "url": "/vehicles/T543348/8.jpg",
           "alt": "2010 Volvo XC90, photo 8 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-9-1.jpg",
+          "url": "/vehicles/T543348/9.jpg",
           "alt": "2010 Volvo XC90, photo 9 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-10-1.jpg",
+          "url": "/vehicles/T543348/10.jpg",
           "alt": "2010 Volvo XC90, photo 10 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-11-1.jpg",
+          "url": "/vehicles/T543348/11.jpg",
           "alt": "2010 Volvo XC90, photo 11 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-12-1.jpg",
+          "url": "/vehicles/T543348/12.jpg",
           "alt": "2010 Volvo XC90, photo 12 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-13-1.jpg",
+          "url": "/vehicles/T543348/13.jpg",
           "alt": "2010 Volvo XC90, photo 13 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-14-1.jpg",
+          "url": "/vehicles/T543348/14.jpg",
           "alt": "2010 Volvo XC90, photo 14 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-15-1.jpg",
+          "url": "/vehicles/T543348/15.jpg",
           "alt": "2010 Volvo XC90, photo 15 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-16-1.jpg",
+          "url": "/vehicles/T543348/16.jpg",
           "alt": "2010 Volvo XC90, photo 16 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-17-1.jpg",
+          "url": "/vehicles/T543348/17.jpg",
           "alt": "2010 Volvo XC90, photo 17 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-18-1.jpg",
+          "url": "/vehicles/T543348/18.jpg",
           "alt": "2010 Volvo XC90, photo 18 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-19-1.jpg",
+          "url": "/vehicles/T543348/19.jpg",
           "alt": "2010 Volvo XC90, photo 19 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-20-1.jpg",
+          "url": "/vehicles/T543348/20.jpg",
           "alt": "2010 Volvo XC90, photo 20 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-21-1.jpg",
+          "url": "/vehicles/T543348/21.jpg",
           "alt": "2010 Volvo XC90, photo 21 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-22-1.jpg",
+          "url": "/vehicles/T543348/22.jpg",
           "alt": "2010 Volvo XC90, photo 22 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-23-1.jpg",
+          "url": "/vehicles/T543348/23.jpg",
           "alt": "2010 Volvo XC90, photo 23 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-24-1.jpg",
+          "url": "/vehicles/T543348/24.jpg",
           "alt": "2010 Volvo XC90, photo 24 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-25-1.jpg",
+          "url": "/vehicles/T543348/25.jpg",
           "alt": "2010 Volvo XC90, photo 25 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-26-1.jpg",
+          "url": "/vehicles/T543348/26.jpg",
           "alt": "2010 Volvo XC90, photo 26 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-27-1.jpg",
+          "url": "/vehicles/T543348/27.jpg",
           "alt": "2010 Volvo XC90, photo 27 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-28-1.jpg",
+          "url": "/vehicles/T543348/28.jpg",
           "alt": "2010 Volvo XC90, photo 28 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-29-1.jpg",
+          "url": "/vehicles/T543348/29.jpg",
           "alt": "2010 Volvo XC90, photo 29 of 30"
         },
         {
-          "url": "https://autoselectgroups.com/wp-content/uploads/2026/03/YV4982CZ4A1543348-30-1.jpg",
+          "url": "/vehicles/T543348/30.jpg",
           "alt": "2010 Volvo XC90, photo 30 of 30"
         }
       ],
