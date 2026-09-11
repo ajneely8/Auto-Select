@@ -4,8 +4,15 @@ import { env } from "@/config/env";
 
 /** Honeypot field name. Real users never see or fill it. */
 export const HONEYPOT = "company_website";
-/** Minimum time between form render and submit. Bots submit instantly. */
-const MIN_FILL_MS = 2500;
+/**
+ * Minimum time between form render and submit. Bots submit instantly; a genuine bot fill is
+ * usually under a few hundred ms. 2500ms turned out to catch real visitors too often (confirmed
+ * live — every one of a real customer's submissions was flagged "too-fast"), so this is lower than
+ * it looks like it needs to be on purpose: false positives are no longer silently lost (they're
+ * saved as spam-status leads either way, see pipeline.ts), so there's little upside to being
+ * aggressive here.
+ */
+const MIN_FILL_MS = 1000;
 
 export function looksLikeBot(fields: Record<string, string>): string | null {
   if (fields[HONEYPOT]) return "honeypot";

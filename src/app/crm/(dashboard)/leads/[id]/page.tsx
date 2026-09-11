@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Phone, Mail, MessageSquare, ArrowLeft, Image as ImageIcon, ExternalLink, MessageCircle } from "lucide-react";
@@ -128,10 +129,21 @@ export default async function LeadDetailPage({ params }: PageProps<"/crm/leads/[
           <h2 id="vehicle-heading" className="font-display text-lg font-bold text-ink">
             Vehicle
           </h2>
-          <Link href={`/inventory/${vehicle.slug}`} target="_blank" className="mt-2 inline-flex items-center gap-1.5 font-semibold text-navy-700 hover:underline">
-            {vehicleFullName(vehicle)} · Stock {vehicle.stockNumber}
-            <ExternalLink className="size-3.5" aria-hidden />
-          </Link>
+          <div className="mt-3 flex items-center gap-4">
+            {vehicle.photos[0] && (
+              <Image
+                src={vehicle.photos[0].url}
+                alt={vehicle.photos[0].alt}
+                width={160}
+                height={120}
+                className="h-20 w-28 shrink-0 rounded-[var(--radius-sm)] border border-line object-cover sm:h-24 sm:w-32"
+              />
+            )}
+            <Link href={`/inventory/${vehicle.slug}`} target="_blank" className="inline-flex items-center gap-1.5 font-semibold text-navy-700 hover:underline">
+              {vehicleFullName(vehicle)} · Stock {vehicle.stockNumber}
+              <ExternalLink className="size-3.5" aria-hidden />
+            </Link>
+          </div>
         </section>
       )}
 

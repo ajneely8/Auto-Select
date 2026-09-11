@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Users, Clock, TrendingUp, ArrowRight, CheckCircle2, Phone, Mail, CalendarDays, History } from "lucide-react";
 import { listLeads, summarize, typeBreakdown, needsAttention, dailyCounts, responseRate, weeklyTrend, thisMonthCount, monthlyHistory } from "@/lib/crm/leads";
 import { LEAD_LABELS, STATUS_LABELS, contactSummary, relativeTime } from "@/lib/crm/format";
 import { TYPE_ICONS } from "@/lib/crm/icons";
+import { vehiclePhotosForLeads } from "@/lib/crm/vehicle-photos";
 import { StatusBadge } from "./StatusSelect";
 import { LeadsTrendChart } from "./Sparkline";
 
@@ -19,6 +21,7 @@ export default async function CrmOverviewPage() {
   const thisMonth = thisMonthCount(leads);
   const history = monthlyHistory(leads);
   const recent = leads.slice(0, 6);
+  const vehiclePhotos = await vehiclePhotosForLeads(recent);
   const maxSource = Math.max(1, ...sources.map((s) => s.count));
   const maxMonth = Math.max(1, ...history.map((m) => m.count));
 
@@ -135,12 +138,17 @@ export default async function CrmOverviewPage() {
               {recent.map((lead) => {
                 const c = contactSummary(lead);
                 const Icon = TYPE_ICONS[lead.type];
+                const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
                 return (
                   <li key={lead.id}>
                     <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 py-2.5 hover:bg-surface">
-                      <span className="flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900">
-                        <Icon className="size-4" aria-hidden />
-                      </span>
+                      {photo ? (
+                        <Image src={photo.url} alt={photo.alt} width={56} height={42} className="size-9 shrink-0 rounded-[var(--radius-sm)] object-cover" />
+                      ) : (
+                        <span className="flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900">
+                          <Icon className="size-4" aria-hidden />
+                        </span>
+                      )}
                       <span className="min-w-0 flex-1">
                         <span className="block truncate text-sm font-semibold text-ink">{c.name}</span>
                         <span className="block truncate text-xs text-muted">

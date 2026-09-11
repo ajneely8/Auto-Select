@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Search, Phone, Mail, ArrowRight } from "lucide-react";
@@ -25,11 +26,13 @@ export function LeadsTable({
   typeLabels,
   months = [],
   initialMonth = "",
+  vehiclePhotos = {},
 }: {
   leads: Lead[];
   typeLabels: Record<LeadType, string>;
   months?: MonthOption[];
   initialMonth?: string;
+  vehiclePhotos?: Record<string, { url: string; alt: string }>;
 }) {
   const [q, setQ] = useState("");
   const [type, setType] = useState<LeadType | "">("");
@@ -126,13 +129,24 @@ export function LeadsTable({
             const c = contactSummary(lead);
             const vehicleLabel = (lead.details as Record<string, unknown> | undefined)?.vehicleLabel;
             const Icon = TYPE_ICONS[lead.type];
+            const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
             return (
               <li key={lead.id} className="rounded-[var(--radius-md)] border border-line bg-white p-4 sm:p-5">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex min-w-0 gap-3">
-                    <span className="hidden size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900 sm:flex">
-                      <Icon className="size-4" aria-hidden />
-                    </span>
+                    {photo ? (
+                      <Image
+                        src={photo.url}
+                        alt={photo.alt}
+                        width={56}
+                        height={42}
+                        className="hidden size-9 shrink-0 rounded-[var(--radius-sm)] object-cover sm:block"
+                      />
+                    ) : (
+                      <span className="hidden size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900 sm:flex">
+                        <Icon className="size-4" aria-hidden />
+                      </span>
+                    )}
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="inline-flex items-center gap-1 rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900 sm:hidden">
