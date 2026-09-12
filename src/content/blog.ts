@@ -693,6 +693,232 @@ const drafts: Omit<BlogPost, "readingMinutes">[] = [
       },
     ],
   },
+  /* ───────────────────────── Buying guide (local) ───────────────────────── */
+  {
+    slug: "best-used-suvs-for-texas-families-live-oak",
+    title: "Best Used SUVs for Texas Families: A Live Oak Buyer's Guide",
+    description:
+      "What to look for in a used SUV for a Texas family: third-row seating, towing, ground clearance for weather, and how to balance size against fuel costs and price.",
+    datePublished: "2026-09-11",
+    category: "Buying Guide",
+    body: [
+      {
+        type: "p",
+        text: "SUVs are one of the most popular vehicle types for families around Live Oak and San Antonio, and for good reason — they handle a car-seat-and-cargo lifestyle, highway commutes, and the occasional road trip better than most sedans. But \"SUV\" covers a wide range of vehicles, from compact crossovers to full-size three-row models. Here's how to figure out which size and features actually fit your family, rather than just the biggest one on the lot.",
+      },
+      { type: "h2", text: "Start with how you actually use the vehicle" },
+      {
+        type: "p",
+        text: "It's easy to size up \"just in case,\" but a bigger SUV costs more to fuel, park, and maintain every single day, whether or not you use the extra space. Before you compare specific vehicles, get honest about a few things:",
+      },
+      {
+        type: "ul",
+        items: [
+          "How many people ride with you regularly, and how often you need every seat filled versus just occasionally",
+          "Whether you need three rows, or a two-row SUV with a large cargo area would actually work better",
+          "How much you tow — a trailer, boat, or camper — since towing capacity varies enormously between models",
+          "Your daily commute distance, especially if you're driving I-35 or 1604 into San Antonio regularly, where fuel economy adds up fast",
+          "Where you park at home and at work or school — full-size SUVs can be a tight fit in some older Live Oak driveways and garages",
+        ],
+      },
+      { type: "h2", text: "Compact vs. midsize vs. full-size" },
+      { type: "h3", text: "Compact SUVs" },
+      {
+        type: "p",
+        text: "Compact SUVs are the most fuel-efficient and easiest to park, with enough room for most small-to-medium families day to day. They're usually the better value if you rarely carry more than four or five people and don't tow.",
+      },
+      { type: "h3", text: "Midsize SUVs" },
+      {
+        type: "p",
+        text: "Midsize SUVs, including many three-row models, balance passenger and cargo space with more manageable fuel costs than a full-size SUV. This size covers most families who occasionally need a third row for a carpool, grandparents, or a friend's kid, without the size and cost of a full-size model.",
+      },
+      { type: "h3", text: "Full-size SUVs" },
+      {
+        type: "p",
+        text: "Full-size SUVs offer the most towing capacity and the most usable third-row space for adults, not just kids. They make sense if you regularly tow, regularly seat six or more adults, or need serious cargo room — but expect higher fuel and maintenance costs.",
+      },
+      { type: "h2", text: "Texas-specific things worth checking" },
+      {
+        type: "ul",
+        items: [
+          "Air conditioning performance: with a used SUV, run the A/C on its coldest setting for several minutes, including in the third row if it has separate rear controls. Weak rear cooling is a common, sometimes expensive, complaint on used three-row SUVs.",
+          "Tire age and condition: SUVs are heavier than sedans, and Texas heat speeds up tire wear. Check the date code on the sidewall, not just tread depth.",
+          "Towing package specifics, if you tow: a factory tow package usually includes a stronger cooling system and wiring, not just a hitch bolted on later. Ask what's actually included.",
+          "Ground clearance and drivetrain, if you're near low-water crossings or flood-prone roads: all-wheel drive and higher clearance help, but no vehicle is safe to drive through moving floodwater.",
+        ],
+      },
+      { type: "h2", text: "Weighing price against size" },
+      {
+        type: "p",
+        text: "A larger, older SUV and a smaller, newer SUV can land at a similar price. Before you decide, compare more than the sticker number:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Estimated fuel cost for your actual commute, not just the EPA rating",
+          "Mileage relative to age — a higher-mileage newer model may have more useful life left than a low-mileage older one",
+          "What's included: third-row seating, roof rails, a tow package, or driver-assist features can be worth paying more for if you'll actually use them",
+          "Total out-the-door cost, including Texas sales tax, title, and registration, not just the listed price",
+        ],
+      },
+      {
+        type: "callout",
+        text: "There's no single \"best\" SUV for every family — the right size depends on how many people and how much cargo you actually carry most weeks, not the occasional trip.",
+      },
+      { type: "h2", text: "Finding the right one at Auto Select" },
+      {
+        type: "p",
+        text: "You can filter our inventory by body style and price to see what's currently available, or submit a Find a Vehicle request if you have a specific size, row count, or towing need in mind and don't see it in stock today. Our team can also walk you through the differences between specific models side by side before you commit to a test drive.",
+      },
+    ],
+  },
+
+  {
+    slug: "used-trucks-live-oak-tx-what-to-know",
+    title: "Used Trucks in Live Oak, TX: What to Look for Before You Buy",
+    description:
+      "Bed length, cab size, towing and payload, 2WD vs. 4WD, and how Texas heat affects a used truck — a practical checklist before you buy in the San Antonio area.",
+    datePublished: "2026-09-11",
+    category: "Buying Guide",
+    body: [
+      {
+        type: "p",
+        text: "Trucks stay in demand around Live Oak and San Antonio for work, towing, and everyday driving alike. But the right used truck depends heavily on what you actually need it to do — a truck set up for hauling landscaping equipment is a very different vehicle from one set up for a daily commute with occasional weekend hauling. Here's what to think through before you buy.",
+      },
+      { type: "h2", text: "Cab and bed size trade-offs" },
+      {
+        type: "ul",
+        items: [
+          "Regular cab: the most bed length and typically the lowest price, with little to no back-seat space — best if you rarely carry passengers.",
+          "Extended or double cab: a middle ground with small rear seats or jump seats and a slightly shorter bed than a regular cab on the same frame.",
+          "Crew cab: full-size rear seating for passengers or car seats, usually paired with a shorter bed — the common choice for trucks used as a daily family vehicle.",
+          "Bed length: a longer bed helps with full sheets of plywood, longer trailers, or bulky equipment; a short bed is easier to park and maneuver day to day.",
+        ],
+      },
+      { type: "h2", text: "Towing and payload aren't the same thing" },
+      {
+        type: "p",
+        text: "Towing capacity is how much a truck can pull behind it; payload is how much weight it can carry in the bed and cabin, including passengers and cargo. A truck can be well within its towing rating and still be overloaded on payload, or the other way around. If you tow or haul regularly:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Ask for the specific truck's payload and towing capacity, not just the model's advertised maximum — these vary by trim, cab, bed length, and engine.",
+          "Check whether it has a factory tow package, which usually includes a stronger cooling system, transmission cooler, and wiring, not just a hitch.",
+          "If you tow a trailer, boat, or camper regularly, weigh it (or get its listed weight) and compare it honestly against the truck's rated capacity, not just what feels fine on a short drive.",
+        ],
+      },
+      { type: "h2", text: "2WD vs. 4WD for this area" },
+      {
+        type: "p",
+        text: "Around Live Oak and San Antonio, most driving is on dry pavement, so two-wheel drive is often enough for day-to-day use and typically costs less to buy and maintain. Four-wheel drive is worth the extra cost if you regularly drive unpaved roads, tow heavy loads, or want more confidence in occasional heavy rain. It's rarely necessary for typical local commuting.",
+      },
+      { type: "h2", text: "What Texas heat and towing do to a used truck" },
+      {
+        type: "p",
+        text: "Trucks that tow or haul work hard, and Texas summers add extra strain. Pay close attention to:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Transmission condition: shifts should be smooth with no slipping, hesitation, or hard clunks, especially under load or going up an on-ramp.",
+          "Cooling system: check for leaks and watch the temperature gauge, particularly if the truck has clearly been used for towing.",
+          "Suspension and tires: a truck used for hauling shows extra wear on shocks, tires, and sometimes the bed itself — look for uneven tire wear and check tire age via the sidewall date code.",
+          "Frame and undercarriage: look underneath for rust or damage, especially on trucks that may have worked outside the immediate area.",
+          "A/C performance: run it on the coldest setting for several minutes — a truck that's been idled a lot for work can show A/C wear sooner than a typical commuter vehicle.",
+        ],
+      },
+      { type: "h2", text: "Questions worth asking before you buy" },
+      {
+        type: "ul",
+        items: [
+          "Was this truck used for towing, work, or fleet duty? A vehicle history report doesn't always capture heavy use.",
+          "What's the actual payload and towing capacity for this specific configuration?",
+          "Is there a spray-in or drop-in bed liner, and what does the bed look like underneath it?",
+          "Are all the keys, remotes, and any tailgate or bed locks included?",
+        ],
+      },
+      {
+        type: "callout",
+        text: "The right truck is the one sized for what you actually haul and tow most often — not the biggest available, and not the cheapest available, but the one that matches your regular use.",
+      },
+      { type: "h2", text: "Finding the right truck at Auto Select" },
+      {
+        type: "p",
+        text: "Browse our current truck inventory by cab style, drivetrain, and price, or let us know your towing or payload needs through a Find a Vehicle request if you don't see the right fit today. We're happy to walk through the specific capacity numbers for any truck on our lot before you test drive it.",
+      },
+    ],
+  },
+
+  {
+    slug: "commuting-live-oak-san-antonio-choosing-a-reliable-used-car",
+    title: "Commuting from Live Oak to San Antonio: Choosing a Reliable Used Car",
+    description:
+      "What matters most in a used commuter car for the Live Oak–San Antonio drive: fuel economy, highway comfort, maintenance history, and reliability over raw features.",
+    datePublished: "2026-09-11",
+    category: "Buying Guide",
+    body: [
+      {
+        type: "p",
+        text: "If you commute from Live Oak into San Antonio, or across the metro for work, your daily drive probably means a mix of highway miles on I-35 or 1604 and stop-and-go traffic. A commuter car earns its keep through reliability and comfort on repeat trips, not just how it looks on a test drive around the block. Here's what to prioritize.",
+      },
+      { type: "h2", text: "Reliability matters more than features for a commuter" },
+      {
+        type: "p",
+        text: "A car you drive 20,000+ miles a year needs to start every morning and handle routine maintenance without surprises. Before you fall for a feature list, look at the basics:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Service records: consistent oil changes and maintenance are a better sign than low mileage alone.",
+          "Vehicle history report: check for accidents, and pay attention to how many previous owners the vehicle has had.",
+          "Warning lights: every dashboard light should turn off shortly after starting the engine — anything that stays on deserves an explanation before you buy.",
+          "Remaining factory warranty: some used vehicles still carry manufacturer coverage, which can reduce your risk in the first year or two of ownership.",
+        ],
+      },
+      { type: "h2", text: "Fuel economy adds up faster than it seems" },
+      {
+        type: "p",
+        text: "A small difference in miles per gallon compounds over a daily highway commute. When comparing two vehicles, estimate the actual fuel cost difference over a year based on your real commute distance, not just the EPA sticker numbers — traffic patterns and how much of your drive is highway versus stop-and-go both affect real-world mileage." ,
+      },
+      { type: "h2", text: "Comfort for the drive you actually do" },
+      {
+        type: "ul",
+        items: [
+          "Seat comfort on a longer drive: a short test drive around the block won't tell you how a seat feels after 30 or 45 minutes. If possible, take a longer test drive that includes highway speed.",
+          "Road and wind noise at highway speed, since that's where you'll spend most commuting miles.",
+          "Adaptive cruise control or lane-keeping features, if stop-and-go traffic on your route is a regular frustration — these are worth testing, not just reading about.",
+          "A/C performance at highway speed and at idle in traffic, especially important for a Texas commute in summer.",
+        ],
+      },
+      { type: "h2", text: "Sedan, hatchback, or crossover for commuting?" },
+      {
+        type: "p",
+        text: "For a solo or two-person commute, a sedan or compact crossover is usually the most fuel-efficient and easiest to park option, without sacrificing much comfort. A crossover adds a higher seating position and more cargo flexibility at a modest fuel-economy cost. Larger SUVs and trucks cost more to fuel for a pure commute and are worth it mainly if you need the size for other regular uses, not just the drive to work." ,
+      },
+      { type: "h2", text: "A quick pre-purchase checklist for a commuter car" },
+      {
+        type: "ol",
+        items: [
+          "Review the vehicle history report and any available service records.",
+          "Test drive on both highway and stop-and-go traffic, not just surface streets.",
+          "Check A/C performance at idle and at speed.",
+          "Confirm tire condition and age via the sidewall date code.",
+          "Ask about remaining factory warranty coverage.",
+          "Estimate your real annual fuel cost based on your actual commute distance.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "The most reliable-looking car on paper isn't always the best fit — weigh service history and how it feels on a real highway test drive as heavily as the spec sheet.",
+      },
+      { type: "h2", text: "Finding a dependable commuter at Auto Select" },
+      {
+        type: "p",
+        text: "Filter our inventory by body style, mileage, and price, or tell us about your commute and budget through a Find a Vehicle request. Our team can point you toward vehicles with strong service history and answer questions about a specific vehicle's maintenance before you schedule a test drive.",
+      },
+    ],
+  },
 ];
 
 function wordCount(blocks: BlogBlock[]) {
