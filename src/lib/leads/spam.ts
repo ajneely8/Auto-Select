@@ -4,20 +4,17 @@ import { env } from "@/config/env";
 
 /** Honeypot field name. Real users never see or fill it. */
 export const HONEYPOT = "company_website";
-/**
- * Minimum time between form render and submit. Bots submit instantly; a genuine bot fill is
- * usually under a few hundred ms. 2500ms turned out to catch real visitors too often (confirmed
- * live — every one of a real customer's submissions was flagged "too-fast"), so this is lower than
- * it looks like it needs to be on purpose: false positives are no longer silently lost (they're
- * saved as spam-status leads either way, see pipeline.ts), so there's little upside to being
- * aggressive here.
- */
-const MIN_FILL_MS = 1000;
 
+/**
+ * There used to also be a "too-fast" check (reject if submitted within N ms of the form
+ * rendering). Removed: it depends on comparing the visitor's own device clock against the
+ * server's, and repeatedly flagged genuine fast fills (autofill, or just a quick typist) as
+ * spam — confirmed live twice, at both a 2500ms and a 1000ms threshold, catching real customer
+ * submissions. The honeypot below has no such false-positive path (a hidden field only a script
+ * would fill) and is what actually catches bots in practice.
+ */
 export function looksLikeBot(fields: Record<string, string>): string | null {
   if (fields[HONEYPOT]) return "honeypot";
-  const started = Number(fields._startedAt);
-  if (Number.isFinite(started) && started > 0 && Date.now() - started < MIN_FILL_MS) return "too-fast";
   const text = `${fields.message ?? ""} ${fields.notes ?? ""}`;
   if ((text.match(/https?:\/\//g) ?? []).length > 3) return "link-spam";
   return null;

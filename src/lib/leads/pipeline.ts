@@ -39,12 +39,11 @@ export interface LeadContext {
 }
 
 /**
- * A submission that trips the honeypot/timing/link-spam checks is still saved — as `status:
- * "spam"`, with no email/SMS/CRM notifications — rather than discarded outright. The visitor still
- * sees a generic "thanks" message either way, so nothing is tipped off, but a false positive (a
- * real customer who happened to fill the form very fast, or whose browser extension poked the
- * hidden field) is never unrecoverable: it just sits under the Spam filter in the CRM instead of
- * the main list, where staff can find and restore it if it turns out to be legitimate.
+ * A submission that trips the honeypot/link-spam checks is still saved — as `status: "spam"`,
+ * with no email/SMS/CRM notifications — rather than discarded outright. The visitor still sees a
+ * generic "thanks" message either way, so nothing is tipped off, but a false positive is never
+ * unrecoverable: it just sits under the Spam filter in the CRM instead of the main list, where
+ * staff can find and restore it if it turns out to be legitimate.
  */
 async function saveSpamLead(type: LeadType, raw: Record<string, string>, ctx: LeadContext, reason: string): Promise<void> {
   const lead: Lead = {
