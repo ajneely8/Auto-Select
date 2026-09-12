@@ -15,7 +15,7 @@ export default async function CrmLoginPage() {
     <div className="flex min-h-dvh items-center justify-center bg-surface px-4 py-10">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <Image src="/brand-logo.png" alt="Auto Select" width={200} height={79} className="mx-auto h-12 w-auto" priority />
+          <Image src="/brand-logo.png" alt="Auto Select" width={200} height={79} className="mx-auto h-16 w-auto" priority />
           <p className="mt-4 text-sm font-semibold uppercase tracking-wide text-muted">Internal CRM</p>
         </div>
         <div className="rounded-[var(--radius-md)] border border-line bg-white p-6 shadow-[var(--shadow-card)] sm:p-8">
