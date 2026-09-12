@@ -7,6 +7,7 @@ import { UtilityBar } from "@/components/layout/UtilityBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileActionBar, BackToTop, AttributionAndClicks } from "@/components/layout/FloatingControls";
+import { PageviewBeacon } from "@/components/layout/PageviewBeacon";
 import { RevealObserver } from "@/components/ui/Reveal";
 import { CompareTray } from "@/components/inventory/CompareTray";
 import { InventoryAssistant } from "@/components/assistant/InventoryAssistant";
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ConsentBanner />
         <RevealObserver />
         <AttributionAndClicks />
+        <PageviewBeacon />
         <JsonLd data={dealerJsonLd()} />
       </body>
     </html>

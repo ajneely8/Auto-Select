@@ -1,14 +1,14 @@
 import type { DayCount } from "@/lib/crm/leads";
 
 /** A small dependency-free bar chart — no charting library, just inline SVG sized to its container. */
-export function LeadsTrendChart({ data }: { data: DayCount[] }) {
+export function LeadsTrendChart({ data, color = "#34d399", unit = "Leads" }: { data: DayCount[]; color?: string; unit?: string }) {
   const max = Math.max(1, ...data.map((d) => d.count));
   const w = 700;
   const h = 140;
   const padBottom = 22;
   const gap = 6;
   const barW = data.length ? (w - gap * (data.length - 1)) / data.length : 0;
-  const summary = `Leads per day, last ${data.length} days: ${data.map((d) => `${d.label} ${d.count}`).join(", ")}.`;
+  const summary = `${unit} per day, last ${data.length} days: ${data.map((d) => `${d.label} ${d.count}`).join(", ")}.`;
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} role="img" aria-label={summary} className="h-32 w-full sm:h-36">
@@ -19,7 +19,7 @@ export function LeadsTrendChart({ data }: { data: DayCount[] }) {
         const y = h - padBottom - barH;
         return (
           <g key={d.date}>
-            <rect x={x} y={y} width={barW} height={barH} rx={2} fill={d.count > 0 ? "#34d399" : "rgba(255,255,255,0.08)"} />
+            <rect x={x} y={y} width={barW} height={barH} rx={2} fill={d.count > 0 ? color : "rgba(255,255,255,0.08)"} />
             {(i === 0 || i === data.length - 1 || i % 2 === 0) && (
               <text x={x + barW / 2} y={h - 6} textAnchor="middle" fontSize="10" fill="rgba(255,255,255,0.45)">
                 {d.label}

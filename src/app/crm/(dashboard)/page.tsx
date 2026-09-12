@@ -1,13 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Clock, TrendingUp, ArrowRight, ArrowUpRight, CheckCircle2, Phone, Mail, CalendarDays, History } from "lucide-react";
+import { Users, Clock, TrendingUp, ArrowRight, ArrowUpRight, CheckCircle2, Phone, Mail, CalendarDays, History, Globe } from "lucide-react";
 import { listLeads, summarize, typeBreakdown, needsAttention, dailyCounts, responseRate, weeklyTrend, thisMonthCount, monthlyHistory } from "@/lib/crm/leads";
+import { getPageviewStats } from "@/lib/pageviews/stats";
 import { LEAD_LABELS, STATUS_LABELS, contactSummary, relativeTime } from "@/lib/crm/format";
 import { TYPE_ICONS } from "@/lib/crm/icons";
 import { vehiclePhotosForLeads } from "@/lib/crm/vehicle-photos";
 import { StatusBadge } from "./StatusSelect";
 import { LeadsTrendChart } from "./Sparkline";
 import { Gauge, gaugeScale } from "./Gauge";
+
+/** "/inventory/2021-honda-civic-abc123" -> "Inventory". "/" -> "Home". Falls back to the raw path. */
+function friendlyPath(pathname: string): string {
+  if (pathname === "/") return "Home";
+  const first = pathname.split("/").filter(Boolean)[0] ?? "";
+  if (!first) return pathname;
+  return first.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
 
 export const metadata = { title: "Overview", robots: { index: false, follow: false } };
 
@@ -18,6 +27,7 @@ const ARROW_BTN =
 
 export default async function CrmOverviewPage() {
   const leads = await listLeads();
+  const pageviews = await getPageviewStats();
   const counts = summarize(leads);
   const sources = typeBreakdown(leads);
   const attention = needsAttention(leads, 24);
@@ -135,6 +145,64 @@ export default async function CrmOverviewPage() {
             </ul>
           )}
         </section>
+      </div>
+
+      {/* Website traffic */}
+      <div>
+        <div className="flex items-center gap-1.5">
+          <Globe className="size-4 text-lime-300" aria-hidden />
+          <h2 className="font-display text-lg font-bold text-white">Website traffic</h2>
+        </div>
+        <p className="mt-0.5 text-xs text-white/50">How many people are visiting autoselectgroups.com.</p>
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <StatCard icon={CalendarDays} label="Visits today" value={pageviews.today} />
+          <StatCard
+            icon={TrendingUp}
+            label="Visits, last 7 days"
+            value={pageviews.last7}
+            trend={pageviews.deltaPct == null ? undefined : `${pageviews.deltaPct >= 0 ? "+" : ""}${pageviews.deltaPct}% vs. prior week`}
+            trendTone={pageviews.deltaPct == null ? undefined : pageviews.deltaPct >= 0 ? "success" : "warning"}
+          />
+          <StatCard icon={Users} label="Visits this month" value={pageviews.thisMonth} />
+        </div>
+        <div className="mt-3 grid gap-6 lg:grid-cols-3">
+          <section aria-labelledby="traffic-trend-heading" className={`${CARD} lg:col-span-2`}>
+            <div className="flex items-center justify-between">
+              <h3 id="traffic-trend-heading" className="font-display text-lg font-bold text-white">
+                Visits, last 14 days
+              </h3>
+              <span className="text-sm text-white/50 tabular">{pageviews.total} all-time</span>
+            </div>
+            <div className="mt-4">
+              <LeadsTrendChart data={pageviews.daily} color="#a3e635" unit="Visits" />
+            </div>
+          </section>
+          <section aria-labelledby="top-pages-heading" className={CARD}>
+            <h3 id="top-pages-heading" className="font-display text-lg font-bold text-white">
+              Top pages
+            </h3>
+            {pageviews.topPaths.length === 0 ? (
+              <p className="mt-3 text-sm text-white/50">No visits recorded yet.</p>
+            ) : (
+              <ul className="mt-4 grid gap-3">
+                {pageviews.topPaths.map((p) => {
+                  const maxPath = Math.max(1, ...pageviews.topPaths.map((x) => x.count));
+                  return (
+                    <li key={p.path} className="grid gap-1">
+                      <div className="flex items-center justify-between gap-2 text-sm">
+                        <span className="truncate font-medium text-white/80">{friendlyPath(p.path)}</span>
+                        <span className="tabular text-white/50">{p.count}</span>
+                      </div>
+                      <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                        <div className="h-full rounded-full bg-lime-400" style={{ width: `${(p.count / maxPath) * 100}%` }} />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </section>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
