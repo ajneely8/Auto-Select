@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, ExternalLink, Quote } from "lucide-react";
+import { ArrowRight, ExternalLink, Quote, Star } from "lucide-react";
 import { business } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui/Section";
@@ -32,7 +32,15 @@ export default function ReviewsPage() {
           {reviews.map((r) => (
             <li key={r.id} data-reveal>
               <figure className="flex h-full flex-col rounded-[var(--radius-md)] border border-line bg-white p-6 sm:p-8">
-                <Quote className="size-8 text-navy-700" aria-hidden />
+                {r.rating ? (
+                  <div className="flex items-center gap-0.5" aria-label={`${r.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star key={i} className={`size-4 ${i < r.rating! ? "fill-accent text-accent-text" : "text-line-strong"}`} aria-hidden />
+                    ))}
+                  </div>
+                ) : (
+                  <Quote className="size-8 text-navy-700" aria-hidden />
+                )}
                 <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-ink">
                   <p>{r.body}</p>
                 </blockquote>

@@ -18,6 +18,7 @@ import {
   ArrowRight,
   Handshake,
   Quote,
+  Star,
   ClipboardCheck,
   KeyRound,
 } from "lucide-react";
@@ -371,12 +372,23 @@ export default async function HomePage() {
             </Link>
           }
         />
-        <div className="grid gap-6 md:grid-cols-2">
-          {reviews.map((r) => (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {reviews.slice(0, 3).map((r) => (
             <figure key={r.id} className="flex flex-col rounded-[var(--radius-md)] border border-line bg-white p-6 sm:p-8" data-reveal>
-              <Quote className="size-7 text-accent-text" aria-hidden />
+              {r.rating ? (
+                <div className="flex items-center gap-0.5" aria-label={`${r.rating} out of 5 stars`}>
+                  {Array.from({ length: 5 }, (_, i) => (
+                    <Star key={i} className={`size-4 ${i < r.rating! ? "fill-accent text-accent-text" : "text-line-strong"}`} aria-hidden />
+                  ))}
+                </div>
+              ) : (
+                <Quote className="size-7 text-accent-text" aria-hidden />
+              )}
               <blockquote className="mt-3 flex-1 text-lg leading-relaxed text-ink">&ldquo;{r.body}&rdquo;</blockquote>
-              <figcaption className="mt-5 border-t border-line pt-4 font-semibold text-ink">{r.author}</figcaption>
+              <figcaption className="mt-5 border-t border-line pt-4">
+                <span className="block font-semibold text-ink">{r.author}</span>
+                <span className="block text-sm text-muted">via {r.source}</span>
+              </figcaption>
             </figure>
           ))}
         </div>
