@@ -1,5 +1,6 @@
 import "server-only";
 import { createHmac } from "node:crypto";
+import { Resend } from "resend";
 import { env } from "@/config/env";
 import { business } from "@/config/business";
 import { enqueueRetry } from "./retry-queue";
@@ -7,8 +8,9 @@ import { enqueueRetry } from "./retry-queue";
 /**
  * Provider-neutral integration adapters.
  *
- * Each adapter POSTs a signed JSON payload to a webhook you control (Zapier, Make, n8n, a CRM's inbound
- * webhook, or your own function that calls Resend/Postmark/Twilio/etc.). Unconfigured adapters run in
+ * Email sends directly through Resend when RESEND_API_KEY is set. Everything else (and email as a
+ * fallback) POSTs a signed JSON payload to a webhook you control (Zapier, Make, n8n, a CRM's inbound
+ * webhook, or your own function that calls Postmark/Twilio/etc.). Unconfigured adapters run in
  * "log only" mode so development never sends real messages.
  *
  * Signature: header `X-AutoSelect-Signature: sha256=<hex>` = HMAC-SHA256(body, WEBHOOK_SIGNING_SECRET).
@@ -16,8 +18,10 @@ import { enqueueRetry } from "./retry-queue";
 
 export type IntegrationName = "email" | "sms" | "crm" | "scheduling";
 
+const resend = env.RESEND_API_KEY ? new Resend(env.RESEND_API_KEY) : null;
+
 export interface EmailMessage {
-  to: string;
+  to: string | string[];
   subject: string;
   text: string;
   html?: string;
@@ -55,12 +59,27 @@ export async function postWebhook(integration: IntegrationName, url: string, pay
 }
 
 export async function sendEmail(msg: EmailMessage) {
-  const payload = { from: env.EMAIL_FROM || `${business.name} <${business.email}>`, ...msg };
+  const from = env.EMAIL_FROM || `${business.name} <${business.email}>`;
+  if (resend) {
+    const { error } = await resend.emails.send({
+      from,
+      to: msg.to,
+      subject: msg.subject,
+      text: msg.text,
+      html: msg.html,
+      replyTo: msg.replyTo,
+    });
+    if (error) {
+      console.error("[email:resend] failed:", error);
+      return { delivered: false, mode: "error" as const };
+    }
+    return { delivered: true, mode: "resend" as const };
+  }
   if (!env.EMAIL_WEBHOOK_URL) {
     console.info(`[email:log-only] to=${msg.to} subject="${msg.subject}"`);
     return { delivered: false, mode: "log-only" as const };
   }
-  await postWebhook("email", env.EMAIL_WEBHOOK_URL, payload);
+  await postWebhook("email", env.EMAIL_WEBHOOK_URL, { from, ...msg });
   return { delivered: true, mode: "webhook" as const };
 }
 

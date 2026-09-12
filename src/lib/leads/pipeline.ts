@@ -205,7 +205,9 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
       : null;
 
   const internal = {
-    to: env.LEAD_NOTIFY_EMAIL || business.email,
+    to: env.LEAD_NOTIFY_EMAIL
+      ? env.LEAD_NOTIFY_EMAIL.split(",").map((e) => e.trim()).filter(Boolean)
+      : business.email,
     subject: `New ${label}${vehicle ? ` — ${vehicleFullName(vehicle)}` : ""} (${lead.id})`,
     replyTo: lead.email,
     tags: ["lead", type],
