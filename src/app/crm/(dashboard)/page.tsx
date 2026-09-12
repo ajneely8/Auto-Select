@@ -49,7 +49,7 @@ export default async function CrmOverviewPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Trend chart */}
-        <section aria-labelledby="trend-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5 lg:col-span-2">
+        <section aria-labelledby="trend-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)] lg:col-span-2">
           <div className="flex items-center justify-between">
             <h2 id="trend-heading" className="font-display text-lg font-bold text-ink">
               Leads, last 14 days
@@ -62,7 +62,7 @@ export default async function CrmOverviewPage() {
         </section>
 
         {/* Needs attention */}
-        <section aria-labelledby="attention-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5">
+        <section aria-labelledby="attention-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
           <h2 id="attention-heading" className="font-display text-lg font-bold text-ink">
             Needs attention
           </h2>
@@ -92,7 +92,7 @@ export default async function CrmOverviewPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Where leads come from */}
-        <section aria-labelledby="sources-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5">
+        <section aria-labelledby="sources-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
           <h2 id="sources-heading" className="font-display text-lg font-bold text-ink">
             Where leads come from
           </h2>
@@ -122,7 +122,7 @@ export default async function CrmOverviewPage() {
         </section>
 
         {/* Recent activity */}
-        <section aria-labelledby="recent-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5 lg:col-span-2">
+        <section aria-labelledby="recent-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)] lg:col-span-2">
           <div className="flex items-center justify-between">
             <h2 id="recent-heading" className="font-display text-lg font-bold text-ink">
               Recent leads
@@ -141,12 +141,12 @@ export default async function CrmOverviewPage() {
                 const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
                 return (
                   <li key={lead.id}>
-                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 py-2.5 hover:bg-surface">
+                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 rounded-[var(--radius-sm)] py-2.5 hover:bg-surface">
                       {photo ? (
-                        <Image src={photo.url} alt={photo.alt} width={56} height={42} className="size-9 shrink-0 rounded-[var(--radius-sm)] object-cover" />
+                        <Image src={photo.url} alt={photo.alt} width={112} height={84} className="size-14 shrink-0 rounded-[var(--radius-md)] border border-line object-cover" />
                       ) : (
-                        <span className="flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900">
-                          <Icon className="size-4" aria-hidden />
+                        <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-line text-navy-700">
+                          <Icon className="size-5" aria-hidden />
                         </span>
                       )}
                       <span className="min-w-0 flex-1">
@@ -154,6 +154,7 @@ export default async function CrmOverviewPage() {
                         <span className="block truncate text-xs text-muted">
                           {LEAD_LABELS[lead.type]} · {relativeTime(lead.createdAt)}
                         </span>
+                        {photo?.name && <span className="mt-0.5 block truncate text-xs font-medium text-navy-700">{photo.name}</span>}
                       </span>
                       <span className="hidden shrink-0 items-center gap-2 text-muted sm:flex">
                         {c.phone && <Phone className="size-3.5" aria-hidden />}
@@ -170,7 +171,7 @@ export default async function CrmOverviewPage() {
       </div>
 
       {/* Monthly history */}
-      <section aria-labelledby="history-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5">
+      <section aria-labelledby="history-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
         <div className="flex items-center gap-1.5">
           <History className="size-4 text-navy-700" aria-hidden />
           <h2 id="history-heading" className="font-display text-lg font-bold text-ink">
@@ -221,11 +222,11 @@ function StatCard({
   tone?: "warning";
 }) {
   return (
-    <div className="rounded-[var(--radius-md)] border border-line bg-white p-4">
+    <div className="rounded-[var(--radius-lg)] border border-line bg-white p-4 shadow-[var(--shadow-card)] transition-shadow duration-200 hover:shadow-[var(--shadow-raised)]">
       <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted">
         <Icon className="size-3.5" aria-hidden /> {label}
       </div>
-      <div className={`mt-1.5 font-display text-2xl font-bold tabular ${tone === "warning" && Number(value) > 0 ? "text-warning" : "text-ink"}`}>{value}</div>
+      <div className={`mt-2 font-display text-3xl font-bold tabular ${tone === "warning" && Number(value) > 0 ? "text-warning" : "text-ink"}`}>{value}</div>
       {trend && <p className={`mt-0.5 text-xs font-medium ${trendTone === "success" ? "text-success" : "text-warning"}`}>{trend}</p>}
       {hint && <p className="mt-0.5 text-xs text-muted">{hint}</p>}
     </div>

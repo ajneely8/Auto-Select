@@ -7,6 +7,7 @@ import { Search, Phone, Mail, ArrowRight } from "lucide-react";
 import type { Lead, LeadStatus, LeadType } from "@/lib/types";
 import { STATUS_LABELS, STATUS_ORDER, TYPE_ORDER, contactSummary, relativeTime } from "@/lib/crm/format";
 import { TYPE_ICONS } from "@/lib/crm/icons";
+import { formatPrice } from "@/lib/format";
 import { StatusBadge, StatusSelect } from "./StatusSelect";
 import { DeleteLeadButton } from "./DeleteLeadButton";
 
@@ -32,7 +33,7 @@ export function LeadsTable({
   typeLabels: Record<LeadType, string>;
   months?: MonthOption[];
   initialMonth?: string;
-  vehiclePhotos?: Record<string, { url: string; alt: string }>;
+  vehiclePhotos?: Record<string, { url: string; alt: string; name: string; price: number | null }>;
 }) {
   const [q, setQ] = useState("");
   const [type, setType] = useState<LeadType | "">("");
@@ -124,35 +125,37 @@ export function LeadsTable({
           {leads.length === 0 ? "No leads yet. They'll show up here as soon as someone submits a form." : "No leads match those filters."}
         </div>
       ) : (
-        <ul className="mt-4 grid gap-3">
+        <ul className="mt-4 grid gap-4">
           {filtered.map((lead) => {
             const c = contactSummary(lead);
             const vehicleLabel = (lead.details as Record<string, unknown> | undefined)?.vehicleLabel;
             const Icon = TYPE_ICONS[lead.type];
             const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
             return (
-              <li key={lead.id} className="rounded-[var(--radius-md)] border border-line bg-white p-4 sm:p-5">
+              <li
+                key={lead.id}
+                className="rounded-[var(--radius-lg)] border border-line bg-white p-4 shadow-[var(--shadow-card)] transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[var(--shadow-raised)] sm:p-5"
+              >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex min-w-0 gap-3">
+                  <div className="flex min-w-0 gap-4">
                     {photo ? (
                       <Image
                         src={photo.url}
                         alt={photo.alt}
-                        width={56}
-                        height={42}
-                        className="hidden size-9 shrink-0 rounded-[var(--radius-sm)] object-cover sm:block"
+                        width={160}
+                        height={120}
+                        className="size-16 shrink-0 rounded-[var(--radius-md)] border border-line object-cover sm:size-20"
                       />
                     ) : (
-                      <span className="hidden size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-navy-100 text-navy-900 sm:flex">
-                        <Icon className="size-4" aria-hidden />
+                      <span className="flex size-16 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-line text-navy-700 sm:size-20">
+                        <Icon className="size-6 sm:size-7" aria-hidden />
                       </span>
                     )}
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="inline-flex items-center gap-1 rounded-[var(--radius-xs)] bg-navy-100 px-2 py-0.5 text-xs font-semibold text-navy-900 sm:hidden">
-                          <Icon className="size-3" aria-hidden /> {typeLabels[lead.type]}
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold text-navy-700">
+                          <Icon className="size-3.5" aria-hidden /> {typeLabels[lead.type]}
                         </span>
-                        <span className="hidden text-xs font-semibold text-navy-900 sm:inline">{typeLabels[lead.type]}</span>
                         <StatusBadge status={lead.status} />
                         {/* Both the text and the title are computed from Date.now()/the browser's locale, which can
                             legitimately differ by a moment (or a timezone) between the server render and hydration
@@ -161,7 +164,7 @@ export function LeadsTable({
                           {relativeTime(lead.createdAt)}
                         </span>
                       </div>
-                      <p className="mt-1.5 truncate font-display text-lg font-bold text-ink">{c.name}</p>
+                      <p className="mt-1.5 truncate font-display text-lg font-bold text-ink sm:text-xl">{c.name}</p>
                       <div className="mt-0.5 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate">
                         {c.phone && (
                           <a href={`tel:${lead.phone}`} className="inline-flex items-center gap-1.5 hover:text-ink hover:underline">
@@ -173,8 +176,13 @@ export function LeadsTable({
                             <Mail className="size-3.5" aria-hidden /> {c.email}
                           </a>
                         )}
-                        {typeof vehicleLabel === "string" && vehicleLabel && <span className="text-navy-700">{vehicleLabel}</span>}
                       </div>
+                      {(photo?.name || (typeof vehicleLabel === "string" && vehicleLabel)) && (
+                        <p className="mt-1 truncate text-sm font-semibold text-navy-700">
+                          {photo?.name ?? (vehicleLabel as string)}
+                          {photo?.price != null && <span className="text-muted"> · {formatPrice(photo.price)}</span>}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-2 sm:shrink-0">
