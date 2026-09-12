@@ -12,16 +12,16 @@ export function LeadsTrendChart({ data }: { data: DayCount[] }) {
 
   return (
     <svg viewBox={`0 0 ${w} ${h}`} role="img" aria-label={summary} className="h-32 w-full sm:h-36">
-      <line x1="0" y1={h - padBottom} x2={w} y2={h - padBottom} stroke="var(--color-line)" strokeWidth="1" />
+      <line x1="0" y1={h - padBottom} x2={w} y2={h - padBottom} stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
       {data.map((d, i) => {
         const barH = d.count === 0 ? 0 : Math.max(4, ((h - padBottom - 8) * d.count) / max);
         const x = i * (barW + gap);
         const y = h - padBottom - barH;
         return (
           <g key={d.date}>
-            <rect x={x} y={y} width={barW} height={barH} rx={2} fill={d.count > 0 ? "var(--color-accent)" : "var(--color-line)"} />
+            <rect x={x} y={y} width={barW} height={barH} rx={2} fill={d.count > 0 ? "#34d399" : "rgba(255,255,255,0.08)"} />
             {(i === 0 || i === data.length - 1 || i % 2 === 0) && (
-              <text x={x + barW / 2} y={h - 6} textAnchor="middle" fontSize="10" fill="var(--color-muted)">
+              <text x={x + barW / 2} y={h - 6} textAnchor="middle" fontSize="10" fill="rgba(255,255,255,0.45)">
                 {d.label}
               </text>
             )}

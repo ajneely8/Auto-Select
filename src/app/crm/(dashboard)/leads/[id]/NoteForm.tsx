@@ -20,21 +20,21 @@ export function NoteForm({ leadId, notes }: { leadId: string; notes: LeadNote[] 
   }, [pending, state]);
 
   return (
-    <section aria-labelledby="notes-heading" className="rounded-[var(--radius-md)] border border-line bg-white p-5 sm:p-6">
-      <h2 id="notes-heading" className="flex items-center gap-1.5 font-display text-lg font-bold text-ink">
+    <section aria-labelledby="notes-heading" className="rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] sm:p-6">
+      <h2 id="notes-heading" className="flex items-center gap-1.5 font-display text-lg font-bold text-white">
         <StickyNote className="size-4" aria-hidden /> Internal notes
       </h2>
-      <p className="mt-0.5 text-xs text-muted">Staff-only — never shown to the customer.</p>
+      <p className="mt-0.5 text-xs text-white/40">Staff-only — never shown to the customer.</p>
 
       {notes.length > 0 && (
-        <ul className="mt-4 grid gap-3 border-b border-line pb-4">
+        <ul className="mt-4 grid gap-3 border-b border-white/10 pb-4">
           {[...notes]
             .slice()
             .reverse()
             .map((n, i) => (
-              <li key={i} className="rounded-[var(--radius-sm)] bg-surface p-3 text-sm">
-                <p className="whitespace-pre-wrap text-ink">{n.text}</p>
-                <p className="mt-1 text-xs text-muted">{formatDateTime(n.at)}</p>
+              <li key={i} className="rounded-[var(--radius-sm)] bg-white/5 p-3 text-sm">
+                <p className="whitespace-pre-wrap text-white">{n.text}</p>
+                <p className="mt-1 text-xs text-white/40">{formatDateTime(n.at)}</p>
               </li>
             ))}
         </ul>
@@ -54,12 +54,12 @@ export function NoteForm({ leadId, notes }: { leadId: string; notes: LeadNote[] 
           name="note"
           rows={2}
           placeholder="Called and left a voicemail…"
-          className="rounded-[var(--radius-sm)] border border-line-strong bg-white p-3 text-sm focus:border-accent-text focus:outline-none focus:ring-2 focus:ring-accent/25"
+          className="rounded-[var(--radius-sm)] border border-white/15 bg-white/5 p-3 text-sm text-white placeholder:text-white/40 focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25"
         />
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex min-h-9 w-fit items-center justify-center rounded-[var(--radius-sm)] bg-navy-900 px-4 text-sm font-semibold text-white hover:bg-navy-800 disabled:opacity-60"
+          className="inline-flex min-h-9 w-fit items-center justify-center rounded-[var(--radius-sm)] bg-lime-400 px-4 text-sm font-semibold text-black hover:bg-lime-300 disabled:opacity-60"
         >
           {pending ? "Saving…" : "Add note"}
         </button>

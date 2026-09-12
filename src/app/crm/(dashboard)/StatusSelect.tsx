@@ -41,15 +41,15 @@ export function StatusSelect({ leadId, status }: { leadId: string; status: LeadS
             }
           });
         }}
-        className="h-10 rounded-[var(--radius-sm)] border border-line-strong bg-white pl-3 pr-8 text-sm font-medium focus:border-accent-text focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-60"
+        className="h-10 rounded-[var(--radius-sm)] border border-white/15 bg-white/5 pl-3 pr-8 text-sm font-medium text-white focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25 disabled:opacity-60"
       >
         {STATUS_ORDER.map((s) => (
-          <option key={s} value={s}>
+          <option key={s} value={s} className="bg-[#161616] text-white">
             {STATUS_LABELS[s]}
           </option>
         ))}
       </select>
-      {pending && <Loader2 className="pointer-events-none absolute right-2 top-1/2 size-3.5 -translate-y-1/2 animate-spin text-muted" aria-hidden />}
+      {pending && <Loader2 className="pointer-events-none absolute right-2 top-1/2 size-3.5 -translate-y-1/2 animate-spin text-white/50" aria-hidden />}
     </div>
   );
 }

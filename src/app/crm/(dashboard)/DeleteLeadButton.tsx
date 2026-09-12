@@ -48,8 +48,8 @@ export function DeleteLeadButton({ leadId, name, redirectTo, compact }: { leadId
       onClick={() => setConfirming(true)}
       className={
         compact
-          ? "inline-flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-line-strong text-muted hover:border-danger hover:text-danger"
-          : "inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-line-strong px-3 text-sm font-semibold text-muted hover:border-danger hover:text-danger"
+          ? "inline-flex size-9 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-white/15 text-white/50 hover:border-danger hover:text-danger"
+          : "inline-flex min-h-9 items-center gap-1.5 rounded-[var(--radius-sm)] border border-white/15 px-3 text-sm font-semibold text-white/50 hover:border-danger hover:text-danger"
       }
       aria-label={`Delete lead from ${name}`}
     >

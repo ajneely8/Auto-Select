@@ -18,7 +18,7 @@ export function LoginForm() {
         </div>
       )}
       <div>
-        <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-ink">
+        <label htmlFor="email" className="mb-1.5 block text-sm font-semibold text-white">
           Email
         </label>
         <input
@@ -27,11 +27,11 @@ export function LoginForm() {
           type="email"
           autoComplete="username"
           required
-          className="h-11 w-full rounded-[var(--radius-sm)] border border-line-strong bg-white px-3 text-[0.9375rem] focus:border-accent-text focus:outline-none focus:ring-2 focus:ring-accent/25"
+          className="h-11 w-full rounded-[var(--radius-sm)] border border-white/15 bg-white/5 px-3 text-[0.9375rem] text-white focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25"
         />
       </div>
       <div>
-        <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-ink">
+        <label htmlFor="password" className="mb-1.5 block text-sm font-semibold text-white">
           Password
         </label>
         <input
@@ -40,13 +40,13 @@ export function LoginForm() {
           type="password"
           autoComplete="current-password"
           required
-          className="h-11 w-full rounded-[var(--radius-sm)] border border-line-strong bg-white px-3 text-[0.9375rem] focus:border-accent-text focus:outline-none focus:ring-2 focus:ring-accent/25"
+          className="h-11 w-full rounded-[var(--radius-sm)] border border-white/15 bg-white/5 px-3 text-[0.9375rem] text-white focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25"
         />
       </div>
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-navy-900 font-semibold text-white hover:bg-navy-800 disabled:opacity-60"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-[var(--radius-sm)] bg-lime-400 font-semibold text-black hover:bg-lime-300 disabled:opacity-60"
       >
         {pending ? (
           <>

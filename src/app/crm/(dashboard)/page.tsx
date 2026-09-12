@@ -7,8 +7,11 @@ import { TYPE_ICONS } from "@/lib/crm/icons";
 import { vehiclePhotosForLeads } from "@/lib/crm/vehicle-photos";
 import { StatusBadge } from "./StatusSelect";
 import { LeadsTrendChart } from "./Sparkline";
+import { Gauge, gaugeScale } from "./Gauge";
 
 export const metadata = { title: "Overview", robots: { index: false, follow: false } };
+
+const CARD = "rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]";
 
 export default async function CrmOverviewPage() {
   const leads = await listLeads();
@@ -28,14 +31,39 @@ export default async function CrmOverviewPage() {
   return (
     <div className="grid gap-6">
       <div>
-        <h1 className="font-display text-2xl font-bold text-ink">Overview</h1>
-        <p className="mt-1 text-sm text-slate">A snapshot of every lead coming through the website.</p>
+        <h1 className="font-display text-2xl font-bold text-white">Overview</h1>
+        <p className="mt-1 text-sm text-white/50">A snapshot of every lead coming through the website.</p>
       </div>
 
-      {/* Headline stats */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        <StatCard icon={Users} label="Total leads" value={counts.total} />
-        <StatCard icon={CalendarDays} label="This month" value={thisMonth} hint={history[0]?.label} />
+      {/* Headline stats — three dials, mirroring a speedometer-style dashboard read */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className={`${CARD} flex flex-col items-center`}>
+          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+            <Users className="size-3.5" aria-hidden /> Total leads
+          </div>
+          <div className="mt-2">
+            <Gauge value={counts.total} max={gaugeScale(counts.total)} display={String(counts.total)} />
+          </div>
+        </div>
+        <div className={`${CARD} flex flex-col items-center`}>
+          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+            <CalendarDays className="size-3.5" aria-hidden /> This month
+          </div>
+          <div className="mt-2">
+            <Gauge value={thisMonth} max={gaugeScale(thisMonth)} display={String(thisMonth)} sublabel={history[0]?.label} />
+          </div>
+        </div>
+        <div className={`${CARD} flex flex-col items-center`}>
+          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+            <CheckCircle2 className="size-3.5" aria-hidden /> Response rate
+          </div>
+          <div className="mt-2">
+            <Gauge value={rate ?? 0} max={100} display={rate == null ? "—" : `${rate}%`} sublabel="Not new or spam" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
         <StatCard
           icon={TrendingUp}
           label="Last 7 days"
@@ -44,17 +72,16 @@ export default async function CrmOverviewPage() {
           trendTone={trendDelta == null ? undefined : trendDelta >= 0 ? "success" : "warning"}
         />
         <StatCard icon={Clock} label="Needs attention" value={attention.length} tone={attention.length > 0 ? "warning" : undefined} />
-        <StatCard icon={CheckCircle2} label="Response rate" value={rate == null ? "—" : `${rate}%`} hint="Not new or spam" />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Trend chart */}
-        <section aria-labelledby="trend-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)] lg:col-span-2">
+        <section aria-labelledby="trend-heading" className={`${CARD} lg:col-span-2`}>
           <div className="flex items-center justify-between">
-            <h2 id="trend-heading" className="font-display text-lg font-bold text-ink">
+            <h2 id="trend-heading" className="font-display text-lg font-bold text-white">
               Leads, last 14 days
             </h2>
-            <span className="text-sm text-muted tabular">{trend.reduce((n, d) => n + d.count, 0)} total</span>
+            <span className="text-sm text-white/50 tabular">{trend.reduce((n, d) => n + d.count, 0)} total</span>
           </div>
           <div className="mt-4">
             <LeadsTrendChart data={trend} />
@@ -62,11 +89,11 @@ export default async function CrmOverviewPage() {
         </section>
 
         {/* Needs attention */}
-        <section aria-labelledby="attention-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
-          <h2 id="attention-heading" className="font-display text-lg font-bold text-ink">
+        <section aria-labelledby="attention-heading" className={CARD}>
+          <h2 id="attention-heading" className="font-display text-lg font-bold text-white">
             Needs attention
           </h2>
-          <p className="mt-0.5 text-xs text-muted">New leads sitting more than 24 hours</p>
+          <p className="mt-0.5 text-xs text-white/50">New leads sitting more than 24 hours</p>
           {attention.length === 0 ? (
             <p className="mt-4 rounded-[var(--radius-sm)] bg-success-soft px-3 py-2.5 text-sm text-success">You&apos;re all caught up.</p>
           ) : (
@@ -75,10 +102,10 @@ export default async function CrmOverviewPage() {
                 const c = contactSummary(lead);
                 return (
                   <li key={lead.id}>
-                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center justify-between gap-2 rounded-[var(--radius-sm)] px-2 py-2 hover:bg-surface">
+                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center justify-between gap-2 rounded-[var(--radius-sm)] px-2 py-2 hover:bg-white/5">
                       <span className="min-w-0">
-                        <span className="block truncate text-sm font-semibold text-ink">{c.name}</span>
-                        <span className="block truncate text-xs text-muted">{LEAD_LABELS[lead.type]}</span>
+                        <span className="block truncate text-sm font-semibold text-white">{c.name}</span>
+                        <span className="block truncate text-xs text-white/50">{LEAD_LABELS[lead.type]}</span>
                       </span>
                       <span className="shrink-0 text-xs font-medium text-warning">{relativeTime(lead.createdAt)}</span>
                     </Link>
@@ -92,12 +119,12 @@ export default async function CrmOverviewPage() {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Where leads come from */}
-        <section aria-labelledby="sources-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
-          <h2 id="sources-heading" className="font-display text-lg font-bold text-ink">
+        <section aria-labelledby="sources-heading" className={CARD}>
+          <h2 id="sources-heading" className="font-display text-lg font-bold text-white">
             Where leads come from
           </h2>
           {sources.length === 0 ? (
-            <p className="mt-3 text-sm text-slate">No leads yet.</p>
+            <p className="mt-3 text-sm text-white/50">No leads yet.</p>
           ) : (
             <ul className="mt-4 grid gap-3">
               {sources.map((s) => {
@@ -105,14 +132,14 @@ export default async function CrmOverviewPage() {
                 return (
                   <li key={s.type} className="grid gap-1">
                     <div className="flex items-center justify-between gap-2 text-sm">
-                      <span className="flex min-w-0 items-center gap-2 font-medium text-ink">
-                        <Icon className="size-4 shrink-0 text-navy-700" aria-hidden />
+                      <span className="flex min-w-0 items-center gap-2 font-medium text-white/80">
+                        <Icon className="size-4 shrink-0 text-lime-300" aria-hidden />
                         <span className="truncate">{LEAD_LABELS[s.type]}</span>
                       </span>
-                      <span className="tabular text-muted">{s.count}</span>
+                      <span className="tabular text-white/50">{s.count}</span>
                     </div>
-                    <div className="h-1.5 overflow-hidden rounded-full bg-surface">
-                      <div className="h-full rounded-full bg-accent" style={{ width: `${(s.count / maxSource) * 100}%` }} />
+                    <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                      <div className="h-full rounded-full bg-lime-400" style={{ width: `${(s.count / maxSource) * 100}%` }} />
                     </div>
                   </li>
                 );
@@ -122,41 +149,41 @@ export default async function CrmOverviewPage() {
         </section>
 
         {/* Recent activity */}
-        <section aria-labelledby="recent-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)] lg:col-span-2">
+        <section aria-labelledby="recent-heading" className={`${CARD} lg:col-span-2`}>
           <div className="flex items-center justify-between">
-            <h2 id="recent-heading" className="font-display text-lg font-bold text-ink">
+            <h2 id="recent-heading" className="font-display text-lg font-bold text-white">
               Recent leads
             </h2>
-            <Link href="/crm/leads" className="inline-flex items-center gap-1 text-sm font-semibold text-navy-700 hover:underline">
+            <Link href="/crm/leads" className="inline-flex items-center gap-1 text-sm font-semibold text-lime-300 hover:underline">
               View all <ArrowRight className="size-3.5" aria-hidden />
             </Link>
           </div>
           {recent.length === 0 ? (
-            <p className="mt-3 text-sm text-slate">No leads yet. They&apos;ll show up here as soon as someone submits a form.</p>
+            <p className="mt-3 text-sm text-white/50">No leads yet. They&apos;ll show up here as soon as someone submits a form.</p>
           ) : (
-            <ul className="mt-3 divide-y divide-line">
+            <ul className="mt-3 divide-y divide-white/10">
               {recent.map((lead) => {
                 const c = contactSummary(lead);
                 const Icon = TYPE_ICONS[lead.type];
                 const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
                 return (
                   <li key={lead.id}>
-                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 rounded-[var(--radius-sm)] py-2.5 hover:bg-surface">
+                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 rounded-[var(--radius-sm)] py-2.5 hover:bg-white/5">
                       {photo ? (
-                        <Image src={photo.url} alt={photo.alt} width={112} height={84} className="size-14 shrink-0 rounded-[var(--radius-md)] border border-line object-cover" />
+                        <Image src={photo.url} alt={photo.alt} width={112} height={84} className="size-14 shrink-0 rounded-[var(--radius-md)] border border-white/10 object-cover" />
                       ) : (
-                        <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-line text-navy-700">
+                        <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-white/10 text-white/50">
                           <Icon className="size-5" aria-hidden />
                         </span>
                       )}
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-semibold text-ink">{c.name}</span>
-                        <span className="block truncate text-xs text-muted">
+                        <span className="block truncate text-sm font-semibold text-white">{c.name}</span>
+                        <span className="block truncate text-xs text-white/50">
                           {LEAD_LABELS[lead.type]} · {relativeTime(lead.createdAt)}
                         </span>
-                        {photo?.name && <span className="mt-0.5 block truncate text-xs font-medium text-navy-700">{photo.name}</span>}
+                        {photo?.name && <span className="mt-0.5 block truncate text-xs font-medium text-lime-300">{photo.name}</span>}
                       </span>
-                      <span className="hidden shrink-0 items-center gap-2 text-muted sm:flex">
+                      <span className="hidden shrink-0 items-center gap-2 text-white/40 sm:flex">
                         {c.phone && <Phone className="size-3.5" aria-hidden />}
                         {c.email && <Mail className="size-3.5" aria-hidden />}
                       </span>
@@ -171,35 +198,35 @@ export default async function CrmOverviewPage() {
       </div>
 
       {/* Monthly history */}
-      <section aria-labelledby="history-heading" className="rounded-[var(--radius-lg)] border border-line bg-white p-5 shadow-[var(--shadow-card)]">
+      <section aria-labelledby="history-heading" className={CARD}>
         <div className="flex items-center gap-1.5">
-          <History className="size-4 text-navy-700" aria-hidden />
-          <h2 id="history-heading" className="font-display text-lg font-bold text-ink">
+          <History className="size-4 text-lime-300" aria-hidden />
+          <h2 id="history-heading" className="font-display text-lg font-bold text-white">
             Leads by month
           </h2>
         </div>
-        <p className="mt-0.5 text-xs text-muted">Every month is kept on record — pick one to see just those leads.</p>
+        <p className="mt-0.5 text-xs text-white/50">Every month is kept on record — pick one to see just those leads.</p>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {history.map((m) => (
             <li key={m.key}>
               <Link
                 href={`/crm/leads?month=${m.key}`}
-                className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-line px-3 py-2.5 text-sm hover:border-navy-300 hover:bg-surface"
+                className="flex items-center justify-between gap-3 rounded-[var(--radius-sm)] border border-white/10 px-3 py-2.5 text-sm hover:border-white/25 hover:bg-white/5"
               >
                 <span className="min-w-0">
-                  <span className="block truncate font-semibold text-ink">{m.label}</span>
-                  <span className="mt-1 block h-1 w-full overflow-hidden rounded-full bg-surface">
-                    <span className="block h-full rounded-full bg-navy-700" style={{ width: `${(m.count / maxMonth) * 100}%` }} />
+                  <span className="block truncate font-semibold text-white">{m.label}</span>
+                  <span className="mt-1 block h-1 w-full overflow-hidden rounded-full bg-white/10">
+                    <span className="block h-full rounded-full bg-lime-400" style={{ width: `${(m.count / maxMonth) * 100}%` }} />
                   </span>
                 </span>
-                <span className="shrink-0 tabular font-semibold text-ink">{m.count}</span>
+                <span className="shrink-0 tabular font-semibold text-white">{m.count}</span>
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <p className="text-xs text-muted">Status breakdown: {(Object.keys(STATUS_LABELS) as (keyof typeof STATUS_LABELS)[]).map((s) => `${STATUS_LABELS[s]} ${counts.byStatus[s]}`).join(" · ")}</p>
+      <p className="text-xs text-white/40">Status breakdown: {(Object.keys(STATUS_LABELS) as (keyof typeof STATUS_LABELS)[]).map((s) => `${STATUS_LABELS[s]} ${counts.byStatus[s]}`).join(" · ")}</p>
     </div>
   );
 }
@@ -222,13 +249,13 @@ function StatCard({
   tone?: "warning";
 }) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-line bg-white p-4 shadow-[var(--shadow-card)] transition-shadow duration-200 hover:shadow-[var(--shadow-raised)]">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted">
+    <div className="rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-4 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-[border-color] duration-200 hover:border-white/20">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
         <Icon className="size-3.5" aria-hidden /> {label}
       </div>
-      <div className={`mt-2 font-display text-3xl font-bold tabular ${tone === "warning" && Number(value) > 0 ? "text-warning" : "text-ink"}`}>{value}</div>
+      <div className={`mt-2 font-display text-3xl font-bold tabular ${tone === "warning" && Number(value) > 0 ? "text-warning" : "text-white"}`}>{value}</div>
       {trend && <p className={`mt-0.5 text-xs font-medium ${trendTone === "success" ? "text-success" : "text-warning"}`}>{trend}</p>}
-      {hint && <p className="mt-0.5 text-xs text-muted">{hint}</p>}
+      {hint && <p className="mt-0.5 text-xs text-white/40">{hint}</p>}
     </div>
   );
 }
