@@ -10,7 +10,7 @@ import { MapEmbed } from "@/components/contact/MapEmbed";
 const weekdayHours = business.hoursSummary[0];
 
 export const metadata = pageMetadata({
-  title: "Contact & Directions",
+  title: "Contact & Directions | Live Oak, TX",
   description: `Contact Auto Select in Live Oak, TX. Call ${business.phone.display}, email our team, or visit us at ${fullAddress}. Open ${weekdayHours.label}, ${weekdayHours.value}.`,
   path: "/contact",
 });

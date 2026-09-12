@@ -63,6 +63,8 @@ export function dealerJsonLd() {
       postalCode: business.address.postalCode,
       addressCountry: business.address.country,
     },
+    geo: { "@type": "GeoCoordinates", latitude: business.geo.lat, longitude: business.geo.lng },
+    priceRange: "$$",
     areaServed: [
       { "@type": "City", name: "Live Oak" },
       { "@type": "City", name: "San Antonio" },
