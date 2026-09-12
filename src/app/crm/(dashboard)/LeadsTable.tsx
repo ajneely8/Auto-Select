@@ -133,7 +133,7 @@ export function LeadsTable({
       </p>
 
       {filtered.length === 0 ? (
-        <div className="mt-4 rounded-[var(--radius-md)] border border-dashed border-white/15 bg-[#161616] p-10 text-center text-white/50">
+        <div className="mt-4 rounded-[20px] border border-dashed border-white/15 bg-[#161616] p-10 text-center text-white/50">
           {leads.length === 0 ? "No leads yet. They'll show up here as soon as someone submits a form." : "No leads match those filters."}
         </div>
       ) : (
@@ -146,7 +146,7 @@ export function LeadsTable({
             return (
               <li
                 key={lead.id}
-                className="rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-4 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-white/25 sm:p-5"
+                className="rounded-[20px] border border-white/10 bg-[#161616] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_28px_-14px_rgba(0,0,0,0.7)] transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-lime-400/30 sm:p-5"
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex min-w-0 gap-4">

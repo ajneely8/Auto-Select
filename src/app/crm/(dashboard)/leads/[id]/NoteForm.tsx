@@ -20,7 +20,7 @@ export function NoteForm({ leadId, notes }: { leadId: string; notes: LeadNote[] 
   }, [pending, state]);
 
   return (
-    <section aria-labelledby="notes-heading" className="rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] sm:p-6">
+    <section aria-labelledby="notes-heading" className="rounded-[20px] border border-white/10 bg-[#161616] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_28px_-14px_rgba(0,0,0,0.7)] sm:p-6">
       <h2 id="notes-heading" className="flex items-center gap-1.5 font-display text-lg font-bold text-white">
         <StickyNote className="size-4" aria-hidden /> Internal notes
       </h2>

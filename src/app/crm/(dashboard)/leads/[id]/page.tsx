@@ -13,7 +13,7 @@ import { DeleteLeadButton } from "../../DeleteLeadButton";
 import { NoteForm } from "./NoteForm";
 
 const vehicleStatusTone = { available: "success", pending: "warning", sold: "neutral", "in-transit": "navy" } as const;
-const CARD = "rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]";
+const CARD = "rounded-[20px] border border-white/10 bg-[#161616] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_28px_-14px_rgba(0,0,0,0.7)]";
 
 export const metadata = { title: "Lead", robots: { index: false, follow: false } };
 

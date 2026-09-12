@@ -28,7 +28,7 @@ export function CrmNav() {
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
-                  className="flex min-h-11 items-center gap-2.5 rounded-[var(--radius-md)] px-3 text-sm font-medium text-white/60 hover:bg-white/5 hover:text-white aria-[current=page]:bg-lime-400 aria-[current=page]:font-semibold aria-[current=page]:text-black"
+                  className="flex min-h-11 items-center gap-2.5 rounded-[var(--radius-md)] px-3 text-sm font-medium text-white/60 transition-shadow duration-200 hover:bg-white/5 hover:text-white aria-[current=page]:bg-lime-400 aria-[current=page]:font-semibold aria-[current=page]:text-black aria-[current=page]:shadow-[0_0_16px_0_rgba(163,230,53,0.35)]"
                 >
                   <item.icon className="size-4 shrink-0" aria-hidden />
                   {item.label}

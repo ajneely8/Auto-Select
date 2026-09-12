@@ -7,7 +7,7 @@ export function Gauge({ value, max, display, sublabel }: { value: number; max: n
 
   return (
     <div className="flex flex-col items-center">
-      <svg viewBox="0 0 100 58" className="w-full max-w-[160px]">
+      <svg viewBox="0 0 100 58" className="w-full max-w-[160px] overflow-visible">
         <path d="M 10 52 A 40 40 0 0 1 90 52" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="9" strokeLinecap="round" />
         <path
           d="M 10 52 A 40 40 0 0 1 90 52"
@@ -16,10 +16,11 @@ export function Gauge({ value, max, display, sublabel }: { value: number; max: n
           strokeWidth="9"
           strokeLinecap="round"
           strokeDasharray={`${dash} ${circumference}`}
+          style={{ filter: "drop-shadow(0 0 5px rgba(163,230,53,0.55))" }}
         />
       </svg>
       <div className="-mt-5 text-center">
-        <div className="font-display text-xl font-bold text-lime-400">{display}</div>
+        <div className="font-display text-xl font-bold text-lime-400 [text-shadow:0_0_14px_rgba(163,230,53,0.35)]">{display}</div>
         {sublabel && <div className="mt-0.5 text-xs text-white/40">{sublabel}</div>}
       </div>
     </div>

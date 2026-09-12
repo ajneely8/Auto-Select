@@ -13,8 +13,8 @@ export default async function CrmDashboardLayout({ children }: { children: React
   if (!session) redirect("/crm/login");
 
   return (
-    <div className="min-h-dvh bg-[#0a0a0a] text-white on-dark">
-      <header className="sticky top-0 z-10 border-b border-white/10 bg-[#111111]">
+    <div className="min-h-dvh bg-[#0a0a0a] bg-[radial-gradient(ellipse_70%_45%_at_50%_-8%,rgba(163,230,53,0.05),transparent)] text-white on-dark">
+      <header className="sticky top-0 z-10 border-b border-white/10 bg-[#111111]/90 backdrop-blur">
         <div className="container-page flex h-16 items-center gap-4">
           <Link href="/crm" className="flex shrink-0 items-center gap-2.5">
             <Image src="/brand-logo.png" alt="" width={200} height={79} className="h-11 w-auto" />

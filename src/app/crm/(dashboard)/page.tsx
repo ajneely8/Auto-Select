@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Users, Clock, TrendingUp, ArrowRight, CheckCircle2, Phone, Mail, CalendarDays, History } from "lucide-react";
+import { Users, Clock, TrendingUp, ArrowRight, ArrowUpRight, CheckCircle2, Phone, Mail, CalendarDays, History } from "lucide-react";
 import { listLeads, summarize, typeBreakdown, needsAttention, dailyCounts, responseRate, weeklyTrend, thisMonthCount, monthlyHistory } from "@/lib/crm/leads";
 import { LEAD_LABELS, STATUS_LABELS, contactSummary, relativeTime } from "@/lib/crm/format";
 import { TYPE_ICONS } from "@/lib/crm/icons";
@@ -11,7 +11,10 @@ import { Gauge, gaugeScale } from "./Gauge";
 
 export const metadata = { title: "Overview", robots: { index: false, follow: false } };
 
-const CARD = "rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-5 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]";
+const CARD =
+  "rounded-[20px] border border-white/10 bg-[#161616] p-5 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_28px_-14px_rgba(0,0,0,0.7)]";
+const ARROW_BTN =
+  "inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-lime-400/40 hover:text-lime-300";
 
 export default async function CrmOverviewPage() {
   const leads = await listLeads();
@@ -38,24 +41,41 @@ export default async function CrmOverviewPage() {
       {/* Headline stats — three dials, mirroring a speedometer-style dashboard read */}
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div className={`${CARD} flex flex-col items-center`}>
-          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
-            <Users className="size-3.5" aria-hidden /> Total leads
+          <div className="flex w-full items-center justify-between gap-2">
+            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+              <Users className="size-3.5" aria-hidden /> Total leads
+            </span>
+            <Link href="/crm/leads" className={ARROW_BTN} aria-label="Go to all leads">
+              <ArrowUpRight className="size-4" aria-hidden />
+            </Link>
           </div>
           <div className="mt-2">
             <Gauge value={counts.total} max={gaugeScale(counts.total)} display={String(counts.total)} />
           </div>
         </div>
         <div className={`${CARD} flex flex-col items-center`}>
-          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
-            <CalendarDays className="size-3.5" aria-hidden /> This month
+          <div className="flex w-full items-center justify-between gap-2">
+            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+              <CalendarDays className="size-3.5" aria-hidden /> This month
+            </span>
+            {history[0] && (
+              <Link href={`/crm/leads?month=${history[0].key}`} className={ARROW_BTN} aria-label="Go to this month's leads">
+                <ArrowUpRight className="size-4" aria-hidden />
+              </Link>
+            )}
           </div>
           <div className="mt-2">
             <Gauge value={thisMonth} max={gaugeScale(thisMonth)} display={String(thisMonth)} sublabel={history[0]?.label} />
           </div>
         </div>
         <div className={`${CARD} flex flex-col items-center`}>
-          <div className="flex w-full items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
-            <CheckCircle2 className="size-3.5" aria-hidden /> Response rate
+          <div className="flex w-full items-center justify-between gap-2">
+            <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
+              <CheckCircle2 className="size-3.5" aria-hidden /> Response rate
+            </span>
+            <Link href="/crm/leads" className={ARROW_BTN} aria-label="Go to all leads">
+              <ArrowUpRight className="size-4" aria-hidden />
+            </Link>
           </div>
           <div className="mt-2">
             <Gauge value={rate ?? 0} max={100} display={rate == null ? "—" : `${rate}%`} sublabel="Not new or spam" />
@@ -249,7 +269,7 @@ function StatCard({
   tone?: "warning";
 }) {
   return (
-    <div className="rounded-[var(--radius-lg)] border border-white/10 bg-[#161616] p-4 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] transition-[border-color] duration-200 hover:border-white/20">
+    <div className="rounded-[20px] border border-white/10 bg-[#161616] p-4 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06),0_12px_28px_-14px_rgba(0,0,0,0.7)] transition-[border-color] duration-200 hover:border-white/20">
       <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-white/50">
         <Icon className="size-3.5" aria-hidden /> {label}
       </div>
