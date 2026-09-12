@@ -9,7 +9,7 @@ import { contactFields, typeSchemas, usesContactFields, emailOnlySchema, LEAD_LA
 import { formDataToRecord, formatPhone, cleanLine } from "./sanitize";
 import { looksLikeBot, verifyTurnstile, rateLimit, fingerprint, checkDuplicate, rememberSubmission } from "./spam";
 import { leadStore } from "./store";
-import { sendEmail, sendSms, pushToCrm } from "@/lib/integrations";
+import { sendEmail, sendSms, pushToCrm, emailHtml } from "@/lib/integrations";
 import { pushLeadToDealerCenter } from "@/lib/integrations/adf";
 import { validateSlot, formatDateLong, formatSlot } from "@/lib/scheduling/hours";
 import { scheduling } from "@/lib/scheduling/provider";
@@ -204,6 +204,21 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
       ? `${formatDateLong(String(details.date))} at ${formatSlot(String(details.time))} (${confirmed ? "confirmed" : "requested — not yet confirmed"})`
       : null;
 
+  const internalText = [
+    `${label} · ${lead.id}`,
+    `Name: ${lead.firstName} ${lead.lastName}`.trim(),
+    `Phone: ${lead.phone ? formatPhone(lead.phone) : "—"} · Email: ${lead.email}`,
+    `Prefers: ${lead.preferredContactMethod}${lead.smsConsent ? " · SMS consent: yes" : ""}`,
+    `Vehicle: ${vehicleLine}`,
+    when ? `When: ${when}` : "",
+    lead.message ? `Message: ${lead.message}` : "",
+    safeDetails ? `\nDetails:\n${safeDetails}` : "",
+    SENSITIVE_FIELDS.size && Object.keys(details).some((k) => SENSITIVE_FIELDS.has(k) && details[k]) ? "\nFinancial/VIN details were provided — view them in the CRM or lead store." : "",
+    `\nPage: ${lead.sourcePage || "—"} · Referrer: ${lead.referrer || "—"}${utm.source ? ` · UTM: ${utm.source}/${utm.medium ?? ""}/${utm.campaign ?? ""}` : ""}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   const internal = {
     to: env.LEAD_NOTIFY_EMAIL
       ? env.LEAD_NOTIFY_EMAIL.split(",").map((e) => e.trim()).filter(Boolean)
@@ -211,20 +226,8 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
     subject: `New ${label}${vehicle ? ` — ${vehicleFullName(vehicle)}` : ""} (${lead.id})`,
     replyTo: lead.email,
     tags: ["lead", type],
-    text: [
-      `${label} · ${lead.id}`,
-      `Name: ${lead.firstName} ${lead.lastName}`.trim(),
-      `Phone: ${lead.phone ? formatPhone(lead.phone) : "—"} · Email: ${lead.email}`,
-      `Prefers: ${lead.preferredContactMethod}${lead.smsConsent ? " · SMS consent: yes" : ""}`,
-      `Vehicle: ${vehicleLine}`,
-      when ? `When: ${when}` : "",
-      lead.message ? `Message: ${lead.message}` : "",
-      safeDetails ? `\nDetails:\n${safeDetails}` : "",
-      SENSITIVE_FIELDS.size && Object.keys(details).some((k) => SENSITIVE_FIELDS.has(k) && details[k]) ? "\nFinancial/VIN details were provided — view them in the CRM or lead store." : "",
-      `\nPage: ${lead.sourcePage || "—"} · Referrer: ${lead.referrer || "—"}${utm.source ? ` · UTM: ${utm.source}/${utm.medium ?? ""}/${utm.campaign ?? ""}` : ""}`,
-    ]
-      .filter(Boolean)
-      .join("\n"),
+    text: internalText,
+    html: emailHtml(internalText),
   };
 
   const unsubscribe = `${siteUrl}/unsubscribe?email=${encodeURIComponent(lead.email)}&token=${unsubscribeToken(lead.email)}`;
@@ -241,25 +244,28 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
     "service-contract": "service-contract quote request",
     "inventory-alert": "inventory alert",
   };
+  const customerText = [
+    `Hi ${lead.firstName || "there"},`,
+    "",
+    `Thanks for contacting ${business.name}. We received your ${friendly[type]}${vehicle ? ` for the ${vehicleFullName(vehicle)}` : ""}.`,
+    when ? `Requested time: ${when}. ${confirmed ? "" : "A team member will contact you to confirm it."}` : "",
+    type === "trade-in" ? "Online estimates are preliminary and subject to a physical inspection." : "",
+    `A team member will follow up during business hours (${business.hoursSummary.map((h) => `${h.label} ${h.value}`).join("; ")}).`,
+    `Reference: ${lead.id}`,
+    "",
+    `Questions? Call ${business.phone.display} or reply to this email.`,
+    `${business.name} · ${business.address.street}, ${business.address.city}, ${business.address.region} ${business.address.postalCode}`,
+    type === "inventory-alert" ? `\nUnsubscribe anytime: ${unsubscribe}` : "",
+  ]
+    .filter((l) => l !== "")
+    .join("\n");
+
   const customer = {
     to: lead.email,
     subject: `We received your ${friendly[type]} — ${business.name}`,
     tags: ["confirmation", type],
-    text: [
-      `Hi ${lead.firstName || "there"},`,
-      "",
-      `Thanks for contacting ${business.name}. We received your ${friendly[type]}${vehicle ? ` for the ${vehicleFullName(vehicle)}` : ""}.`,
-      when ? `Requested time: ${when}. ${confirmed ? "" : "A team member will contact you to confirm it."}` : "",
-      type === "trade-in" ? "Online estimates are preliminary and subject to a physical inspection." : "",
-      `A team member will follow up during business hours (${business.hoursSummary.map((h) => `${h.label} ${h.value}`).join("; ")}).`,
-      `Reference: ${lead.id}`,
-      "",
-      `Questions? Call ${business.phone.display} or reply to this email.`,
-      `${business.name} · ${business.address.street}, ${business.address.city}, ${business.address.region} ${business.address.postalCode}`,
-      type === "inventory-alert" ? `\nUnsubscribe anytime: ${unsubscribe}` : "",
-    ]
-      .filter((l) => l !== "")
-      .join("\n"),
+    text: customerText,
+    html: emailHtml(customerText),
   };
 
   await Promise.allSettled([

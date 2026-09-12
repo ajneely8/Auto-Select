@@ -3,6 +3,7 @@ import { createHmac } from "node:crypto";
 import { Resend } from "resend";
 import { env } from "@/config/env";
 import { business } from "@/config/business";
+import { siteUrl } from "@/config/site";
 import { enqueueRetry } from "./retry-queue";
 
 /**
@@ -33,6 +34,24 @@ export interface EmailMessage {
 export interface SmsMessage {
   to: string;
   body: string;
+}
+
+function escapeHtml(s: string) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+/** Wraps a plain-text email body as simple HTML and appends the Auto Select logo as a footer. */
+export function emailHtml(text: string) {
+  const body = escapeHtml(text)
+    .split("\n\n")
+    .map((para) => `<p style="margin:0 0 12px;white-space:pre-line;">${para}</p>`)
+    .join("");
+  return `<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;color:#111827;max-width:560px;margin:0 auto;">
+${body}
+<div style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;text-align:center;">
+<img src="${siteUrl}/brand-logo.png" alt="${business.name}" width="160" style="display:inline-block;width:160px;max-width:160px;height:auto;" />
+</div>
+</div>`;
 }
 
 export function sign(body: string) {
