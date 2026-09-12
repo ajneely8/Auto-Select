@@ -122,11 +122,13 @@ export function VehicleCard({
           <CompareToggle id={v.id} label={title} />
           <ShareButton path={href} title={title} />
         </div>
-        <div className="relative z-10 mt-2 grid grid-cols-2 gap-2">
-          <Link href={href} className={buttonClasses("outline", "md", "w-full")}>
+        {/* flex-wrap (not grid-cols-2) so a narrow card drops "Check Availability" to its own full-width
+            row instead of clipping it — grid would force both into a fixed 50% track. */}
+        <div className="relative z-10 mt-2 flex flex-wrap gap-2">
+          <Link href={href} className={buttonClasses("outline", "md", "flex-1 min-w-[132px]")}>
             View Details
           </Link>
-          <Link href={`${href}#availability`} className={buttonClasses("primary", "md", "w-full")}>
+          <Link href={`${href}#availability`} className={buttonClasses("primary", "md", "flex-1 min-w-[168px]")}>
             Check Availability
           </Link>
         </div>
