@@ -63,6 +63,7 @@ export default function ServiceContractsPage() {
         title="Repair protection for after the factory warranty"
         intro="Extended service protection may be available for vehicles outside the manufacturer's warranty. Request a quote for details."
         breadcrumbs={<Breadcrumbs tone="dark" items={[{ name: "Service Contracts", path: "/service-contracts" }]} />}
+        facebookVideoUrl="https://www.facebook.com/share/v/1DfdqxbpYm/"
       >
         <ButtonLink href="#quote" size="lg">
           Request a quote

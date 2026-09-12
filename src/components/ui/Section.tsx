@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { HeroVideo } from "./HeroVideo";
 
 export function Section({
   id,
@@ -66,16 +67,23 @@ export function PageHero({
   intro,
   children,
   breadcrumbs,
+  facebookVideoUrl,
 }: {
   eyebrow?: string;
   title: ReactNode;
   intro?: ReactNode;
   children?: ReactNode;
   breadcrumbs?: ReactNode;
+  /** Replaces the decorative pattern with a click-to-play background video (see HeroVideo). */
+  facebookVideoUrl?: string;
 }) {
   return (
     <header className="relative bg-navy-900 text-white on-dark overflow-hidden">
-      <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 opacity-[0.07] bg-[repeating-linear-gradient(115deg,#fff_0_1px,transparent_1px_22px)]" />
+      {facebookVideoUrl ? (
+        <HeroVideo facebookVideoUrl={facebookVideoUrl} />
+      ) : (
+        <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 opacity-[0.07] bg-[repeating-linear-gradient(115deg,#fff_0_1px,transparent_1px_22px)]" />
+      )}
       <div className="container-page relative py-10 sm:py-14">
         {breadcrumbs}
         {eyebrow && <p className="eyebrow !text-accent mb-2">{eyebrow}</p>}
