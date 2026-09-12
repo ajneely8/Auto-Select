@@ -5,6 +5,7 @@ import path from "node:path";
 import { getStore } from "@netlify/blobs";
 import { env } from "@/config/env";
 import type { Lead } from "@/lib/types";
+import { withLeadsFileLock } from "./file-lock";
 
 /**
  * Lead storage adapter.
@@ -22,8 +23,10 @@ export interface LeadStore {
 
 const fileStore: LeadStore = {
   async save(lead) {
-    await fs.mkdir(dataDir(), { recursive: true });
-    await fs.appendFile(path.join(dataDir(), "leads.ndjson"), JSON.stringify(lead) + "\n", { mode: 0o600 });
+    await withLeadsFileLock(async () => {
+      await fs.mkdir(dataDir(), { recursive: true });
+      await fs.appendFile(path.join(dataDir(), "leads.ndjson"), JSON.stringify(lead) + "\n", { mode: 0o600 });
+    });
   },
   async saveUpload(leadId, file) {
     const safe = file.name.replace(/[^a-z0-9._-]/gi, "_").slice(-80) || "photo.jpg";

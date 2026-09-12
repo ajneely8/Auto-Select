@@ -4,11 +4,15 @@ import path from "node:path";
 import { dataDir } from "@/lib/data-dir";
 import type { Lead, LeadStatus } from "@/lib/types";
 import type { CrmLeadStore } from "./types";
+import { withLeadsFileLock } from "@/lib/leads/file-lock";
 
 /**
  * `LEAD_STORE=file` (the default). Fine for a single small-business instance on a VPS or local
- * dev, but not durable on serverless hosting and not safe for concurrent writers — see
- * ./blobs.ts for the Netlify-hosted alternative.
+ * dev, but not durable on serverless hosting — see ./blobs.ts for the Netlify-hosted alternative.
+ * Every write here goes through `withLeadsFileLock` (shared with the append in
+ * `src/lib/leads/store.ts`) so a new lead landing can never race a status/note/delete rewrite and
+ * get silently erased — safe for any number of concurrent requests within this one process, which
+ * is the only case a single-VPS deployment ever needs.
  */
 const FILE = () => path.join(dataDir(), "leads.ndjson");
 
@@ -47,33 +51,42 @@ async function rewrite(leads: Lead[]) {
 }
 
 async function updateLeadStatus(id: string, status: LeadStatus): Promise<boolean> {
-  const leads = await listLeads();
-  const target = leads.find((l) => l.id === id);
-  if (!target) return false;
-  target.status = status;
-  await rewrite(leads);
-  return true;
+  return withLeadsFileLock(async () => {
+    const leads = await listLeads();
+    const target = leads.find((l) => l.id === id);
+    if (!target) return false;
+    target.status = status;
+    await rewrite(leads);
+    return true;
+  });
 }
 
 async function addLeadNote(id: string, text: string): Promise<boolean> {
   const trimmed = text.trim().slice(0, 2000);
   if (!trimmed) return false;
-  const leads = await listLeads();
-  const target = leads.find((l) => l.id === id);
-  if (!target) return false;
-  target.notes = [...(target.notes ?? []), { text: trimmed, at: new Date().toISOString() }];
-  await rewrite(leads);
-  return true;
+  return withLeadsFileLock(async () => {
+    const leads = await listLeads();
+    const target = leads.find((l) => l.id === id);
+    if (!target) return false;
+    target.notes = [...(target.notes ?? []), { text: trimmed, at: new Date().toISOString() }];
+    await rewrite(leads);
+    return true;
+  });
 }
 
 async function deleteLead(id: string): Promise<boolean> {
-  const leads = await listLeads();
-  const next = leads.filter((l) => l.id !== id);
-  if (next.length === leads.length) return false;
-  await rewrite(next);
-  // Best-effort: also clear any trade-in photos uploaded for this lead. Not fatal if it's already gone.
-  await fs.rm(path.join(dataDir(), "uploads", id), { recursive: true, force: true }).catch(() => {});
-  return true;
+  const deleted = await withLeadsFileLock(async () => {
+    const leads = await listLeads();
+    const next = leads.filter((l) => l.id !== id);
+    if (next.length === leads.length) return false;
+    await rewrite(next);
+    return true;
+  });
+  if (deleted) {
+    // Best-effort: also clear any trade-in photos uploaded for this lead. Not fatal if it's already gone.
+    await fs.rm(path.join(dataDir(), "uploads", id), { recursive: true, force: true }).catch(() => {});
+  }
+  return deleted;
 }
 
 export const fileLeadStore: CrmLeadStore = { listLeads, getLead, updateLeadStatus, addLeadNote, deleteLead };
