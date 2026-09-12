@@ -188,24 +188,24 @@ export default async function CrmOverviewPage() {
                 const photo = lead.vehicleId ? vehiclePhotos[lead.vehicleId] : undefined;
                 return (
                   <li key={lead.id}>
-                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-3 rounded-[var(--radius-sm)] py-2.5 hover:bg-white/5">
+                    <Link href={`/crm/leads/${lead.id}`} className="flex items-center gap-4 rounded-[var(--radius-md)] py-3 hover:bg-white/5">
                       {photo ? (
-                        <Image src={photo.url} alt={photo.alt} width={112} height={84} className="size-14 shrink-0 rounded-[var(--radius-md)] border border-white/10 object-cover" />
+                        <Image src={photo.url} alt={photo.alt} width={160} height={120} className="size-20 shrink-0 rounded-[var(--radius-md)] border border-white/10 object-cover" />
                       ) : (
-                        <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-white/10 text-white/50">
-                          <Icon className="size-5" aria-hidden />
+                        <span className="flex size-20 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-white/10 text-white/50">
+                          <Icon className="size-7" aria-hidden />
                         </span>
                       )}
                       <span className="min-w-0 flex-1">
-                        <span className="block truncate text-sm font-semibold text-white">{c.name}</span>
-                        <span className="block truncate text-xs text-white/50">
+                        <span className="block truncate text-lg font-bold text-white">{c.name}</span>
+                        <span className="block truncate text-sm text-white/50">
                           {LEAD_LABELS[lead.type]} · {relativeTime(lead.createdAt)}
                         </span>
-                        {photo?.name && <span className="mt-0.5 block truncate text-xs font-medium text-lime-300">{photo.name}</span>}
+                        {photo?.name && <span className="mt-0.5 block truncate text-sm font-semibold text-lime-300">{photo.name}</span>}
                       </span>
-                      <span className="hidden shrink-0 items-center gap-2 text-white/40 sm:flex">
-                        {c.phone && <Phone className="size-3.5" aria-hidden />}
-                        {c.email && <Mail className="size-3.5" aria-hidden />}
+                      <span className="hidden shrink-0 items-center gap-3 text-white/40 sm:flex">
+                        {c.phone && <Phone className="size-4" aria-hidden />}
+                        {c.email && <Mail className="size-4" aria-hidden />}
                       </span>
                       <StatusBadge status={lead.status} />
                     </Link>
