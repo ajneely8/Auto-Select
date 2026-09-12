@@ -14,6 +14,7 @@ export const mainNav = [
 
 /** Secondary sections, reachable from the desktop header's "More" menu (and always listed in the mobile menu). */
 export const moreNav = [
+  { href: "/reviews", label: "Reviews" },
   { href: "/delivery", label: "Delivery" },
   { href: "/service-contracts", label: "Service Contracts" },
   { href: "/saved", label: "Saved Vehicles" },
