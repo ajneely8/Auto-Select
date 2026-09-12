@@ -74,13 +74,16 @@ export function PageHero({
   intro?: ReactNode;
   children?: ReactNode;
   breadcrumbs?: ReactNode;
-  /** Replaces the decorative pattern with a click-to-play background video (see HeroVideo). */
+  /** Replaces the decorative pattern with an autoplaying background video (see HeroVideo). */
   facebookVideoUrl?: string;
 }) {
   return (
     <header className="relative bg-navy-900 text-white on-dark overflow-hidden">
       {facebookVideoUrl ? (
-        <HeroVideo facebookVideoUrl={facebookVideoUrl} />
+        <>
+          <HeroVideo facebookVideoUrl={facebookVideoUrl} />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/70 to-transparent" />
+        </>
       ) : (
         <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 opacity-[0.07] bg-[repeating-linear-gradient(115deg,#fff_0_1px,transparent_1px_22px)]" />
       )}
