@@ -80,18 +80,20 @@ export async function postWebhook(integration: IntegrationName, url: string, pay
 export async function sendEmail(msg: EmailMessage) {
   const from = env.EMAIL_FROM || `${business.name} <${business.email}>`;
   if (resend) {
-    const { error } = await resend.emails.send({
-      from,
-      to: msg.to,
-      subject: msg.subject,
-      text: msg.text,
-      html: msg.html,
-      replyTo: msg.replyTo,
-    });
-    if (error) {
-      console.error("[email:resend] failed:", error);
-      return { delivered: false, mode: "error" as const };
+    // One-to-one sends, even when there are several recipients: a single message with many
+    // addresses in `To` reads as bulk/list mail to some providers (Yahoo in particular flagged
+    // these as spam while the single-recipient customer confirmation landed fine), so each
+    // recipient gets their own message instead.
+    const recipients = Array.isArray(msg.to) ? msg.to : [msg.to];
+    const results = await Promise.allSettled(
+      recipients.map((to) => resend!.emails.send({ from, to, subject: msg.subject, text: msg.text, html: msg.html, replyTo: msg.replyTo })),
+    );
+    let ok = 0;
+    for (const [i, r] of results.entries()) {
+      if (r.status === "fulfilled" && !r.value.error) ok++;
+      else console.error(`[email:resend] failed for ${recipients[i]}:`, r.status === "fulfilled" ? r.value.error : r.reason);
     }
+    if (ok === 0) return { delivered: false, mode: "error" as const };
     return { delivered: true, mode: "resend" as const };
   }
   if (!env.EMAIL_WEBHOOK_URL) {
