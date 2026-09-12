@@ -9,10 +9,15 @@ const schema = z.object({
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 
   // Inventory
-  INVENTORY_SOURCE: z.enum(["local", "feed"]).default("local"),
+  // "local": data/inventory.json, baked in at build time. "feed": fetch INVENTORY_FEED_URL.
+  // "file": read INVENTORY_FILE_PATH from disk fresh on every request — for a local process (like
+  // scripts/sync-dealercenter-inventory.mjs) that writes inventory JSON outside the git tree, no
+  // rebuild needed to pick up changes.
+  INVENTORY_SOURCE: z.enum(["local", "feed", "file"]).default("local"),
   INVENTORY_FEED_URL: z.string().url().optional(),
   INVENTORY_FEED_TOKEN: z.string().optional(),
   INVENTORY_REVALIDATE_SECONDS: z.coerce.number().int().positive().default(900),
+  INVENTORY_FILE_PATH: z.string().default(".data/dealercenter-inventory.json"),
 
   // Lead storage + notifications
   // "file" writes to LEAD_DATA_DIR (VPS/local — not durable on serverless). "none" doesn't persist

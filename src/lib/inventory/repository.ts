@@ -1,5 +1,7 @@
 import "server-only";
 import { cache } from "react";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 import localInventory from "@data/inventory.json";
 import type { InventoryFile, Vehicle } from "@/lib/types";
 import { normalizeVehicle } from "./schema";
@@ -9,9 +11,13 @@ import { env } from "@/config/env";
  * Inventory repository. Pages, the sitemap, JSON-LD, and the inventory assistant all read through here.
  *
  * Sources (set INVENTORY_SOURCE):
- *  - "local" (default): data/inventory.json — replace via `npm run inventory:import`.
+ *  - "local" (default): data/inventory.json, baked in at build time — replace via `npm run inventory:import`.
  *  - "feed": fetch INVENTORY_FEED_URL (JSON array or { vehicles: [] }) and revalidate every
  *    INVENTORY_REVALIDATE_SECONDS. Falls back to the local file if the feed fails.
+ *  - "file": read INVENTORY_FILE_PATH from disk on every request (not a static import, so no
+ *    rebuild is needed) — for scripts/sync-dealercenter-inventory.mjs, which writes inventory JSON
+ *    outside the git tree after parsing a DealerCenter feed drop. Falls back to the local file if
+ *    the file doesn't exist yet or fails to parse.
  */
 async function loadRaw(): Promise<unknown[]> {
   if (env.INVENTORY_SOURCE === "feed" && env.INVENTORY_FEED_URL) {
@@ -27,6 +33,17 @@ async function loadRaw(): Promise<unknown[]> {
       return list;
     } catch (err) {
       console.error("[inventory] feed failed, using local file:", err);
+    }
+  }
+  if (env.INVENTORY_SOURCE === "file") {
+    try {
+      const raw = await fs.readFile(path.resolve(env.INVENTORY_FILE_PATH), "utf8");
+      const body = JSON.parse(raw) as unknown;
+      const list = Array.isArray(body) ? body : (body as { vehicles?: unknown[] }).vehicles;
+      if (!Array.isArray(list)) throw new Error("Inventory file JSON must be an array or { vehicles: [] }");
+      return list;
+    } catch (err) {
+      console.error("[inventory] file source failed, using local file:", err);
     }
   }
   return (localInventory as unknown as InventoryFile).vehicles;
