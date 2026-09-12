@@ -70,7 +70,7 @@ export function Header() {
             width={200}
             height={79}
             priority
-            className={`w-auto transition-[height] duration-200 ${scrolled ? "h-9" : "h-10 lg:h-11"}`}
+            className={`w-auto transition-[height] duration-200 ${scrolled ? "h-11" : "h-12 lg:h-14"}`}
           />
         </Link>
 
