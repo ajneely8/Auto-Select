@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Barlow_Semi_Condensed } from "next/font/google";
 import "../(site)/globals.css";
 
@@ -15,6 +15,12 @@ const barlow = Barlow_Semi_Condensed({ subsets: ["latin"], weight: ["500", "600"
 export const metadata: Metadata = {
   title: { default: "Auto Select CRM", template: "%s | Auto Select CRM" },
   robots: { index: false, follow: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function CrmRootLayout({ children }: LayoutProps<"/crm">) {

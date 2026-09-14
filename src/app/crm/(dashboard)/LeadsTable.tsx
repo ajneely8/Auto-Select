@@ -12,7 +12,7 @@ import { StatusBadge, StatusSelect } from "./StatusSelect";
 import { DeleteLeadButton } from "./DeleteLeadButton";
 
 const selectCls =
-  "h-10 rounded-[var(--radius-sm)] border border-white/15 bg-white/5 px-3 text-sm text-white focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25 [color-scheme:dark]";
+  "h-10 w-full min-w-0 rounded-[var(--radius-sm)] border border-white/15 bg-white/5 px-3 text-sm text-white focus:border-lime-400 focus:outline-none focus:ring-2 focus:ring-lime-400/25 [color-scheme:dark] sm:w-auto";
 
 type Sort = "newest" | "oldest" | "name";
 
@@ -61,8 +61,8 @@ export function LeadsTable({
 
   return (
     <div>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <div className="relative flex-1">
+      <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="relative min-w-0 flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-white/40" aria-hidden />
           <input
             type="search"
