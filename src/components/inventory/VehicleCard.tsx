@@ -57,8 +57,16 @@ export function VehicleCard({
             )}
           </div>
         </Link>
+        {v.status === "sold" && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-11 bottom-6 w-40 -rotate-45 bg-danger py-1.5 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+          >
+            Sold
+          </div>
+        )}
         <div className="pointer-events-none absolute left-3 top-3 flex flex-wrap gap-1.5">
-          {v.status !== "available" && <Badge tone={v.status === "pending" ? "warning" : "navy"}>{statusLabel[v.status]}</Badge>}
+          {v.status !== "available" && v.status !== "sold" && <Badge tone={v.status === "pending" ? "warning" : "navy"}>{statusLabel[v.status]}</Badge>}
           {v.photoCount > 0 && (
             <Badge tone="dark">
               <Camera className="size-3.5" aria-hidden />
@@ -112,8 +120,10 @@ export function VehicleCard({
           <span className="inline-flex items-center gap-1">
             <Hash className="size-3.5" aria-hidden /> Stock <span className="font-semibold text-slate tabular">{v.stockNumber}</span>
           </span>
-          <span className={`inline-flex items-center gap-1.5 font-semibold ${v.status === "available" ? "text-success" : "text-warning"}`}>
-            <span className={`size-2 rounded-full ${v.status === "available" ? "bg-success" : "bg-warning"}`} aria-hidden />
+          <span
+            className={`inline-flex items-center gap-1.5 font-semibold ${v.status === "available" ? "text-success" : v.status === "sold" ? "text-danger" : "text-warning"}`}
+          >
+            <span className={`size-2 rounded-full ${v.status === "available" ? "bg-success" : v.status === "sold" ? "bg-danger" : "bg-warning"}`} aria-hidden />
             {statusLabel[v.status]}
           </span>
         </div>

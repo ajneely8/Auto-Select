@@ -5,6 +5,7 @@ const tones = {
   navy: "bg-navy-900 text-white border-navy-900",
   success: "bg-success-soft text-success border-[#bfe0cb]",
   warning: "bg-warning-soft text-warning border-[#f0d9a6]",
+  danger: "bg-danger-soft text-danger border-[#f3c6c2]",
   accent: "bg-accent-soft text-accent-text border-accent/30",
   dark: "bg-black/70 text-white border-transparent backdrop-blur-[2px]",
 };

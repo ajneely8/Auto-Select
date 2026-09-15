@@ -86,10 +86,10 @@ export default async function VehicleDetailPage({ params }: PageProps<"/inventor
           <Breadcrumbs items={[{ name: "Inventory", path: "/inventory" }, ...(v.bodyStyle ? [{ name: v.bodyStyle, path: `/inventory?body=${encodeURIComponent(v.bodyStyle)}` }] : []), { name: title, path: `/inventory/${v.slug}` }]} />
 
           {sold && (
-            <div role="status" className="mb-5 flex items-start gap-3 rounded-[var(--radius-md)] border border-[#f0d9a6] bg-warning-soft p-4 text-warning">
-              <Info className="mt-0.5 size-5 shrink-0" aria-hidden />
-              <p className="text-sm">
-                <strong>This vehicle has been sold.</strong> Browse similar vehicles below, or{" "}
+            <div role="status" className="mb-5 flex items-start gap-3 rounded-[var(--radius-md)] border-2 border-danger bg-danger-soft p-5 text-danger">
+              <Info className="mt-0.5 size-6 shrink-0" aria-hidden />
+              <p className="text-base">
+                <strong className="text-lg">This vehicle has been sold.</strong> Browse similar vehicles below, or{" "}
                 <Link href="/find-a-vehicle" className="font-semibold underline underline-offset-2">
                   ask us to find one like it
                 </Link>
@@ -102,7 +102,7 @@ export default async function VehicleDetailPage({ params }: PageProps<"/inventor
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="min-w-0">
               <div className="mb-2 flex flex-wrap items-center gap-2">
-                <Badge tone={v.status === "available" ? "success" : "warning"}>{statusLabel[v.status]}</Badge>
+                <Badge tone={v.status === "available" ? "success" : v.status === "sold" ? "danger" : "warning"}>{statusLabel[v.status]}</Badge>
                 <Badge>{v.condition === "used" ? "Used" : v.condition}</Badge>
                 {v.bodyStyle && <Badge>{v.bodyStyle}</Badge>}
               </div>
