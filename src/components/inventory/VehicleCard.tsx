@@ -60,7 +60,7 @@ export function VehicleCard({
         {v.status === "sold" && (
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-11 bottom-6 w-40 -rotate-45 bg-danger py-1.5 text-center text-sm font-extrabold uppercase tracking-widest text-white shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+            className="pointer-events-none absolute bottom-10 left-1/2 w-[220%] -translate-x-1/2 -rotate-45 bg-danger py-3 text-center text-2xl font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_2px_10px_rgba(0,0,0,0.35)]"
           >
             Sold
           </div>
