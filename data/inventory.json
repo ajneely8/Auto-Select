@@ -1527,6 +1527,69 @@
         "MPG not published — add EPA ratings.",
         "VIN decode reports AWD and 7 seats."
       ]
+    },
+    {
+      "id": "n105298",
+      "slug": "2019-mercedes-benz-sprinter-2500-n105298",
+      "status": "available",
+      "condition": "used",
+      "year": 2019,
+      "make": "Mercedes-Benz",
+      "model": "Sprinter 2500",
+      "trim": "Crew High Roof w/144\" WB",
+      "bodyStyle": "Cargo Van",
+      "price": 26988,
+      "salePrice": null,
+      "mileage": 119145,
+      "vin": "WD4PF0CDXKP105298",
+      "stockNumber": "N105298",
+      "exteriorColor": "Blue",
+      "interiorColor": "Gray",
+      "transmission": "7-Speed Automatic",
+      "drivetrain": "RWD",
+      "fuelType": "Diesel",
+      "engine": "3.0L V6 Turbo Diesel, 188 hp",
+      "mpgCity": null,
+      "mpgHighway": null,
+      "doors": 3,
+      "seats": null,
+      "description": "This 2019 Mercedes-Benz Sprinter 2500 Crew High Roof w/144\" WB has 119,145 miles, a 3.0L V6 Turbo Diesel engine (188 hp), and a 7-speed automatic transmission. It is finished in blue with a gray interior. Contact Auto Select to confirm equipment, condition, and availability, or to arrange a test drive or delivery.",
+      "features": [],
+      "photos": [
+        {
+          "url": "/vehicles/N105298/1.webp",
+          "alt": "2019 Mercedes-Benz Sprinter 2500 in blue, primary photo"
+        },
+        {
+          "url": "/vehicles/N105298/2.webp",
+          "alt": "2019 Mercedes-Benz Sprinter 2500, photo 2 of 5"
+        },
+        {
+          "url": "/vehicles/N105298/3.webp",
+          "alt": "2019 Mercedes-Benz Sprinter 2500, photo 3 of 5"
+        },
+        {
+          "url": "/vehicles/N105298/4.webp",
+          "alt": "2019 Mercedes-Benz Sprinter 2500, photo 4 of 5"
+        },
+        {
+          "url": "/vehicles/N105298/5.webp",
+          "alt": "2019 Mercedes-Benz Sprinter 2500, photo 5 of 5"
+        }
+      ],
+      "exterior360Frames": null,
+      "exterior360EmbedUrl": null,
+      "interior360Url": null,
+      "historyReportUrl": null,
+      "featured": true,
+      "dateAdded": "2026-09-14",
+      "internalNotes": [
+        "Description auto-generated from listing specs — replace with a written description.",
+        "Only 5 photos — add a full photo set (interior, engine bay, cargo area) if available.",
+        "Clean title. Internally graded 'Very Good' condition.",
+        "Trim built from the listing title (\"Crew High Roof w/144\\\" WB\") — confirm exact factory trim naming.",
+        "Seats and MPG not provided — add if available."
+      ]
     }
   ]
 }
