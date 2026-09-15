@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { redirect } from "next/navigation";
-import { getPublishedVehicles } from "@/lib/inventory/repository";
+import { getBrowsableVehicles } from "@/lib/inventory/repository";
 import { toSummary } from "@/lib/inventory/summary";
 import { InventoryExplorer } from "@/components/inventory/InventoryExplorer";
 import { VehicleCardSkeleton } from "@/components/inventory/VehicleCard";
@@ -24,7 +24,7 @@ export default async function InventoryPage({ searchParams }: PageProps<"/invent
     const clean = new URLSearchParams(entries.filter(([, v]) => v !== "")).toString();
     redirect(clean ? `/inventory?${clean}` : "/inventory");
   }
-  const vehicles = (await getPublishedVehicles()).map((v) => {
+  const vehicles = (await getBrowsableVehicles()).map((v) => {
     const s = toSummary(v);
     if (v.exterior360IsDemo && !showDemo360) s.has360 = false;
     return s;

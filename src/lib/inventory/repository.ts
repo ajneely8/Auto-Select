@@ -73,6 +73,16 @@ export async function getPublishedVehicles() {
   return (await getAllVehicles()).filter(isPublished);
 }
 
+/**
+ * Every vehicle worth showing on the browse-inventory grid, sold ones included — seeing recently
+ * sold vehicles is social proof that the lot moves. Sold cards still show a "Sold" badge and their
+ * detail page still blocks the lead form (see isPublished for what stays excluded everywhere else:
+ * search facets, the sitemap, the assistant, and reminder emails).
+ */
+export async function getBrowsableVehicles() {
+  return getAllVehicles();
+}
+
 export async function getVehicleBySlug(slug: string) {
   return (await getAllVehicles()).find((v) => v.slug === slug) ?? null;
 }
