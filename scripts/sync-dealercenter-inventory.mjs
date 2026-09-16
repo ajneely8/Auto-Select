@@ -42,6 +42,14 @@ const outFile = path.resolve(process.argv[3] || process.env.INVENTORY_FILE_PATH 
 const forceSoldPath = path.resolve("data/dealercenter-force-sold.json");
 const forceSold = new Set(fs.existsSync(forceSoldPath) ? JSON.parse(fs.readFileSync(forceSoldPath, "utf8")).map((s) => String(s).toUpperCase()) : []);
 
+/**
+ * Full removal list — for a vehicle that shouldn't appear on the site at all (not even as "Sold"),
+ * regardless of what DealerCenter's feed says. Distinct from forceSold above, which still shows
+ * the vehicle with a Sold badge.
+ */
+const excludePath = path.resolve("data/dealercenter-exclude.json");
+const excludeStock = new Set(fs.existsSync(excludePath) ? JSON.parse(fs.readFileSync(excludePath, "utf8")).map((s) => String(s).toUpperCase()) : []);
+
 function findLatestFile(dir) {
   if (!fs.existsSync(dir)) return null;
   const candidates = fs
@@ -156,7 +164,7 @@ for (const [i, r] of rows.entries()) {
   const v = fromRow(r);
   const e = validate(v);
   if (e.length) errors.push(`Row ${i + 2} (stock ${v.stockNumber || "?"}): ${e.join(", ")}`);
-  else {
+  else if (!excludeStock.has(v.stockNumber.toUpperCase())) {
     if (forceSold.has(v.stockNumber.toUpperCase())) v.status = "sold";
     vehicles.push(v);
   }
@@ -170,6 +178,9 @@ if (!vehicles.length) {
 
 const previous = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, "utf8")) : { vehicles: [] };
 const seen = new Set(vehicles.map((v) => v.stockNumber));
+// Treat excluded stock numbers as accounted-for so the "went missing → mark sold" fallback below
+// doesn't resurrect a fully-removed vehicle from an older synced copy.
+for (const s of excludeStock) seen.add(s);
 let unpublished = 0;
 for (const old of previous.vehicles ?? []) {
   if (!seen.has(old.stockNumber) && old.status !== "sold") {
