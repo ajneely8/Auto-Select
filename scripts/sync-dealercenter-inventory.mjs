@@ -33,6 +33,15 @@ import path from "node:path";
 const uploadDir = process.argv[2] || process.env.DC_INVENTORY_UPLOAD_DIR || "/home/dcimport/upload";
 const outFile = path.resolve(process.argv[3] || process.env.INVENTORY_FILE_PATH || ".data/dealercenter-inventory.json");
 
+/**
+ * Manual "treat as sold" list for vehicles DealerCenter's feed hasn't caught up on yet — the feed
+ * has no status/sold column at all, so we can only infer "sold" when a stock number disappears
+ * from the file entirely (see below). Add a stock number here if it's actually sold but still
+ * appearing in their export; remove it once DealerCenter's feed stops including it on its own.
+ */
+const forceSoldPath = path.resolve("data/dealercenter-force-sold.json");
+const forceSold = new Set(fs.existsSync(forceSoldPath) ? JSON.parse(fs.readFileSync(forceSoldPath, "utf8")).map((s) => String(s).toUpperCase()) : []);
+
 function findLatestFile(dir) {
   if (!fs.existsSync(dir)) return null;
   const candidates = fs
@@ -147,7 +156,10 @@ for (const [i, r] of rows.entries()) {
   const v = fromRow(r);
   const e = validate(v);
   if (e.length) errors.push(`Row ${i + 2} (stock ${v.stockNumber || "?"}): ${e.join(", ")}`);
-  else vehicles.push(v);
+  else {
+    if (forceSold.has(v.stockNumber.toUpperCase())) v.status = "sold";
+    vehicles.push(v);
+  }
 }
 
 if (!vehicles.length) {
