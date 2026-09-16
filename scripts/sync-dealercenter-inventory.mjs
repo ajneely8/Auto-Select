@@ -100,7 +100,7 @@ function fromRow(r) {
     model,
     trim,
     bodyStyle: null,
-    price: numOrNull(r.specialprice),
+    price: numOrNull(r.price ?? r.specialprice ?? r.askingprice),
     salePrice: null,
     mileage: Number(String(r.odometer ?? "0").replace(/[^\d]/g, "")),
     vin: String(r.vin ?? "").trim().toUpperCase(),
@@ -108,11 +108,14 @@ function fromRow(r) {
     exteriorColor: r.exteriorcolor || null,
     interiorColor: r.interiorcolor || null,
     transmission: r.transmission || null,
-    drivetrain: null,
-    fuelType: null,
-    engine: null,
+    drivetrain: r.drivetrain || null,
+    fuelType: r.fueltype || null,
+    engine: r.engine || null,
     description: r.webaddescription || null,
-    features: splitList(r.equipmentcode),
+    // The feed's equipmentCode column has turned out to be a generic reference list, not
+    // as-equipped options (e.g. it lists "Winch"/"3rd Row Seating" on a Hyundai Sonata sedan) —
+    // reported to DealerCenter 2026-09-16. Not trusted for display until they fix it on their end.
+    features: [],
     photos: photos.map((p, i) => ({ url: p, alt: `${name}, photo ${i + 1} of ${photos.length}` })),
     dateAdded: new Date().toISOString().slice(0, 10),
   };
