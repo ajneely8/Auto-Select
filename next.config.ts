@@ -24,9 +24,10 @@ const nextConfig: NextConfig = {
     qualities: [60, 75, 85],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
     // Vehicle and team photos are self-hosted under public/ (migrated off the old WordPress site's
-    // wp-content/uploads host when DNS cut over — see data/inventory.json's meta.notes). Add an
-    // entry here again if a future inventory feed or CDN serves photos from an external host.
-    remotePatterns: [],
+    // wp-content/uploads host when DNS cut over — see data/inventory.json's meta.notes). The
+    // DealerCenter inventory feed (INVENTORY_SOURCE=file) links directly to their own photo CDN
+    // instead, so that host needs to be allowed here too.
+    remotePatterns: [{ protocol: "https", hostname: "imagesdl.dealercenter.net" }],
     minimumCacheTTL: 60 * 60 * 24 * 7,
   },
   async headers() {
