@@ -13,7 +13,7 @@ const schema = z.object({
   // "file": read INVENTORY_FILE_PATH from disk fresh on every request — for a local process (like
   // scripts/sync-dealercenter-inventory.mjs) that writes inventory JSON outside the git tree, no
   // rebuild needed to pick up changes.
-  INVENTORY_SOURCE: z.enum(["local", "feed", "file"]).default("local"),
+  INVENTORY_SOURCE: z.enum(["local", "feed", "file"]).default("file"),
   INVENTORY_FEED_URL: z.string().url().optional(),
   INVENTORY_FEED_TOKEN: z.string().optional(),
   INVENTORY_REVALIDATE_SECONDS: z.coerce.number().int().positive().default(900),
