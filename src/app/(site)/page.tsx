@@ -33,6 +33,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { VehicleCard } from "@/components/inventory/VehicleCard";
 import { QuickSearch, type QuickSearchOptions } from "@/components/home/QuickSearch";
 import { HeroShowcase, type HeroVehicle } from "@/components/home/HeroShowcase";
+import { HeroPhotoBackground } from "@/components/ui/HeroPhotoBackground";
 import { ThreeEasyStepsBanner } from "@/components/home/ThreeEasyStepsBanner";
 import { TradeInForm } from "@/components/forms/TradeInForm";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -101,6 +102,8 @@ export default async function HomePage() {
     <>
       {/* ───────────── Hero ───────────── */}
       <section aria-labelledby="hero-heading" className="relative overflow-hidden border-b-4 border-accent bg-navy-950 text-white on-dark">
+        <HeroPhotoBackground photos={heroVehicles.map((v) => v.photo)} />
+        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(100deg,#061224_0%,#061224_52%,rgba(6,18,36,0.82)_75%,rgba(6,18,36,0.55)_100%)]" />
         <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 opacity-[0.06] bg-[repeating-linear-gradient(115deg,#fff_0_1px,transparent_1px_22px)]" />
         <div className="container-page relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:py-24">
           <div>
