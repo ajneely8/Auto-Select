@@ -3,7 +3,8 @@ import Anthropic from "@anthropic-ai/sdk";
 import { env } from "@/config/env";
 import { business } from "@/config/business";
 import { ASSISTANT_SYSTEM_PROMPT } from "./prompt";
-import { searchInventory, getVehicleDetails, estimatePayment, findVehicle, type SearchArgs } from "./tools";
+import { searchInventory, getVehicleDetails, estimatePayment, findVehicle, captureLead, type SearchArgs, type CaptureLeadArgs } from "./tools";
+import type { LeadContext } from "@/lib/leads/pipeline";
 import { toCard } from "./cards";
 import type { AssistantEvent, ChatTurn } from "./types";
 
@@ -82,9 +83,35 @@ const tools: Anthropic.Beta.BetaTool[] = [
       additionalProperties: false,
     },
   },
+  {
+    name: "capture_lead",
+    description:
+      "Submit a qualified lead to the Auto Select sales team once you have at minimum a first name, phone number, and email. Call this only after gathering real context through conversation (what they're looking for, budget, financing vs. cash, trade-in) — never call it just because someone gave contact info with no other context. Only call this once per conversation.",
+    input_schema: {
+      type: "object",
+      properties: {
+        first_name: { type: "string" },
+        phone: { type: "string", description: "10-digit US phone number." },
+        email: { type: "string" },
+        vehicle_interest: { type: "string", description: "Specific make/model/vehicle they're interested in, if mentioned." },
+        vehicle_type: { type: "string", description: "Truck, SUV, Sedan, Coupe, Van, or similar — if mentioned." },
+        budget: { type: "number", description: "Their stated budget in USD, if given." },
+        financing_preference: { type: "string", enum: ["finance", "cash", "unsure"] },
+        has_trade_in: { type: "string", enum: ["yes", "no", "unsure"] },
+        trade_year: { type: "string" },
+        trade_make: { type: "string" },
+        trade_model: { type: "string" },
+        trade_mileage: { type: "string" },
+        appointment_preference: { type: "string", description: "When they said they'd like to visit, e.g. 'tomorrow afternoon' — free text, not a confirmed slot." },
+        conversation_summary: { type: "string", description: "2-4 sentence plain-English summary of what this visitor wants, for the salesperson following up." },
+      },
+      required: ["first_name", "phone", "email", "conversation_summary"],
+      additionalProperties: false,
+    },
+  },
 ];
 
-async function runTool(name: string, input: Record<string, unknown>, emit: (e: AssistantEvent) => void): Promise<unknown> {
+async function runTool(name: string, input: Record<string, unknown>, emit: (e: AssistantEvent) => void, ctx: LeadContext): Promise<unknown> {
   switch (name) {
     case "search_inventory":
       return searchInventory(input as SearchArgs);
@@ -98,6 +125,14 @@ async function runTool(name: string, input: Record<string, unknown>, emit: (e: A
       if (found.length) emit({ type: "vehicles", vehicles: found.map(toCard) });
       return { displayed: found.map((v) => v.stockNumber), not_found: refs.filter((r) => !found.some((v) => v.stockNumber.toLowerCase() === r.toLowerCase())) };
     }
+    case "capture_lead": {
+      const result = await captureLead(input as unknown as CaptureLeadArgs, ctx);
+      if (result.ok && result.leadId) {
+        emit({ type: "lead_captured", leadId: result.leadId });
+        emit({ type: "quick_replies", options: ["Schedule a Visit", "Have Someone Contact Me"] });
+      }
+      return result;
+    }
     default:
       return { error: `Unknown tool ${name}` };
   }
@@ -106,7 +141,7 @@ async function runTool(name: string, input: Record<string, unknown>, emit: (e: A
 const supportsServerFallbacks = (model: string) => /^claude-(opus-5|fable-5-1)/.test(model);
 const supportsAdaptiveThinking = (model: string) => !/haiku|claude-3/.test(model);
 
-export async function runClaudeAssistant(history: ChatTurn[], emit: (e: AssistantEvent) => void) {
+export async function runClaudeAssistant(history: ChatTurn[], emit: (e: AssistantEvent) => void, ctx: LeadContext) {
   const model = env.ASSISTANT_MODEL;
   const messages: Anthropic.Beta.BetaMessageParam[] = history.map((t) => ({ role: t.role, content: t.content }));
 
@@ -141,7 +176,7 @@ export async function runClaudeAssistant(history: ChatTurn[], emit: (e: Assistan
     const results: Anthropic.Beta.BetaToolResultBlockParam[] = await Promise.all(
       toolUses.map(async (t) => {
         try {
-          const out = await runTool(t.name, (t.input ?? {}) as Record<string, unknown>, emit);
+          const out = await runTool(t.name, (t.input ?? {}) as Record<string, unknown>, emit, ctx);
           return { type: "tool_result" as const, tool_use_id: t.id, content: JSON.stringify(out) };
         } catch (err) {
           return { type: "tool_result" as const, tool_use_id: t.id, content: `Tool failed: ${String(err)}`, is_error: true };

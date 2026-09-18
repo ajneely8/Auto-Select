@@ -15,7 +15,9 @@ export type AssistantEvent =
   | { type: "vehicles"; vehicles: AssistantCard[] }
   | { type: "status"; message: string }
   | { type: "done"; mode: "claude" | "local" }
-  | { type: "error"; message: string };
+  | { type: "error"; message: string }
+  | { type: "lead_captured"; leadId: string }
+  | { type: "quick_replies"; options: string[] };
 
 export interface ChatTurn {
   role: "user" | "assistant";

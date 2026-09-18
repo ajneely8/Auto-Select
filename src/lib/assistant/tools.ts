@@ -6,6 +6,7 @@ import { displayPrice, vehicleFullName } from "@/lib/format";
 import { estimate } from "@/lib/finance";
 import { business } from "@/config/business";
 import { showDemo360 } from "@/config/site";
+import { processLead, type LeadContext } from "@/lib/leads/pipeline";
 
 /**
  * Inventory tools shared by the Claude-backed assistant and the offline fallback engine.
@@ -129,6 +130,54 @@ export async function findVehicle(ref: string) {
 export async function getVehicleDetails(ref: string) {
   const v = await findVehicle(ref);
   return v ? detailed(v) : { error: `No published vehicle matches "${ref}". It may have sold or the stock number may be wrong. Use search_inventory to look it up.` };
+}
+
+export interface CaptureLeadArgs {
+  first_name: string;
+  phone: string;
+  email: string;
+  vehicle_interest?: string;
+  vehicle_type?: string;
+  budget?: number;
+  financing_preference?: "finance" | "cash" | "unsure";
+  has_trade_in?: "yes" | "no" | "unsure";
+  trade_year?: string;
+  trade_make?: string;
+  trade_model?: string;
+  trade_mileage?: string;
+  appointment_preference?: string;
+  conversation_summary: string;
+}
+
+/**
+ * Submits a chat-captured lead through the exact same pipeline every website form uses — same
+ * spam checks, rate limiting, staff/customer emails, CRM push, and DealerCenter push. Built as a
+ * FormData object so it goes through the real validation, not a shortcut around it.
+ */
+export async function captureLead(args: CaptureLeadArgs, ctx: LeadContext) {
+  const fd = new FormData();
+  const set = (k: string, v: unknown) => fd.set(k, v == null ? "" : String(v));
+  set("firstName", args.first_name);
+  set("lastName", "-");
+  set("email", args.email);
+  set("phone", args.phone);
+  set("preferredContactMethod", "phone");
+  set("message", args.conversation_summary);
+  set("vehicleInterest", args.vehicle_interest);
+  set("vehicleType", args.vehicle_type);
+  set("budget", args.budget);
+  set("financingPreference", args.financing_preference ?? "unsure");
+  set("hasTradeIn", args.has_trade_in ?? "unsure");
+  set("tradeYear", args.trade_year);
+  set("tradeMake", args.trade_make);
+  set("tradeModel", args.trade_model);
+  set("tradeMileage", args.trade_mileage);
+  set("appointmentPreference", args.appointment_preference);
+  set("conversationSummary", args.conversation_summary);
+
+  const result = await processLead("assistant", fd, ctx);
+  if (result.status === "error") return { ok: false, error: result.message, fieldErrors: result.fieldErrors };
+  return { ok: true, leadId: result.reference, first_name: args.first_name };
 }
 
 export function estimatePayment(args: { price: number; down_payment?: number; trade_value?: number; apr?: number; term_months?: number }) {

@@ -242,6 +242,7 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
     service: "service request",
     "service-contract": "service-contract quote request",
     "inventory-alert": "inventory alert",
+    assistant: "chat inquiry",
   };
   const customerText = [
     `Hi ${lead.firstName || "there"},`,

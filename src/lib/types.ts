@@ -80,7 +80,8 @@ export type LeadType =
   | "service-contract"
   | "contact"
   | "appointment"
-  | "inventory-alert";
+  | "inventory-alert"
+  | "assistant";
 
 export type ContactMethod = "phone" | "text" | "email";
 export type LeadStatus = "new" | "contacted" | "qualified" | "closed" | "spam";

@@ -125,6 +125,19 @@ export const typeSchemas = {
     alertVehicleId: opt(40),
     alertConsent: checkbox.refine((v) => v, "Please confirm you'd like to receive these emails."),
   }),
+  assistant: z.object({
+    vehicleInterest: opt(200),
+    vehicleType: opt(60),
+    budget: optNum(1_000_000),
+    financingPreference: z.enum(["finance", "cash", "unsure"]).default("unsure"),
+    hasTradeIn: z.enum(["yes", "no", "unsure"]).default("unsure"),
+    tradeYear: opt(10),
+    tradeMake: opt(60),
+    tradeModel: opt(80),
+    tradeMileage: opt(20),
+    appointmentPreference: opt(200),
+    conversationSummary: opt(4000),
+  }),
 } satisfies Record<LeadType, z.ZodType>;
 
 export const usesContactFields = (t: LeadType) => t !== "inventory-alert";
@@ -142,6 +155,7 @@ export const LEAD_LABELS: Record<LeadType, string> = {
   "service-contract": "Service-contract quote",
   contact: "General contact",
   "inventory-alert": "Inventory alert signup",
+  assistant: "AI Assistant chat",
 };
 
 /** Fields that must never appear in email notifications or analytics. */

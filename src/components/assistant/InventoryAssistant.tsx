@@ -14,7 +14,11 @@ interface UiMessage extends ChatTurn {
   cards?: AssistantCard[];
   status?: string;
   error?: boolean;
+  quickReplies?: string[];
 }
+
+const MAIN_OPTIONS = ["Find My Vehicle", "Browse Inventory", "Schedule a Visit", "I Have a Trade-In", "Talk to Someone"];
+const OPENING_MESSAGE = "Hey! 👋 Welcome to Auto Select. I can help you find the right vehicle, answer questions about our inventory, or help you schedule a visit. What are you looking for?";
 
 const STORE_KEY = "as_assistant_v1";
 const newId = () => Math.random().toString(36).slice(2, 10);
@@ -111,6 +115,9 @@ export function InventoryAssistant() {
   const [messages, setMessages] = useState<UiMessage[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [leadCaptured, setLeadCaptured] = useState(false);
+  const [nudgedOnClose, setNudgedOnClose] = useState(false);
+  const [showCloseNudge, setShowCloseNudge] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -190,6 +197,10 @@ export function InventoryAssistant() {
           else if (ev.type === "status") update((m) => ({ ...m, status: ev.message }));
           else if (ev.type === "vehicles") update((m) => ({ ...m, cards: [...(m.cards ?? []), ...ev.vehicles.filter((c) => !m.cards?.some((x) => x.stockNumber === c.stockNumber))].slice(0, 4) }));
           else if (ev.type === "error") update((m) => ({ ...m, content: m.content || ev.message, error: !m.content, status: undefined }));
+          else if (ev.type === "lead_captured") {
+            setLeadCaptured(true);
+            track("assistant_lead_captured", { location: pathname });
+          } else if (ev.type === "quick_replies") update((m) => ({ ...m, quickReplies: ev.options }));
         }
       }
       update((m) => ({ ...m, status: undefined, content: m.content || "Sorry, I couldn't find an answer. Please call us and we'll help." }));
@@ -200,6 +211,34 @@ export function InventoryAssistant() {
       setBusy(false);
       abortRef.current = null;
     }
+  }
+
+  function requestClose() {
+    const userTurns = messages.filter((m) => m.role === "user").length;
+    if (userTurns >= 1 && !leadCaptured && !nudgedOnClose) {
+      setNudgedOnClose(true);
+      setShowCloseNudge(true);
+      return;
+    }
+    close();
+  }
+
+  function dismissNudgeAndClose() {
+    setShowCloseNudge(false);
+    close();
+  }
+
+  function acceptNudge() {
+    setShowCloseNudge(false);
+    send("Yes, please send me some vehicle options.");
+  }
+
+  function sendOption(option: string) {
+    if (option === "Find My Vehicle" || option === "Browse Inventory") track("inventory_search", { source: "assistant" });
+    else if (option === "Schedule a Visit") track("assistant_appointment_requested", { location: pathname });
+    else if (option === "Talk to Someone") track("assistant_human_requested", { location: pathname });
+    else if (option === "I Have a Trade-In") track("assistant_trade_in_submitted", { location: pathname });
+    send(option);
   }
 
   function onSubmit(e: FormEvent) {
@@ -231,8 +270,8 @@ export function InventoryAssistant() {
           className="fixed right-4 z-40 inline-flex h-12 items-center gap-2 rounded-full bg-navy-900 pl-4 pr-5 text-sm font-semibold text-white shadow-[var(--shadow-overlay)] hover:bg-navy-800 bottom-[calc(5.25rem+var(--tray-h,0px))] lg:bottom-[calc(1.5rem+var(--tray-h,0px))] animate-fade-in"
         >
           <MessageCircle className="size-5" aria-hidden />
-          <span className="hidden sm:inline">Ask about our inventory</span>
-          <span className="sm:hidden">Ask us</span>
+          <span className="hidden sm:inline">Auto Select Assistant</span>
+          <span className="sm:hidden">Chat</span>
         </button>
       )}
 
@@ -246,7 +285,7 @@ export function InventoryAssistant() {
           <div className="flex items-center justify-between gap-2 border-b border-line bg-navy-900 px-4 py-3 text-white on-dark sm:rounded-t-[var(--radius-lg)]">
             <div className="min-w-0">
               <h2 id={titleId} className="font-display text-lg font-bold leading-tight">
-                Ask about our inventory
+                Auto Select Assistant
               </h2>
               <p className="text-xs text-white/75">Automated answers from our current listings</p>
             </div>
@@ -266,28 +305,41 @@ export function InventoryAssistant() {
                   <RotateCcw className="size-4" aria-hidden />
                 </button>
               )}
-              <button type="button" onClick={close} className="inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] hover:bg-white/10" aria-label="Close">
+              <button type="button" onClick={requestClose} className="inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] hover:bg-white/10" aria-label="Close">
                 <X className="size-5" aria-hidden />
               </button>
             </div>
           </div>
 
           <div ref={listRef} className="flex-1 overflow-y-auto bg-surface px-3 py-4" aria-live="polite" aria-relevant="additions text" aria-busy={busy}>
-            <div className="mb-3 rounded-[var(--radius-md)] border border-line bg-white p-3 text-sm text-slate">
-              Hi! Ask me about any vehicle on our site — price, mileage, drivetrain, colors, or what fits your budget. For anything else, call{" "}
-              <a href={`tel:${business.phone.e164}`} className="font-semibold text-navy-700 underline underline-offset-2">
-                {business.phone.display}
-              </a>
-              .
-            </div>
-
             {messages.length === 0 && (
-              <div className="flex flex-wrap gap-2" aria-label="Suggested questions">
-                {suggestions.map((s) => (
-                  <button key={s} type="button" onClick={() => send(s)} className="min-h-10 rounded-full border border-line-strong bg-white px-3 text-left text-sm font-medium text-ink hover:border-navy-900">
-                    {s}
-                  </button>
-                ))}
+              <div className="mb-3 grid gap-3">
+                <div className="max-w-[92%] rounded-[var(--radius-md)] rounded-bl-[2px] border border-line bg-white px-3 py-2 text-sm leading-relaxed text-ink">
+                  {OPENING_MESSAGE}
+                </div>
+                <div className="flex flex-wrap gap-2" aria-label="Main options">
+                  {MAIN_OPTIONS.map((o) => (
+                    <button key={o} type="button" onClick={() => sendOption(o)} className="min-h-10 rounded-full border border-line-strong bg-white px-3 text-left text-sm font-medium text-ink hover:border-navy-900">
+                      {o}
+                    </button>
+                  ))}
+                </div>
+                {isVdp(pathname) && (
+                  <div className="flex flex-wrap gap-2" aria-label="Questions about this vehicle">
+                    {suggestions.map((s) => (
+                      <button key={s} type="button" onClick={() => send(s)} className="min-h-9 rounded-full border border-line bg-surface px-3 text-left text-xs font-medium text-slate hover:border-line-strong hover:text-ink">
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                <p className="text-xs text-slate">
+                  Or ask anything directly — pricing, mileage, financing, whatever you need. For a person right now, call{" "}
+                  <a href={`tel:${business.phone.e164}`} className="font-semibold text-navy-700 underline underline-offset-2">
+                    {business.phone.display}
+                  </a>
+                  .
+                </p>
               </div>
             )}
 
@@ -309,11 +361,34 @@ export function InventoryAssistant() {
                       </span>
                     )}
                     {m.cards && m.cards.length > 0 && <Cards cards={m.cards} />}
+                    {m.quickReplies && m.quickReplies.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {m.quickReplies.map((o) => (
+                          <button key={o} type="button" onClick={() => sendOption(o)} className="min-h-9 rounded-full border border-line-strong bg-white px-3 text-xs font-semibold text-ink hover:border-navy-900">
+                            {o}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </li>
               ))}
             </ul>
           </div>
+
+          {showCloseNudge && (
+            <div className="flex items-center justify-between gap-3 border-t border-line bg-accent-soft px-3 py-2.5 text-sm text-ink">
+              <p className="min-w-0">Before you go — want me to have someone from Auto Select send you some vehicle options?</p>
+              <div className="flex shrink-0 gap-2">
+                <button type="button" onClick={acceptNudge} className="min-h-9 rounded-full bg-navy-900 px-3 text-xs font-semibold text-white hover:bg-navy-800">
+                  Yes
+                </button>
+                <button type="button" onClick={dismissNudgeAndClose} className="min-h-9 rounded-full border border-line-strong bg-white px-3 text-xs font-semibold text-ink hover:border-navy-900">
+                  No thanks
+                </button>
+              </div>
+            </div>
+          )}
 
           <form onSubmit={onSubmit} className="border-t border-line bg-white p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:rounded-b-[var(--radius-lg)]">
             <div className="flex items-end gap-2">

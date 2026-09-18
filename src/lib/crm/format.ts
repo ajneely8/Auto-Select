@@ -25,6 +25,7 @@ export const TYPE_ORDER: LeadType[] = [
   "service",
   "service-contract",
   "inventory-alert",
+  "assistant",
 ];
 
 /** "tradeMileage" -> "Trade mileage", "vinOrPlate" -> "Vin or plate". Generic, so new fields need no mapping. */

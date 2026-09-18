@@ -21,7 +21,11 @@ export type AnalyticsEvent =
   | "directions_clicked"
   | "appointment_started"
   | "assistant_opened"
-  | "assistant_question";
+  | "assistant_question"
+  | "assistant_lead_captured"
+  | "assistant_appointment_requested"
+  | "assistant_trade_in_submitted"
+  | "assistant_human_requested";
 
 type Value = string | number | boolean | null | undefined;
 

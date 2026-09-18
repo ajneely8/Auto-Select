@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
   if (!env.ASSISTANT_ENABLED) return Response.json({ error: "Assistant is disabled." }, { status: 404 });
 
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || "unknown";
+  const leadCtx = { ip, userAgent: req.headers.get("user-agent") ?? "" };
   const rl = rateLimit(`assistant:${ip}`, 20, 10 * 60 * 1000);
   if (!rl.ok) return Response.json({ error: "You've asked a lot of questions in a short time. Please wait a few minutes, or call us." }, { status: 429, headers: { "Retry-After": String(rl.retryAfterSec) } });
 
@@ -66,10 +67,14 @@ export async function POST(req: NextRequest) {
         if (env.ANTHROPIC_API_KEY) {
           let sentText = false;
           try {
-            await runClaudeAssistant(history, (e) => {
-              if (e.type === "text") sentText = true;
-              emit(e);
-            });
+            await runClaudeAssistant(
+              history,
+              (e) => {
+                if (e.type === "text") sentText = true;
+                emit(e);
+              },
+              leadCtx,
+            );
             emit({ type: "done", mode: "claude" });
           } catch (err) {
             console.error("[assistant] Claude request failed:", err);

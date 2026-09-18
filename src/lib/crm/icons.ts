@@ -1,4 +1,4 @@
-import { CarFront, BadgeDollarSign, Repeat, SearchCheck, Truck, Wrench, ShieldCheck, MessageSquare, CalendarClock, BellRing, CalendarCheck2, type LucideIcon } from "lucide-react";
+import { CarFront, BadgeDollarSign, Repeat, SearchCheck, Truck, Wrench, ShieldCheck, MessageSquare, CalendarClock, BellRing, CalendarCheck2, Bot, type LucideIcon } from "lucide-react";
 import type { LeadType } from "@/lib/types";
 
 /** One icon per form type, reused across the overview breakdown and the leads list. */
@@ -14,4 +14,5 @@ export const TYPE_ICONS: Record<LeadType, LucideIcon> = {
   service: Wrench,
   "service-contract": ShieldCheck,
   "inventory-alert": BellRing,
+  assistant: Bot,
 };
