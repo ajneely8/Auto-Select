@@ -21,6 +21,9 @@ const MAIN_OPTIONS = ["Find My Vehicle", "Browse Inventory", "Schedule a Visit",
 const OPENING_MESSAGE = "Hey! 👋 Welcome to Auto Select. I can help you find the right vehicle, answer questions about our inventory, or help you schedule a visit. What are you looking for?";
 
 const STORE_KEY = "as_assistant_v1";
+const BUBBLE_KEY = "as_assistant_bubble_seen";
+const BUBBLE_DELAY_MS = 5000;
+const BUBBLE_AUTOHIDE_MS = 12000;
 const newId = () => Math.random().toString(36).slice(2, 10);
 const isVdp = (p: string) => /^\/inventory\/[^/]+$/.test(p);
 
@@ -118,6 +121,7 @@ export function InventoryAssistant() {
   const [leadCaptured, setLeadCaptured] = useState(false);
   const [nudgedOnClose, setNudgedOnClose] = useState(false);
   const [showCloseNudge, setShowCloseNudge] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
@@ -146,6 +150,41 @@ export function InventoryAssistant() {
     setOpen(false);
     requestAnimationFrame(() => launcherRef.current?.focus());
   }, []);
+
+  const dismissBubble = useCallback(() => {
+    setShowBubble(false);
+    try {
+      sessionStorage.setItem(BUBBLE_KEY, "1");
+    } catch {}
+  }, []);
+
+  // Proactive nudge: once per session, a few seconds after landing, unless they've already
+  // chatted or opened the widget. Never re-shows once dismissed, clicked, or auto-hidden.
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(BUBBLE_KEY)) return;
+      const saved = sessionStorage.getItem(STORE_KEY);
+      if (saved && JSON.parse(saved).length > 0) return;
+    } catch {}
+    const timer = setTimeout(() => setShowBubble(true), BUBBLE_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (open) dismissBubble();
+  }, [open, dismissBubble]);
+
+  useEffect(() => {
+    if (!showBubble) return;
+    const timer = setTimeout(dismissBubble, BUBBLE_AUTOHIDE_MS);
+    return () => clearTimeout(timer);
+  }, [showBubble, dismissBubble]);
+
+  function openFromBubble() {
+    dismissBubble();
+    setOpen(true);
+    track("assistant_opened", { location: pathname });
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -258,6 +297,25 @@ export function InventoryAssistant() {
 
   return (
     <>
+      {!open && showBubble && (
+        <div
+          role="status"
+          className="fixed right-4 z-40 w-[min(260px,calc(100vw-2rem))] animate-fade-up rounded-[var(--radius-md)] border border-line bg-white p-3 pr-8 text-sm text-ink shadow-[var(--shadow-overlay)] bottom-[calc(8.5rem+var(--tray-h,0px))] lg:bottom-[calc(4.75rem+var(--tray-h,0px))]"
+        >
+          <button
+            type="button"
+            onClick={dismissBubble}
+            aria-label="Dismiss"
+            className="absolute right-1.5 top-1.5 inline-flex size-7 items-center justify-center rounded-full text-muted hover:bg-surface hover:text-ink"
+          >
+            <X className="size-3.5" aria-hidden />
+          </button>
+          <button type="button" onClick={openFromBubble} className="block text-left leading-relaxed">
+            👋 Need help finding a vehicle? Chat with the <span className="font-semibold text-navy-700">Auto Select Assistant</span> — I'm here to help.
+          </button>
+        </div>
+      )}
+
       {!open && (
         <button
           ref={launcherRef}
