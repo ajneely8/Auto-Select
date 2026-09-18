@@ -44,7 +44,7 @@ export function HeroShowcase({ vehicles }: { vehicles: HeroVehicle[] }) {
   return (
     <figure className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)}>
       <div className="overflow-hidden rounded-[var(--radius-md)] ring-1 ring-white/10">
-        <div className="group relative aspect-[16/10] bg-charcoal">
+        <div className="group relative aspect-[4/3] bg-charcoal">
           {/* Full-cover link sits under the images (which are pointer-events-none) so a click anywhere on the photo navigates. */}
           <Link href={`/inventory/${current.slug}`} aria-label={`View details for ${current.title}, ${formatPrice(current.price)}`} className="absolute inset-0 z-0" />
           {vehicles.map((v, i) => (
