@@ -33,6 +33,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { VehicleCard } from "@/components/inventory/VehicleCard";
 import { QuickSearch, type QuickSearchOptions } from "@/components/home/QuickSearch";
 import { HeroShowcase, type HeroVehicle } from "@/components/home/HeroShowcase";
+import { HeroPhotoBackground } from "@/components/ui/HeroPhotoBackground";
 import { ThreeEasyStepsBanner } from "@/components/home/ThreeEasyStepsBanner";
 import { TradeInForm } from "@/components/forms/TradeInForm";
 import { ContactForm } from "@/components/forms/ContactForm";
@@ -100,12 +101,13 @@ export default async function HomePage() {
   return (
     <>
       {/* ───────────── Hero ───────────── */}
-      <section aria-labelledby="hero-heading" className="relative overflow-hidden border-b-4 border-accent bg-navy-950 text-white on-dark">
-        <div aria-hidden className="absolute inset-y-0 right-0 w-1/2 opacity-[0.06] bg-[repeating-linear-gradient(115deg,#fff_0_1px,transparent_1px_22px)]" />
-        <div className="container-page relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:py-24">
+      <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-navy-950 text-white on-dark">
+        <HeroPhotoBackground photos={heroVehicles.map((v) => v.photo)} />
+        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(100deg,#061224_0%,#061224_42%,rgba(6,18,36,0.55)_70%,rgba(6,18,36,0.2)_100%)]" />
+        <div className="container-page relative grid items-center gap-10 pb-28 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:pb-36 lg:pt-20">
           <div>
             <p className="eyebrow !text-accent">Family-owned · Live Oak, Texas</p>
-            <h1 id="hero-heading" className="mt-3 text-[2.5rem] font-bold leading-[1.05] sm:text-5xl lg:text-[3.5rem]">
+            <h1 id="hero-heading" className="mt-3 text-[2.75rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
               Car Buying Made Simple
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
@@ -123,31 +125,18 @@ export default async function HomePage() {
                 Find My Vehicle
               </ButtonLink>
             </div>
-            <dl className="mt-9 grid max-w-md grid-cols-3 gap-4 border-t border-white/15 pt-5">
-              <div>
-                <dt className="text-[0.6875rem] uppercase tracking-[0.08em] text-white/55">Reviews</dt>
-                <dd className="mt-1 font-display text-lg font-bold">5.0 ★</dd>
-              </div>
-              <div>
-                <dt className="text-[0.6875rem] uppercase tracking-[0.08em] text-white/55">In stock</dt>
-                <dd className="mt-1 font-display text-lg font-bold tabular">{published.length}+ vehicles</dd>
-              </div>
-              <div>
-                <dt className="text-[0.6875rem] uppercase tracking-[0.08em] text-white/55">Serving</dt>
-                <dd className="mt-1 font-display text-lg font-bold">Live Oak &amp; SA</dd>
-              </div>
-            </dl>
+            <p className="mt-6 inline-flex items-center gap-2 text-sm text-white/70">
+              <MapPin className="size-4" aria-hidden /> Serving Live Oak and the San Antonio area
+            </p>
           </div>
 
           <HeroShowcase vehicles={heroVehicles} />
         </div>
       </section>
 
-      {/* ───────────── Quick search ───────────── */}
-      <div className="bg-surface py-8 sm:py-10">
-        <div className="container-page">
-          <QuickSearch options={options} total={published.length} />
-        </div>
+      {/* ───────────── Quick search (overlaps hero) ───────────── */}
+      <div className="container-page relative z-10 -mt-20 lg:-mt-24">
+        <QuickSearch options={options} total={published.length} />
       </div>
 
       {/* ───────────── Buying process (kept near the top — this is how car buying here works) ───────────── */}
