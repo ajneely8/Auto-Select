@@ -38,6 +38,7 @@ export function VehicleCard({
 
   return (
     <article
+      data-vehicle-click={v.stockNumber}
       className={`group relative flex overflow-hidden rounded-[var(--radius-md)] border border-line bg-white shadow-[var(--shadow-card)] transition-[box-shadow,transform,border-color] duration-200 hover:-translate-y-0.5 hover:border-line-strong hover:shadow-[var(--shadow-raised)] motion-reduce:hover:translate-y-0 ${list ? "flex-col sm:flex-row" : "flex-col"}`}
     >
       <div className={`relative overflow-hidden bg-surface-2 ${list ? "sm:w-[42%] sm:shrink-0" : ""}`}>

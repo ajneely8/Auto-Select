@@ -177,16 +177,27 @@ if (!vehicles.length) {
 }
 
 const previous = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, "utf8")) : { vehicles: [] };
+const previousByStock = new Map((previous.vehicles ?? []).map((v) => [v.stockNumber, v]));
+
+// The feed carries no "listed on" date, so every sync would otherwise stamp today and every
+// vehicle would look brand new. Keep the earliest date we've ever seen this stock number.
+for (const v of vehicles) {
+  const before = previousByStock.get(v.stockNumber);
+  if (before?.dateAdded && before.dateAdded < v.dateAdded) v.dateAdded = before.dateAdded;
+}
+
 const seen = new Set(vehicles.map((v) => v.stockNumber));
 // Treat excluded stock numbers as accounted-for so the "went missing → mark sold" fallback below
 // doesn't resurrect a fully-removed vehicle from an older synced copy.
 for (const s of excludeStock) seen.add(s);
 let unpublished = 0;
 for (const old of previous.vehicles ?? []) {
-  if (!seen.has(old.stockNumber) && old.status !== "sold") {
-    vehicles.push({ ...old, status: "sold" });
-    unpublished++;
-  }
+  if (seen.has(old.stockNumber)) continue;
+  // Carry sold vehicles forward instead of dropping them. Only checking `status !== "sold"` here
+  // meant a vehicle showed as Sold for a single sync and then vanished from the site and the CRM
+  // entirely, taking its performance history with it.
+  if (old.status !== "sold") unpublished++;
+  vehicles.push({ ...old, status: "sold" });
 }
 
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
