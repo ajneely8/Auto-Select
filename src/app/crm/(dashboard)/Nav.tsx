@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Inbox, BarChart3, type LucideIcon } from "lucide-react";
+import { LayoutDashboard, Inbox, BarChart3, PhoneCall, type LucideIcon } from "lucide-react";
 
 interface NavItem {
   href: string;
@@ -11,7 +11,7 @@ interface NavItem {
 }
 
 const groups: { label: string | null; items: NavItem[] }[] = [
-  { label: null, items: [{ href: "/crm", label: "Overview", icon: LayoutDashboard }, { href: "/crm/leads", label: "Leads", icon: Inbox }] },
+  { label: null, items: [{ href: "/crm", label: "Overview", icon: LayoutDashboard }, { href: "/crm/leads", label: "Leads", icon: Inbox }, { href: "/crm/calls", label: "Call logs", icon: PhoneCall }] },
   { label: "Vehicle inventory", items: [{ href: "/crm/listings", label: "Listing Performance", icon: BarChart3 }] },
 ];
 

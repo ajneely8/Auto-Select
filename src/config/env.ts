@@ -40,6 +40,10 @@ const schema = z.object({
 
   // Security
   CRON_SECRET: z.string().optional(),
+  // Bearer token n8n sends to POST /api/integrations/vapi/call-logs. The endpoint refuses every
+  // request until this is set to 16+ characters (checked in the handler, not here, so a blank value
+  // can never stop the site from booting). Use a long random string (`openssl rand -hex 32`).
+  ATARO_CRM_API_TOKEN: z.string().optional(),
   UNSUBSCRIBE_SECRET: z.string().default("dev-only-change-me"),
   TURNSTILE_SECRET_KEY: z.string().optional(),
 
