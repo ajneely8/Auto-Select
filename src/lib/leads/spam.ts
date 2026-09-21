@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash } from "node:crypto";
 import { env } from "@/config/env";
+import { looksLikeGibberishName } from "./gibberish";
 
 /** Honeypot field name. Real users never see or fill it. */
 export const HONEYPOT = "company_website";
@@ -17,6 +18,7 @@ export function looksLikeBot(fields: Record<string, string>): string | null {
   if (fields[HONEYPOT]) return "honeypot";
   const text = `${fields.message ?? ""} ${fields.notes ?? ""}`;
   if ((text.match(/https?:\/\//g) ?? []).length > 3) return "link-spam";
+  if (looksLikeGibberishName(fields)) return "gibberish-name";
   return null;
 }
 
