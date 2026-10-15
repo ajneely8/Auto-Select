@@ -52,7 +52,7 @@ const schema = z.object({
   ASSISTANT_MODEL: z.string().default("claude-opus-5"),
   ASSISTANT_ENABLED: z
     .enum(["true", "false"])
-    .default("true")
+    .default("false")
     .transform((v) => v === "true"),
 
   // Internal CRM (/crm) — a private, login-gated dashboard over the lead store. Unset = login always

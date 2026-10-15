@@ -11,7 +11,6 @@ import { MobileActionBar, BackToTop, AttributionAndClicks } from "@/components/l
 import { PageviewBeacon } from "@/components/layout/PageviewBeacon";
 import { RevealObserver } from "@/components/ui/Reveal";
 import { CompareTray } from "@/components/inventory/CompareTray";
-import { InventoryAssistant } from "@/components/assistant/InventoryAssistant";
 import { ConsentBanner } from "@/components/layout/ConsentBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { dealerJsonLd } from "@/lib/seo";
@@ -59,7 +58,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <MobileActionBar />
         <CompareTray />
         <BackToTop />
-        <InventoryAssistant />
         <ConsentBanner />
         {/* GoHighLevel (LeadConnector) text/chat widget. Loaded after the page is interactive so it never delays first paint. */}
         <Script
