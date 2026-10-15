@@ -9,6 +9,7 @@ import type { LeadType } from "@/lib/types";
 import { track } from "@/lib/analytics";
 import { business } from "@/config/business";
 import { buttonClasses } from "@/components/ui/Button";
+import { TurnstileWidget, TURNSTILE_SITE_KEY } from "./TurnstileWidget";
 
 /* ───────────────────────── Form context: inline errors per field ───────────────────────── */
 
@@ -88,6 +89,8 @@ export function FormShell({
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [startedAt, setStartedAt] = useState("");
   const [attribution, setAttribution] = useState<Record<string, string>>({});
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaResets, setCaptchaResets] = useState(0);
   const started = useRef(false);
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
@@ -116,6 +119,8 @@ export function FormShell({
         formRef.current?.querySelector<HTMLElement>(`[name="${first}"]`)?.focus();
       });
     }
+    // A Turnstile token is single-use: whatever the server said, the next attempt needs a fresh one.
+    if (state.status === "error" && TURNSTILE_SITE_KEY) setCaptchaResets((n) => n + 1);
     if (state.status === "error" && !state.fieldErrors) summaryRef.current?.focus();
     if (state.status === "success") {
       track("form_submitted", { form_type: formType, success: true, ...extraRef.current });
@@ -151,6 +156,7 @@ export function FormShell({
       const m = messageFor(el);
       if (m) next[el.name] = m;
     }
+    if (TURNSTILE_SITE_KEY && !captchaToken) next._captcha = "Please tick the box to confirm you're not a robot.";
     setErrors(next);
     if (Object.keys(next).length) {
       form.querySelector<HTMLElement>(`[name="${Object.keys(next)[0]}"]`)?.focus();
@@ -232,6 +238,24 @@ export function FormShell({
         </div>
 
         <div className={compact ? "grid gap-4" : "grid gap-5"}>{children}</div>
+
+        {TURNSTILE_SITE_KEY && (
+          <div className="mt-5">
+            <input type="hidden" name="cf-turnstile-response" value={captchaToken} />
+            <TurnstileWidget
+              resetKey={captchaResets}
+              onToken={(t) => {
+                setCaptchaToken(t);
+                if (t) setFieldError("_captcha", null);
+              }}
+            />
+            {errors._captcha && (
+              <p role="alert" className="mt-1.5 text-sm text-danger">
+                {errors._captcha}
+              </p>
+            )}
+          </div>
+        )}
 
         <div className={`mt-6 flex flex-col gap-3 ${compact ? "" : "sm:flex-row sm:items-center sm:justify-between"}`}>
           <p className="text-xs leading-relaxed text-muted max-w-md">

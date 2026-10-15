@@ -84,8 +84,9 @@ export async function processLead(type: LeadType, fd: FormData, ctx: LeadContext
     await saveSpamLead(type, raw, ctx, bot).catch((err) => console.error("[leads] spam-lead storage failed:", err));
     return { status: "success", message: "Thanks — we received your request." };
   }
-  if (!(await verifyTurnstile(raw["cf-turnstile-response"], ctx.ip))) {
-    return { status: "error", message: "Please complete the verification check and try again." };
+  // The chat assistant files leads on a visitor's behalf and has no widget to show; it is limited by the assistant route's own rate limit instead.
+  if (type !== "assistant" && !(await verifyTurnstile(raw["cf-turnstile-response"], ctx.ip))) {
+    return { status: "error", message: `Please tick the "I'm not a robot" box and try again, or call us at ${business.phone.display}.` };
   }
 
   // 3. Rate limit: 6 submissions per IP per 10 minutes across all forms.

@@ -22,9 +22,13 @@ export function looksLikeBot(fields: Record<string, string>): string | null {
   return null;
 }
 
-/** Optional Cloudflare Turnstile verification — enabled when TURNSTILE_SECRET_KEY is set. */
+/**
+ * Cloudflare Turnstile verification. Enforced only when BOTH the server secret and the public site key
+ * are set — the secret alone would reject every form, because without the site key no widget is
+ * shown and no token is ever sent.
+ */
 export async function verifyTurnstile(token: string | undefined, ip: string): Promise<boolean> {
-  if (!env.TURNSTILE_SECRET_KEY) return true;
+  if (!env.TURNSTILE_SECRET_KEY || !process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) return true;
   if (!token) return false;
   try {
     const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
