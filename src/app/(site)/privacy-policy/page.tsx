@@ -135,6 +135,11 @@ const sections: LegalSection[] = [
           delivery, text-message delivery, appointment scheduling, and bot protection. These providers receive the information needed to perform their services
           for us.
         </p>
+        <h3>Website chat and messaging</h3>
+        <p>
+          If you use the chat or text-message widget on our site, what you type and the contact details you share are received by our messaging and CRM
+          provider, GoHighLevel (LeadConnector), so we can reply to you. It is handled under that provider&apos;s own privacy policy.
+        </p>
         <h3>Financing application provider</h3>
         <p>
           If you choose to apply for financing, you use a secure online application provided by a third party, {provider}. Information you enter in that

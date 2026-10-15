@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Barlow_Semi_Condensed } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { business } from "@/config/business";
 import { siteUrl } from "@/config/site";
@@ -60,6 +61,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BackToTop />
         <InventoryAssistant />
         <ConsentBanner />
+        {/* GoHighLevel (LeadConnector) text/chat widget. Loaded after the page is interactive so it never delays first paint. */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6ad16f99cc8a6767eeee5870"
+          data-source="WEB_USER"
+          strategy="lazyOnload"
+        />
         <RevealObserver />
         <AttributionAndClicks />
         <PageviewBeacon />
