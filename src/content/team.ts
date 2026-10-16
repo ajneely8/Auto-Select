@@ -14,7 +14,7 @@ export interface TeamMember {
   photo: { url: string; alt: string };
   /** Languages listed on the previous site, in addition to English. */
   otherLanguages: string[];
-  /** Open questions to resolve with the dealership. Rendered as visible TODO flags. */
+  /** Open questions to resolve with the dealership. Not shown on the public site; see docs/site-content-todos.md. */
   needsConfirmation: string[];
 }
 
@@ -64,65 +64,6 @@ export const team: TeamMember[] = [
     photo: {
       url: "/team/member-4.png",
       alt: "Brandon Simon, Internet Manager in training at Auto Select",
-    },
-    otherLanguages: [],
-    needsConfirmation: [],
-  },
-  {
-    id: "francisco-raphael",
-    name: "Francisco Raphael",
-    initials: "FR",
-    title: "Certified Trade Appraisal",
-    bio: "Francisco has more than 22 years of new and used car sales experience with Toyota, Nissan, and Ford, and has been part of the Auto Select team for five years. He is fluent in Spanish.",
-    photo: {
-      url: "/team/member-5.png",
-      alt: "Francisco Raphael, Certified Trade Appraisal at Auto Select",
-    },
-    otherLanguages: ["Spanish"],
-    needsConfirmation: [],
-  },
-  {
-    id: "tina-latt",
-    name: "Tina Latt",
-    initials: "TL",
-    title: "Office Manager",
-    bio: "Tina has been in the car business since her twenties, with experience in titles, arbitration, fleet and lease, and marketing. Friendly and outgoing, she loves helping people get into the car they've been wanting.",
-    photo: { url: "/team/member-6.jpg", alt: "Tina Latt, Office Manager at Auto Select" },
-    otherLanguages: [],
-    needsConfirmation: [],
-  },
-  {
-    id: "carlos-luengo",
-    name: "Carlos Luengo",
-    initials: "CL",
-    title: "IT Specialist / Website Developer",
-    bio: "Carlos brings more than 7 years of experience in customer service, marketing, and sales. Reliable and easy to work with, with a positive outlook. Fluent in Spanish.",
-    photo: {
-      url: "/team/member-7.png",
-      alt: "Carlos Luengo, IT Specialist / Website Developer at Auto Select",
-    },
-    otherLanguages: ["Spanish"],
-    needsConfirmation: [],
-  },
-  {
-    id: "josie-reyes",
-    name: "Josie Reyes",
-    initials: "JR",
-    title: "Bookkeeper",
-    bio: "Josie has more than 15 years of bookkeeping experience and has worked with Auto Select for 5 years. Professional and friendly.",
-    photo: { url: "/team/member-8.png", alt: "Josie Reyes, Bookkeeper at Auto Select" },
-    otherLanguages: [],
-    needsConfirmation: [],
-  },
-  {
-    id: "robert-garcia",
-    name: "Robert Garcia",
-    initials: "RG",
-    title: "Certified Mobile Mechanic",
-    bio: "Robert has more than 25 years of experience working on new and used cars. Reliable, dependable, and honest.",
-    photo: {
-      url: "/team/member-9.png",
-      alt: "Robert Garcia, Certified Mobile Mechanic at Auto Select",
     },
     otherLanguages: [],
     needsConfirmation: [],

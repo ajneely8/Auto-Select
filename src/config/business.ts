@@ -55,7 +55,7 @@ export const business: BusinessInformation = {
     // TODO(confirm) the dealership may prefer a different illustrative rate, or none.
     calculatorExampleApr: 8.9,
   },
-  languages: ["English", "Spanish"], // Team bios on the current site list fluent Spanish speakers. TODO(confirm) before advertising.
+  languages: ["English", "Spanish"], // Veronica Simon is listed as fluent in Spanish; see docs/site-content-todos.md.
 };
 
 export const mapsLinks = {
