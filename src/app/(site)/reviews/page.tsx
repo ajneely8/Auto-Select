@@ -4,7 +4,6 @@ import { business } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { reviews } from "@/content/reviews";
 
@@ -64,9 +63,6 @@ export default function ReviewsPage() {
             <p className="mt-3 text-[1.0625rem] leading-relaxed text-slate">
               Whether you purchased a vehicle, traded one in, or used one of our automotive services, your feedback helps other drivers — and helps us improve.
             </p>
-            <div className="mt-5">
-              <TodoFlag>Add links to verified review profiles (Google Business Profile, etc.) once confirmed.</TodoFlag>
-            </div>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:flex-col lg:items-stretch">
             <ButtonLink href={business.social.facebook} external variant="secondary" size="lg" className="whitespace-normal! py-2 text-center">

@@ -3,7 +3,6 @@ import { business } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero, Section, SectionHeader } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FinancingInquiryForm } from "@/components/forms/FinancingInquiryForm";
 
@@ -131,12 +130,6 @@ export default function FinancingPage() {
                 {business.phone.display}
               </a>
             </p>
-            <aside aria-label="Staff note" className="mt-8 max-w-xl rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Staff note</p>
-              <div className="mt-2">
-                <TodoFlag>Confirm whether pre-qualification uses a soft credit inquiry (no score impact) before saying so on this page</TodoFlag>
-              </div>
-            </aside>
           </div>
 
           <div className="rounded-[var(--radius-md)] border border-line bg-white p-6 shadow-[var(--shadow-card)] sm:p-7" data-reveal>

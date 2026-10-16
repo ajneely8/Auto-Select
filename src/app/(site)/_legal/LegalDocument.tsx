@@ -1,7 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { PageHero, Section } from "@/components/ui/Section";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 
 /**
@@ -52,7 +51,6 @@ export function LegalDocument({
           <p className="text-sm text-white/80">
             Last updated <time dateTime={lastUpdatedIso}>{lastUpdated}</time>
           </p>
-          <TodoFlag>Legal review required before publishing.</TodoFlag>
         </div>
       </PageHero>
 

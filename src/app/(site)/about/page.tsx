@@ -5,9 +5,8 @@ import { pageMetadata } from "@/lib/seo";
 import { telHref } from "@/lib/format";
 import { PageHero, Section, SectionHeader } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { team, spanishSpeakers, hasOpenPosition } from "@/content/team";
+import { team, hasOpenPosition } from "@/content/team";
 import { TeamPhoto } from "@/components/about/TeamPhoto";
 import { UserPlus } from "lucide-react";
 import { reviews } from "@/content/reviews";
@@ -58,11 +57,6 @@ export default function AboutPage() {
                 <h3 className="text-lg font-bold leading-tight">{m.name}</h3>
                 <p className="mt-0.5 text-sm font-semibold text-accent-text">{m.title}</p>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-slate">{m.bio}</p>
-                {m.needsConfirmation.map((note) => (
-                  <p key={note} className="mt-3">
-                    <TodoFlag>{note}</TodoFlag>
-                  </p>
-                ))}
               </div>
             </li>
           ))}
@@ -77,11 +71,6 @@ export default function AboutPage() {
             </li>
           )}
         </ul>
-        {spanishSpeakers.length > 0 && (
-          <p className="mt-6 text-sm text-slate">
-            <TodoFlag>Confirm Spanish-language assistance before advertising it</TodoFlag> — listed as fluent in Spanish: {spanishSpeakers.map((m) => m.name).join(", ")}.
-          </p>
-        )}
       </Section>
 
       {/* Story */}
@@ -106,9 +95,6 @@ export default function AboutPage() {
                 Whether you&apos;re shopping our current inventory or need help finding something specific, we&apos;ll explain the numbers, answer your questions,
                 and keep the process moving at a pace that works for you.
               </p>
-            </div>
-            <div className="mt-6">
-              <TodoFlag>Add founding year and story details</TodoFlag>
             </div>
           </div>
 

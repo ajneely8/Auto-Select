@@ -4,7 +4,6 @@ import { faqJsonLd, pageMetadata } from "@/lib/seo";
 import { telHref } from "@/lib/format";
 import { PageHero, Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqAll, faqGroups } from "@/content/faq";
@@ -71,11 +70,6 @@ export default function FaqPage() {
                       </summary>
                       <div className="pb-5 pr-9">
                         <p className="text-[1rem] leading-relaxed text-slate">{item.a}</p>
-                        {item.todo && (
-                          <p className="mt-3">
-                            <TodoFlag>{item.todo}</TodoFlag>
-                          </p>
-                        )}
                       </div>
                     </details>
                   ))}

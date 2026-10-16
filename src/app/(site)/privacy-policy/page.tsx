@@ -3,7 +3,6 @@ import { business, fullAddress } from "@/config/business";
 import { siteUrl } from "@/config/site";
 import { pageMetadata } from "@/lib/seo";
 import { telHref } from "@/lib/format";
-import { TodoFlag } from "@/components/ui/Badge";
 import { LegalDocument, type LegalSection } from "@/app/(site)/_legal/LegalDocument";
 
 export const metadata = pageMetadata({
@@ -284,9 +283,6 @@ const sections: LegalSection[] = [
           evaluate your vehicle and document the transaction. Assistant conversation logs are kept for a limited period.
         </p>
         <p>When information is no longer needed, we delete it or de-identify it so it can no longer be linked to you.</p>
-        <p>
-          <TodoFlag>Confirm specific data-retention periods for leads, trade-in photos, and assistant logs.</TodoFlag>
-        </p>
       </>
     ),
   },

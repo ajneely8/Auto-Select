@@ -4,7 +4,6 @@ import { business } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ServiceContractQuoteForm } from "@/components/forms/ServiceContractQuoteForm";
 
@@ -144,12 +143,6 @@ export default function ServiceContractsPage() {
               </div>
             </aside>
 
-            <aside aria-label="Staff note" className="rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Staff note</p>
-              <div className="mt-2">
-                <TodoFlag>Confirm provider name, plan details, and any transferability or financing terms before publishing</TodoFlag>
-              </div>
-            </aside>
           </div>
 
           <div id="quote" className="self-start rounded-[var(--radius-md)] border border-line bg-white p-5 shadow-[var(--shadow-card)] sm:p-8">

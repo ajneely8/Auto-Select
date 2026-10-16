@@ -3,7 +3,6 @@ import { business } from "@/config/business";
 import { pageMetadata } from "@/lib/seo";
 import { PageHero, Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
-import { TodoFlag } from "@/components/ui/Badge";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { VehicleLocatorForm } from "@/components/forms/VehicleLocatorForm";
 
@@ -109,12 +108,6 @@ export default function FindAVehiclePage() {
               </p>
             </section>
 
-            <aside aria-label="Staff note" className="rounded-[var(--radius-sm)] border border-dashed border-line-strong bg-surface p-4">
-              <p className="text-xs font-semibold uppercase tracking-wide text-muted">Staff note</p>
-              <div className="mt-2">
-                <TodoFlag>Confirm whether the locating service involves any fee or deposit, and where located vehicles are sourced, before publishing</TodoFlag>
-              </div>
-            </aside>
           </div>
 
           <div id="request" className="self-start rounded-[var(--radius-md)] border border-line bg-white p-5 shadow-[var(--shadow-card)] sm:p-8">

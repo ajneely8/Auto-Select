@@ -18,7 +18,3 @@ export function Badge({ tone = "neutral", children, className = "" }: { tone?: k
   );
 }
 
-/** Visible marker for content that still needs dealership confirmation. */
-export function TodoFlag({ children }: { children: ReactNode }) {
-  return <span className="todo-flag">TODO · {children}</span>;
-}
