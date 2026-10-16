@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Full-bleed, silent, looping dealership video behind the home hero. No controls and no play button:
+ * Silent, looping dealership video behind the home hero, shown as the full uncropped frame. No controls and no play button:
  * it simply plays. The inventory-photo background sits underneath and shows until the video is ready
  * (and stays for visitors who ask their device to reduce motion, or if the video can't play).
  * Decorative, so it is hidden from assistive tech.
@@ -32,21 +32,41 @@ export function HeroVideo() {
 
   if (reduceMotion) return null;
 
+  const fade = `transition-opacity duration-700 ${playing ? "opacity-100" : "opacity-0"}`;
+
   return (
-    <video
-      ref={ref}
-      src="/video/hero.mp4"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      disablePictureInPicture
-      disableRemotePlayback
-      controlsList="nodownload noremoteplayback nofullscreen"
-      aria-hidden="true"
-      tabIndex={-1}
-      className={`pointer-events-none absolute inset-0 size-full object-cover transition-opacity duration-700 ${playing ? "opacity-100" : "opacity-0"}`}
-    />
+    <>
+      {/* Fills the space beside the vertical frame with a soft, blurred copy of the same footage. */}
+      <video
+        src="/video/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        disablePictureInPicture
+        disableRemotePlayback
+        controlsList="nodownload noremoteplayback nofullscreen"
+        aria-hidden="true"
+        tabIndex={-1}
+        className={`pointer-events-none absolute inset-0 size-full scale-110 object-cover blur-2xl ${fade}`}
+      />
+      {/* The full frame, uncropped. */}
+      <video
+        ref={ref}
+        src="/video/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        disablePictureInPicture
+        disableRemotePlayback
+        controlsList="nodownload noremoteplayback nofullscreen"
+        aria-hidden="true"
+        tabIndex={-1}
+        className={`pointer-events-none absolute inset-0 size-full object-contain ${fade}`}
+      />
+    </>
   );
 }
