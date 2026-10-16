@@ -102,7 +102,7 @@ export default async function HomePage() {
   return (
     <>
       {/* ───────────── Hero ───────────── */}
-      <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-navy-950 text-white on-dark">
+      <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-navy-950 text-white on-dark lg:min-h-[52rem]">
         <HeroPhotoBackground photos={heroVehicles.map((v) => v.photo)} />
         <HeroVideo />
         <div className="container-page relative grid items-center gap-10 pb-28 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:pb-36 lg:pt-20">
