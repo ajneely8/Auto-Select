@@ -106,16 +106,16 @@ export default async function HomePage() {
         <HeroPhotoBackground photos={heroVehicles.map((v) => v.photo)} />
         <HeroVideo />
         <div className="container-page relative grid items-center gap-10 pb-28 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:pb-36 lg:pt-20">
-          <div className="[text-shadow:0_2px_16px_rgba(0,0,0,0.7),0_1px_3px_rgba(0,0,0,0.6)]">
+          <div className="[text-shadow:0_2px_18px_rgba(0,0,0,0.85),0_1px_4px_rgba(0,0,0,0.75)]">
             <p className="eyebrow !text-accent">Family-owned · Live Oak, Texas</p>
             <h1 id="hero-heading" className="mt-3 text-[2.75rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
               Car Buying Made Simple
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white">
               Browse vehicles, get pre-qualified for financing, and trade in your current car — all with one local team. Prefer we do the searching? Tell us
               what you need and we&apos;ll find it, then deliver it to your home or office if you&apos;d like.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-8 flex flex-col gap-3 [text-shadow:none] sm:flex-row sm:flex-wrap">
               <ButtonLink href="/inventory" size="lg">
                 Browse Inventory
               </ButtonLink>
@@ -126,7 +126,7 @@ export default async function HomePage() {
                 Find My Vehicle
               </ButtonLink>
             </div>
-            <p className="mt-6 inline-flex items-center gap-2 text-sm text-white/70">
+            <p className="mt-6 inline-flex items-center gap-2 text-sm text-white">
               <MapPin className="size-4" aria-hidden /> Serving Live Oak and the San Antonio area
             </p>
           </div>
