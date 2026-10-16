@@ -32,7 +32,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { VehicleCard } from "@/components/inventory/VehicleCard";
 import { QuickSearch, type QuickSearchOptions } from "@/components/home/QuickSearch";
-import { type HeroVehicle } from "@/components/home/HeroShowcase";
+import { HeroShowcase, type HeroVehicle } from "@/components/home/HeroShowcase";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { HeroPhotoBackground } from "@/components/ui/HeroPhotoBackground";
 import { ThreeEasyStepsBanner } from "@/components/home/ThreeEasyStepsBanner";
@@ -104,9 +104,9 @@ export default async function HomePage() {
       {/* ───────────── Hero ───────────── */}
       <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-navy-950 text-white on-dark">
         <HeroPhotoBackground photos={heroVehicles.map((v) => v.photo)} />
-        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(100deg,#061224_0%,#061224_42%,rgba(6,18,36,0.55)_70%,rgba(6,18,36,0.2)_100%)]" />
+        <HeroVideo />
         <div className="container-page relative grid items-center gap-10 pb-28 pt-12 sm:pt-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:pb-36 lg:pt-20">
-          <div>
+          <div className="[text-shadow:0_2px_16px_rgba(0,0,0,0.7),0_1px_3px_rgba(0,0,0,0.6)]">
             <p className="eyebrow !text-accent">Family-owned · Live Oak, Texas</p>
             <h1 id="hero-heading" className="mt-3 text-[2.75rem] font-bold leading-[1.02] sm:text-6xl lg:text-[4.25rem]">
               Car Buying Made Simple
@@ -131,7 +131,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <HeroVideo />
+          <HeroShowcase vehicles={heroVehicles} />
         </div>
       </section>
 

@@ -1,43 +1,52 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Silent, looping dealership walkthrough shown in the home hero. No controls and no play button: it
- * simply plays. Visitors who ask their device to reduce motion get the first frame held still.
- * Decorative, so it is hidden from assistive tech (the page's meaning doesn't depend on it).
+ * Full-bleed, silent, looping dealership video behind the home hero. No controls and no play button:
+ * it simply plays. The inventory-photo background sits underneath and shows until the video is ready
+ * (and stays for visitors who ask their device to reduce motion, or if the video can't play).
+ * Decorative, so it is hidden from assistive tech.
  */
 export function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
-    const v = ref.current;
-    if (!v) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      v.pause();
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setReduceMotion(true);
       return;
     }
+    const v = ref.current;
+    if (!v) return;
+    // The video can start playing before React attaches handlers, so listen here and also check now.
+    const show = () => setPlaying(true);
+    v.addEventListener("playing", show);
+    if (!v.paused && v.readyState >= 3) show();
     // Some browsers ignore the autoplay attribute until the element is in the DOM; nudge it.
     v.play().catch(() => {});
+    return () => v.removeEventListener("playing", show);
   }, []);
 
+  if (reduceMotion) return null;
+
   return (
-    <div className="relative mx-auto aspect-[9/16] w-full max-w-[240px] overflow-hidden rounded-[var(--radius-lg)] border border-white/15 bg-navy-900 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.7)] sm:max-w-[280px] lg:justify-self-center">
-      <video
-        ref={ref}
-        src="/video/hero.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        disablePictureInPicture
-        disableRemotePlayback
-        controlsList="nodownload noremoteplayback nofullscreen"
-        aria-hidden="true"
-        tabIndex={-1}
-        className="pointer-events-none size-full object-cover"
-      />
-    </div>
+    <video
+      ref={ref}
+      src="/video/hero.mp4"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
+      controlsList="nodownload noremoteplayback nofullscreen"
+      aria-hidden="true"
+      tabIndex={-1}
+      className={`pointer-events-none absolute inset-0 size-full object-cover transition-opacity duration-700 ${playing ? "opacity-100" : "opacity-0"}`}
+    />
   );
 }
