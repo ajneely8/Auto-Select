@@ -32,7 +32,8 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { VehicleCard } from "@/components/inventory/VehicleCard";
 import { QuickSearch, type QuickSearchOptions } from "@/components/home/QuickSearch";
-import { HeroShowcase, type HeroVehicle } from "@/components/home/HeroShowcase";
+import { type HeroVehicle } from "@/components/home/HeroShowcase";
+import { HeroVideo } from "@/components/home/HeroVideo";
 import { HeroPhotoBackground } from "@/components/ui/HeroPhotoBackground";
 import { ThreeEasyStepsBanner } from "@/components/home/ThreeEasyStepsBanner";
 import { TradeInForm } from "@/components/forms/TradeInForm";
@@ -130,7 +131,7 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <HeroShowcase vehicles={heroVehicles} />
+          <HeroVideo />
         </div>
       </section>
 
