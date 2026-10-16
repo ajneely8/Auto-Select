@@ -50,9 +50,6 @@ export default function AboutPage() {
           title="The people you'll work with"
           intro="Experienced in sales, finance, titles, and trade appraisals — and focused on keeping your purchase simple."
         />
-        <div className="mb-6">
-          <TodoFlag>Confirm this roster, titles, and photos are still current</TodoFlag>
-        </div>
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {team.map((m) => (
             <li key={m.id} data-reveal className="overflow-hidden rounded-[var(--radius-md)] border border-line bg-white">
