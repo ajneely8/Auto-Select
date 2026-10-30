@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { business, fullAddress } from "@/config/business";
 import { siteUrl } from "@/config/site";
+import { areas } from "@/content/areas";
 import type { Vehicle } from "@/lib/types";
 import { displayPrice, vehicleFullName } from "@/lib/format";
 
@@ -68,6 +69,7 @@ export function dealerJsonLd() {
     areaServed: [
       { "@type": "City", name: "Live Oak" },
       { "@type": "City", name: "San Antonio" },
+      ...areas.map((a) => ({ "@type": "City", name: a.name })),
     ],
     openingHoursSpecification: business.hours
       .filter((h) => h.open && h.close)

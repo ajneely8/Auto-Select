@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { business, mapsLinks, fullAddress } from "@/config/business";
 import { footerNav } from "@/config/site";
+import { areas } from "@/content/areas";
 
 function FacebookIcon() {
   return (
@@ -73,27 +74,48 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-3">
-          {(
-            [
-              ["Shop", footerNav.shop],
-              ["Buying tools", footerNav.buy],
-              ["Auto Select", footerNav.company],
-            ] as const
-          ).map(([title, links]) => (
-            <nav key={title} aria-label={title}>
-              <h3 className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-white">{title}</h3>
-              <ul className="mt-4 grid gap-2.5 text-sm">
-                {links.map((l) => (
-                  <li key={l.href}>
-                    <Link href={l.href} className="hover:text-white hover:underline underline-offset-2">
-                      {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          ))}
+        <div className="grid content-start gap-10">
+          <div className="grid gap-8 sm:grid-cols-3">
+            {(
+              [
+                ["Shop", footerNav.shop],
+                ["Buying tools", footerNav.buy],
+                ["Auto Select", footerNav.company],
+              ] as const
+            ).map(([title, links]) => (
+              <nav key={title} aria-label={title}>
+                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-white">{title}</h3>
+                <ul className="mt-4 grid gap-2.5 text-sm">
+                  {links.map((l) => (
+                    <li key={l.href}>
+                      <Link href={l.href} className="hover:text-white hover:underline underline-offset-2">
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+          </div>
+
+          {/* Town pages from src/content/areas.ts. Town names only as link text: keyword-stuffed footer links read as spam. */}
+          <nav aria-label="Areas we serve" className="border-t border-white/10 pt-8">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.12em] text-white">Areas we serve</h3>
+            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2.5 text-sm">
+              {areas.map((a) => (
+                <li key={a.slug}>
+                  <Link href={`/areas-we-serve/${a.slug}`} className="hover:text-white hover:underline underline-offset-2">
+                    {a.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/areas-we-serve" className="font-semibold text-white hover:underline underline-offset-2">
+                  All areas
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
 

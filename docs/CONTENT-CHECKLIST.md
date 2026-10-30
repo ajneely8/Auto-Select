@@ -33,6 +33,7 @@ All of this lives in `src/config/business.ts`. Items marked `TODO(confirm)` in t
 - [ ] Hours: Monday–Saturday 10:00 AM–6:00 PM, closed Sunday. These drive appointment slots (last slot 5:30 PM), the "closed Sunday" rule, structured data, and email copy.
 - [ ] Tagline "We Make Car Buying Simple" and the one-paragraph business description.
 - [ ] Service area wording: "Live Oak and the San Antonio area".
+- [ ] Town pages (`src/content/areas.ts`, listed at `/areas-we-serve`): confirm Auto Select wants to target Universal City, Converse, Schertz, and Kirby, and that each local note fits how the team works. A real review or delivery story from a buyer in each town would make those pages stronger.
 - [ ] Facebook: `facebook.com/AutoSelectgroups` and Instagram: `instagram.com/autoselect_usa` — both are published in the structured data and footer.
 - [ ] Financing provider name ("700Credit QuickQualify") and the financing disclosure paragraph.
 
