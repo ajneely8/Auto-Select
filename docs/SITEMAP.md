@@ -19,6 +19,8 @@ Every route in `src/app`, what it does, and how it is indexed. "In sitemap" mean
 ├── reviews                         Customer reviews (two reviews from the old site; no ratings)
 ├── faq                             Grouped FAQ with FAQPage structured data
 ├── contact                         Address, hours, click-to-load map, contact form
+├── areas-we-serve                  Areas we serve: Live Oak plus links to each nearby town page, map, contact
+│   └── [slug]                      "Used cars near <town>" page (4 towns, listed below)
 ├── blog                            Car-buying guides index
 │   └── [slug]                      Guide article (7 guides, listed below)
 ├── saved                           Saved vehicles and saved searches (browser storage)
@@ -51,6 +53,8 @@ Special files: `src/app/not-found.tsx` (404 with links to inventory, locator, co
 | `/reviews` | Reviews | none | Yes | Yes |
 | `/faq` | FAQ | group anchors | Yes | Yes |
 | `/contact` | Contact and directions | none | Yes | Yes |
+| `/areas-we-serve` | Areas we serve, linking to each town page | none | Yes | Yes (0.6) |
+| `/areas-we-serve/[slug]` | "Used cars near <town>" page; content in `src/content/areas.ts` | none | Yes | Yes (0.6) |
 | `/blog` | Guides index | none | Yes | Yes |
 | `/blog/[slug]` | Guide | none | Yes | Yes |
 | `/saved` | Saved vehicles/searches | none | **No** (`noindex`, disallowed in robots) | No |
@@ -69,6 +73,15 @@ Special files: `src/app/not-found.tsx` (404 with links to inventory, locator, co
 - `/blog/how-our-vehicle-locating-service-works`
 - `/blog/buying-a-used-car-in-san-antonio`
 
+### Town pages (`/areas-we-serve/[slug]`)
+
+Content and rules live in `src/content/areas.ts`. Each town needs its own intro, its own local section, and at least one question no other town page has, so the pages don't read as near-duplicates (Google's spam policies treat city pages that funnel visitors to one place as doorway abuse).
+
+- `/areas-we-serve/universal-city-tx`
+- `/areas-we-serve/converse-tx`
+- `/areas-we-serve/schertz-tx`
+- `/areas-we-serve/kirby-tx`
+
 ## Navigation
 
 Defined in `src/config/site.ts`.
@@ -77,6 +90,7 @@ Defined in `src/config/site.ts`.
 - **Footer, Shop:** Browse inventory, Find a vehicle, Saved vehicles, Compare vehicles, Book an appointment.
 - **Footer, Buy:** Financing, Value your trade, Home & office delivery, Service contracts.
 - **Footer, Company:** About Auto Select, Automotive services, Customer reviews, Car-buying guides, FAQ, Contact & directions.
+- **Footer, Areas we serve:** Universal City, Converse, Schertz, Kirby, All areas (generated from `src/content/areas.ts`).
 - **Footer, Legal:** Privacy Policy, Terms of Use.
 - **Mobile bottom bar** (all pages except vehicle detail): Call, Inventory, Apply (`/financing#apply`).
 

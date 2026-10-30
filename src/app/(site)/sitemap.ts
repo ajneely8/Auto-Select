@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/config/site";
 import { getPublishedVehicles } from "@/lib/inventory/repository";
 import { posts } from "@/content/blog";
+import { areas } from "@/content/areas";
 
 /** Rebuilt on each deploy and whenever inventory revalidates; sold vehicles drop out automatically. */
 export const revalidate = 900;
@@ -22,6 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/contact", priority: 0.7, changeFrequency: "yearly" },
     { path: "/schedule", priority: 0.6, changeFrequency: "yearly" },
     { path: "/blog", priority: 0.5, changeFrequency: "weekly" },
+    { path: "/areas-we-serve", priority: 0.6, changeFrequency: "monthly" },
+    ...areas.map((a) => ({ path: `/areas-we-serve/${a.slug}`, priority: 0.6, changeFrequency: "monthly" as const })),
     { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" },
     { path: "/terms-of-use", priority: 0.2, changeFrequency: "yearly" },
   ];
